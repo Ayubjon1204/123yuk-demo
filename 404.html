@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>123YUK — yo'naltirilmoqda</title>
+<script>
+(function () {
+    var BASE = '/123yuk-demo/';
+    var APPS = ['zavod', 'transport', 'distributor', 'admin', 'haydovchi'];
+    var TRANSPORT_ROOT = ["architecture","login","settings","users"];
+    var p = location.pathname;
+    var seg = p.indexOf(BASE) === 0 ? p.slice(BASE.length).split('/')[0] : '';
+    var app = APPS.indexOf(seg) >= 0 ? seg : TRANSPORT_ROOT.indexOf(seg) >= 0 ? 'transport' : '';
+    var target = BASE + (app ? app + '/' : '');
+    if (p === target) return; // ilova index'i yo'q — sikl bo'lmasin
+    try {
+        sessionStorage.setItem('123yuk:redirect', JSON.stringify({ app: app || 'hub', path: p + location.search + location.hash }));
+    } catch (e) {}
+    location.replace(target);
+})();
+</script>
+</head>
+<body style="font-family: system-ui, sans-serif; padding: 24px">
+<p>Sahifa topilmadi. <a href="/123yuk-demo/">123YUK bosh sahifasi</a></p>
+</body>
+</html>
