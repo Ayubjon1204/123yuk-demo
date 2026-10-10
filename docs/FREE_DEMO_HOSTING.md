@@ -1,6 +1,6 @@
 # Free demo hosting decision
 
-Checked on 2026-10-10 against provider documentation. This is a separate synthetic demo only. No service has been created, no repository branch has been pushed, and no provider account was available in the current browser session.
+Checked on 2026-10-10 against provider documentation. This is a separate synthetic demo only. The feature branch was published to GitHub at commit `a8364bfd1d5ae1511bf13c8c1b23287584d1eee2`. No Render service has been created, and no provider account session is available in the current browser session.
 
 ## Provider comparison
 
@@ -30,10 +30,10 @@ The API needs no database, volume, queue, or other persistent service. It can be
 
 ## Manual deployment and local-browser E2E
 
-Provider authentication was not available, and the feature branch is not on GitHub. When an operator with an existing Render account is ready:
+The feature branch is published. Render authentication was not available in the current browser session. When an operator with an existing Render account is ready:
 
-1. Push only this feature branch with `git push -u origin feature/ai-support-agent`; do not push or merge `main`.
-2. In Render, create a Blueprint from `Ayubjon1204/123yuk-demo`, choose branch `feature/ai-support-agent`, and use the repository's `render.yaml`. Confirm the only service is the Free web service. Do not add a card, upgrade the plan, or add any database.
+1. The feature branch is already published at commit `a8364bfd1d5ae1511bf13c8c1b23287584d1eee2`; do not push or merge `main`.
+2. In Render, sign in and connect `Ayubjon1204/123yuk-demo` if needed. Create a Blueprint from branch `feature/ai-support-agent` using the repository's `render.yaml`. Confirm the only service is the Free web service. Do not add a card, upgrade the plan, or add any database.
 3. Wait for the first deploy, then record the service's assigned `https://…onrender.com` URL. Check `/health/live`, `/health/ready`, both parking endpoints, and `/api/v1/assistant/capabilities`. Readiness must show Gemini `disabled` and real-data integration off.
 4. For browser testing from this local preview, run the local frontend server on port 8080. In the browser test, set `document.querySelector('yuk-support-widget').apiBase` to the verified public API origin. This is runtime test configuration; do not put a service URL or secret in the committed Pages HTML. The Render CORS list permits only `localhost:8080` and `127.0.0.1:8080` for that test.
 5. Do not change the current GitHub Pages source. The published dashboard currently returns HTTP 200 but contains no widget script. The widget-enabled frontend is therefore not public. Use the local frontend against the public backend until a separate static preview can be provisioned and given its own exact CORS origin.
@@ -42,4 +42,4 @@ For rollback, suspend the separately named Render demo service in its dashboard.
 
 ## Current deployment gate
 
-**BLOCKED:** no Render account/session is available, and `feature/ai-support-agent` has not been pushed. Therefore there is no deployed URL, public backend E2E, public-service rate-limit observation, or public browser CORS result. The local backend and UI tests remain the evidence for this checkout; they do not prove hosting behavior. Render's deployment also makes a limitation of the current rate limiter relevant: it uses the ASGI peer address and does not trust proxy-supplied `X-Forwarded-For`; a live service test must confirm whether Render presents client-specific peer addresses before the demo is shared broadly.
+**BLOCKED:** `feature/ai-support-agent` is published at commit `a8364bfd1d5ae1511bf13c8c1b23287584d1eee2`, but no Render account session is available and no service has been created. There is no deployed URL, public backend E2E, public-service rate-limit observation, or public browser CORS result. The local backend and UI tests remain the evidence for this checkout; they do not prove hosting behavior. Render's deployment also makes a limitation of the current rate limiter relevant: it uses the ASGI peer address and does not trust proxy-supplied `X-Forwarded-For`; a live service test must confirm whether Render presents client-specific peer addresses before the demo is shared broadly.
