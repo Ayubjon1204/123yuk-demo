@@ -1,0 +1,6 @@
+-r requirements.txt
+mypy>=1.10,<2
+ruff>=0.5,<1
+pytest>=8,<10
+pytest-asyncio>=0.23,<2
+playwright>=1.45,<2

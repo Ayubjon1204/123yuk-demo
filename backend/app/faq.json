@@ -1,0 +1,26 @@
+[
+  {
+    "id": "factory_role_visibility",
+    "topic": "factory_roles",
+    "title": "Xodimning bo‘limlarni ko‘rishi",
+    "text": "Kirish sahifasidagi ma’lumotga ko‘ra, har bir xodim faqat o‘z roliga berilgan bo‘limlarni ko‘radi. Rollarni zavod administratori belgilaydi.",
+    "source_uri": "https://ayubjon1204.github.io/123yuk-demo/zavod/login/",
+    "aliases": ["xodim roli", "rolga ruxsat", "bo‘limlarni kim ko‘radi", "xodim qaysi bo‘limlarni ko‘radi", "zavod administratori rol belgilaydi", "rolni kim belgilaydi"]
+  },
+  {
+    "id": "factory_roles_navigation",
+    "topic": "factory_roles",
+    "title": "Rollar bo‘limi",
+    "text": "Zavod ilovasi menyusida Sozlamalar > Rollar bo‘limi ko‘rsatiladi.",
+    "source_uri": "https://ayubjon1204.github.io/123yuk-demo/zavod/dashboard/",
+    "aliases": ["rollar qayerda", "rol bo‘limi", "sozlamalarda rollar", "rolni sozlash"]
+  },
+  {
+    "id": "queue_matrix_navigation",
+    "topic": "queue_matrix",
+    "title": "Navbat matritsasi bo‘limi",
+    "text": "Zavod ilovasi menyusida Sozlamalar > Navbat matritsasi bo‘limi ko‘rsatiladi.",
+    "source_uri": "https://ayubjon1204.github.io/123yuk-demo/zavod/dashboard/",
+    "aliases": ["navbat matritsasi qayerda", "sozlamalarda navbat matritsasi", "matritsa bo‘limi"]
+  }
+]
