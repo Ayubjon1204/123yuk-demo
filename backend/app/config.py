@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 MODEL_ALLOWLIST = {"gemini-3.5-flash-lite"}
@@ -19,6 +20,35 @@ def _dotenv_values(path: Path) -> dict[str, str]:
         key, value = line.split("=", 1)
         values[key.strip()] = value.strip().strip("\"'")
     return values
+
+
+def _cors_origins(raw: str) -> tuple[str, ...]:
+    if not raw.strip():
+        return ()
+    origins: list[str] = []
+    for item in raw.split(","):
+        origin = item.strip()
+        try:
+            parsed = urlsplit(origin)
+            port = parsed.port
+        except ValueError as exc:
+            raise ValueError("CORS_ALLOWED_ORIGINS must contain valid HTTP(S) origins") from exc
+        if (
+            not origin
+            or any(char.isspace() for char in origin)
+            or parsed.scheme not in {"http", "https"}
+            or not parsed.hostname
+            or port == 0
+            or "*" in parsed.netloc
+            or parsed.username is not None
+            or parsed.password is not None
+            or parsed.path
+            or parsed.query
+            or parsed.fragment
+        ):
+            raise ValueError("CORS_ALLOWED_ORIGINS must contain valid HTTP(S) origins")
+        origins.append(origin)
+    return tuple(dict.fromkeys(origins))
 
 
 @dataclass(frozen=True, slots=True)
@@ -49,7 +79,7 @@ class Settings:
             raise ValueError("DEMO_NOW must be an ISO-8601 timestamp with timezone") from exc
         if parsed.tzinfo is None or parsed.utcoffset() is None:
             raise ValueError("DEMO_NOW must include a timezone")
-        origins = tuple(origin for origin in value("CORS_ALLOWED_ORIGINS").split(",") if origin)
+        origins = _cors_origins(value("CORS_ALLOWED_ORIGINS"))
         return cls(
             gemini_api_key=value("GEMINI_API_KEY"),
             gemini_model=model,
