@@ -16,13 +16,13 @@
     "collection": "projects",
     "id": "gHUwk1NjK2nosyTjLOhc",
     "data": {
-      "goal": "",
+      "goal": "Zavod mahsulotlarini savdo nuqtalariga muntazam yetkazib berishni yo‘lga qo‘yish",
       "lead": "Oyatillo, Hikmatillo",
       "name": "DISTRIBUTION",
       "team": "",
       "order": 7,
-      "summary": "",
-      "updatedAt": "2026-11-20T10:47:28.000Z"
+      "summary": "Distribyutsiya: zavod mahsulotlarini do‘konlar va savdo nuqtalariga yetkazib berish.",
+      "updatedAt": "2026-11-20T10:58:37.000Z"
     }
   },
   {
@@ -30,12 +30,12 @@
     "id": "GyXCsUNgXBAj4FAPQ1b0",
     "data": {
       "goal": "01.03.2027 gacha kunlik reyslar 300 tadan 500 taga",
-      "lead": "Sherzod Muhammadjon",
+      "lead": "Sherzod, Muhammadjon",
       "name": "Ekspeditorlik",
       "team": "Axror va Azizbek sotuv",
       "order": 1,
       "summary": "",
-      "updatedAt": "2026-11-20T10:47:28.000Z"
+      "updatedAt": "2026-11-20T11:14:00.000Z"
     }
   },
   {
@@ -48,20 +48,20 @@
       "team": "Ilxom aka (dasturlash), Sherzod (marketing)",
       "order": 6,
       "summary": "Haydovchilar ishlatadigan dastur.",
-      "updatedAt": "2026-11-20T10:51:19.690Z"
+      "updatedAt": "2026-11-20T12:00:15.977Z"
     }
   },
   {
     "collection": "projects",
     "id": "presep",
     "data": {
-      "goal": "100 ta tirkamani ijaraga berish: tanishlar, 20% ulush, zavodlar",
+      "goal": "01.03.2027 gacha tanishlarga 100 ta tirkamani ijaraga berish; keyin hamkorlar bilan 20% ulush va zavodlarga ijara",
       "lead": "Jasurbek",
       "name": "Presep (tirkama)",
       "team": "",
       "order": 3,
       "summary": "Faqat tirkama yo‘nalishi, 3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan topilgan pulning 20% ulushi, zavodlarga ijara.",
-      "updatedAt": "2026-11-20T10:47:28.000Z"
+      "updatedAt": "2026-11-20T11:14:00.000Z"
     }
   },
   {
@@ -92,6 +92,19 @@
   },
   {
     "collection": "sections",
+    "id": "dist-s1",
+    "data": {
+      "name": "Asosiy ishlar",
+      "group": "",
+      "order": 1,
+      "terms": [],
+      "summary": "Zavod bilan kelishish, yetkazib berishni tashkil qilish va muntazam ishga tushirish.",
+      "projectId": "gHUwk1NjK2nosyTjLOhc",
+      "updatedAt": "2026-11-20T10:58:37.000Z"
+    }
+  },
+  {
+    "collection": "sections",
     "id": "garaj-s1",
     "data": {
       "name": "Investorlarni jalb qilish",
@@ -102,9 +115,9 @@
         "Umumiy foydadan ulush hisobida",
         "Foyda ham, zarar ham ulushga qarab"
       ],
-      "summary": "Investor bilan shartlarni yozib, islomiy moliya bo‘yicha tekshirib, hujjatga aylantirish; keyin real raqamlar bilan hisob ko‘rsatib, investor topish va kapitalni oshirish.",
+      "summary": "Investor jalb qilib, kapitalni 3 mln dan 10 mln ga ko‘tarish.",
       "projectId": "garaj",
-      "updatedAt": "2026-11-20T10:17:20.000Z"
+      "updatedAt": "2026-11-20T11:14:00.000Z"
     }
   },
   {
@@ -170,9 +183,9 @@
       "group": "",
       "order": 1,
       "terms": [],
-      "summary": "3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan 20% ulush, zavodlarga ijara. Har bir bosqich oldingisi baholangandan keyin boshlanadi.",
+      "summary": "Har bir bosqich oldingisi baholangandan keyin boshlanadi.",
       "projectId": "presep",
-      "updatedAt": "2026-11-20T10:47:28.000Z"
+      "updatedAt": "2026-11-20T11:14:00.000Z"
     }
   },
   {
@@ -253,6 +266,57 @@
       "updatedAt": "2026-11-20T10:47:28.000Z",
       "deadlineDraft": false,
       "responsibility": "40 ta mashinadan 100 taga chiqarish"
+    }
+  },
+  {
+    "collection": "tasks",
+    "id": "dist-1",
+    "data": {
+      "note": "",
+      "order": 1,
+      "owner": "Oyatillo, Hikmatillo",
+      "title": "Birinchi zavod bilan distribyutsiya bo‘yicha kelishish",
+      "status": "todo",
+      "deadline": "",
+      "projectId": "gHUwk1NjK2nosyTjLOhc",
+      "sectionId": "dist-s1",
+      "updatedAt": "2026-11-20T10:58:37.000Z",
+      "deadlineDraft": false,
+      "responsibility": "Shartnoma: qaysi mahsulot va qaysi hudud"
+    }
+  },
+  {
+    "collection": "tasks",
+    "id": "dist-2",
+    "data": {
+      "note": "",
+      "order": 2,
+      "owner": "Oyatillo, Hikmatillo",
+      "title": "Yetkazib berishni tashkil qilish: ombor, mashinalar, yo‘nalishlar",
+      "status": "todo",
+      "deadline": "",
+      "projectId": "gHUwk1NjK2nosyTjLOhc",
+      "sectionId": "dist-s1",
+      "updatedAt": "2026-11-20T10:58:37.000Z",
+      "deadlineDraft": false,
+      "responsibility": "Mahsulotni qabul qilib, savdo nuqtalariga yetkazishga tayyor"
+    }
+  },
+  {
+    "collection": "tasks",
+    "id": "dist-3",
+    "data": {
+      "note": "",
+      "order": 3,
+      "owner": "Oyatillo, Hikmatillo",
+      "title": "Savdo nuqtalariga muntazam yetkazib berishni boshlash",
+      "status": "todo",
+      "deadline": "",
+      "projectId": "gHUwk1NjK2nosyTjLOhc",
+      "sectionId": "dist-s1",
+      "updatedAt": "2026-11-20T10:58:37.000Z",
+      "deadlineDraft": false,
+      "responsibility": "Buyurtmalar muntazam yetkazilmoqda"
     }
   },
   {
@@ -517,14 +581,14 @@
       "note": "",
       "order": 1,
       "owner": "Jasurbek",
-      "title": "1-bosqich: tanishlarga 100 ta tirkamani 1 oyga ijaraga berish va qaytarib olish, holatini tekshirish va natijani baholash",
+      "title": "1-bosqich: tanishlarga 100 ta tirkamani 1 oyga ijaraga berish",
       "status": "todo",
       "deadline": "2027-03-01",
       "projectId": "presep",
       "sectionId": "presep-s1",
-      "updatedAt": "2026-11-20T10:47:28.000Z",
+      "updatedAt": "2026-11-20T11:14:00.000Z",
       "deadlineDraft": false,
-      "responsibility": "Berish va Qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori"
+      "responsibility": "Berish va qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori"
     }
   },
   {
@@ -709,9 +773,9 @@
       "deadline": "",
       "projectId": "yuk123",
       "sectionId": "yuk-s1",
-      "updatedAt": "2026-11-20T10:39:50.000Z",
+      "updatedAt": "2026-11-20T11:14:00.000Z",
       "deadlineDraft": false,
-      "responsibility": "Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi"
+      "responsibility": "KIA va BYD zavodlari 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi"
     }
   },
   {
