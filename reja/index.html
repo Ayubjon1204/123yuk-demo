@@ -65,7 +65,6 @@ button,input,select,textarea{font:inherit;color:inherit}
 .top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
 .top-in{display:flex;align-items:center;gap:10px 20px;flex-wrap:wrap;padding-block:12px}
 .brand{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 300px}
-.brand-mark{width:30px;height:30px;border-radius:6px;flex:none;background:repeating-linear-gradient(135deg,var(--accent) 0 6px,var(--ink) 6px 12px);box-shadow:inset 0 0 0 2px var(--accent)}
 .brand h1{font-size:19px;font-weight:800;letter-spacing:-.005em}
 .brand p{color:var(--ink-2);font-size:13px}
 .tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:10px}
@@ -83,7 +82,6 @@ button,input,select,textarea{font:inherit;color:inherit}
   .brand p{display:none}
   .brand{flex:1 1 0}
   .brand h1{font-size:16px}
-  .brand-mark{width:26px;height:26px}
   .top-actions .btn{padding:7px 11px}
   .tabs{order:3;flex:1 1 100%}
   .tab{flex:1;padding-inline:4px;font-size:13px}
@@ -96,9 +94,17 @@ main.wrap{padding-block:20px 72px;display:flex;flex-direction:column;gap:22px}
 body.presenting{overflow:hidden}
 body.presenting main.wrap{max-width:none;padding:0;display:block}
 body.presenting main.wrap > .banner{margin:10px 16px}
-.deck{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;height:calc(100vh - 66px);background:var(--bg);min-width:0}
-.deck:fullscreen{height:100vh;padding-top:env(safe-area-inset-top,0px)}
-.slide{min-width:0;min-height:0;overflow:auto;padding:clamp(14px,2.2vw,36px) max(clamp(16px,4vw,64px),env(safe-area-inset-right,0px)) 10px max(clamp(16px,4vw,64px),env(safe-area-inset-left,0px))}
+.deck{position:relative;height:calc(100vh - 66px);overflow-y:auto;overflow-x:hidden;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none;background:var(--bg);min-width:0;outline:0}
+.deck::-webkit-scrollbar{display:none}
+.slide{min-width:0;min-height:100%;scroll-snap-align:start;scroll-snap-stop:always;display:grid;grid-template-columns:minmax(0,1fr);align-items:center;padding:clamp(14px,2.2vw,36px) max(clamp(34px,4vw,64px),env(safe-area-inset-right,0px)) clamp(14px,2.2vw,36px) max(clamp(16px,4vw,64px),env(safe-area-inset-left,0px))}
+/* where you are: a quiet rail of dots at the edge; it also jumps to a slide */
+.rail{position:fixed;right:max(4px,env(safe-area-inset-right,0px));top:50%;transform:translateY(-50%);display:grid;gap:0;z-index:4}
+.rdot{width:26px;height:22px;border:0;background:none;padding:0;cursor:pointer;display:grid;place-items:center}
+.rdot::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--ink-3);opacity:.5}
+.rdot:hover::before{opacity:1}
+.rdot[aria-current="true"]::before{background:var(--accent-ink);opacity:1;width:9px;height:9px}
+@media (prefers-reduced-motion:no-preference){.rdot::before{transition:width .15s,height .15s,opacity .15s}}
+.sl-hint{font:500 .7em var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:1.4em;text-align:center}
 .slide-in{font-size:clamp(13px,.55vw + .9vh + 5px,23px);max-width:1500px;margin:0 auto}
 .sl-head h2{font-size:1.8em;font-weight:800;margin-top:.2em}
 .sl-head .label{font-size:.72em}
@@ -150,16 +156,9 @@ body.presenting main.wrap > .banner{margin:10px 16px}
 .sl-kpis .kpi{cursor:default}
 @media (pointer:coarse){.sl-acts .link-btn{padding:.45em 0}.sl-b{padding:.15em 0}}
 .btn.on,.btn.on:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.deck-nav{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
-.deck-dots{display:flex;gap:4px;overflow-x:auto;min-width:0;max-width:100%;padding:2px}
-.dot{flex:none;min-width:36px;height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font:700 13.5px var(--f-display);cursor:pointer;font-variant-numeric:tabular-nums}
-.dot:hover{border-color:var(--ink-3)}
-.dot.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.deck-full{margin-left:6px}
-@media (max-width:560px){.deck-nav .btn-sq,.deck-nav .deck-full{display:none}.deck-dots{flex:1;justify-content:center}.dot{flex:1 1 0;min-width:30px;max-width:46px;height:40px;padding:0}}
 /* phones: the same slide, packed tighter so it still fits one screen */
 @media (max-width:560px){
-  .slide{padding-top:12px}
+  .slide{padding-top:12px;padding-bottom:12px}
   .sl-head h2{font-size:1.35em}
   .sl-grid{gap:.5em;margin-top:.7em}
   .sl-tile{padding:.6em .8em}
@@ -419,7 +418,6 @@ dialog form{display:flex;flex-direction:column;max-height:calc(100vh - 34px);max
 <header class="top">
   <div class="wrap top-in">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
       <div>
         <h1>Loyihalar ketma-ketligi</h1>
         <p>&nbsp;</p>
@@ -564,7 +562,7 @@ const S = {
   confirmed: {projects:false, sections:false, tasks:false},
   error: null, phase: 'loading', slow: false,
   readOnly: false, writeKnown: false, pending: 0,
-  slide: 'all', // the slide the page is on: 'all' or a project id
+  go: '',       // a slide to bring into view after the next draw (a project just added)
   edit: false,  // this viewer switched editing on: the slides then carry the edit controls
   snapshot: false, snapshotAt: '', // true when showing the copy built into the page (no live data for this viewer)
   site: false, // true on the public website, where the plan is stored in a database instead of claude.ai
@@ -695,12 +693,15 @@ function draw(){
     main.innerHTML = html; restoreFocus(fk, fkAlt); return;
   }
   // the whole page is one deck of slides; keep where a long slide was scrolled when the data refreshes
-  const was = $('#slide'), keep = was && was.getAttribute('data-k') === S.slide ? was.scrollTop : 0;
+  const was = $('#deck'), keep = was ? was.scrollTop : 0;
   main.innerHTML = html + presentHTML(idx);
   document.body.classList.add('presenting');
+  fitSlides();
+  const deck = $('#deck');
+  deck.scrollTop = keep;
+  if (S.go) { toSlide(S.go, false); S.go = ''; }
   restoreFocus(fk, fkAlt);
-  fitSlide();
-  if (keep) $('#slide').scrollTop = keep;
+  markSlide();
 }
 // edit controls are on the slides only for someone who may edit and has switched editing on
 function editing_on(){ return S.edit && canWrite() && S.phase === 'ready'; }
@@ -734,19 +735,11 @@ function projectTasks(idx, pid){ return idx.all.filter(t => idx.meta.get(t.id).p
 // One screen per slide: first every project with what is expected of it, then one project per slide.
 function presentHTML(idx){
   const slides = [{k: 'all'}].concat(idx.projects.map(p => ({k: p.id, p})));
-  let i = slides.findIndex(s => s.k === S.slide);
-  if (i < 0) i = 0;
-  S.slide = slides[i].k;
-  const cur = slides[i], last = slides.length - 1;
   const nameOf = (s, j) => (j + 1) + ' / ' + slides.length + ': ' + (s.p ? s.p.name : 'hamma loyihalar');
-  return '<section class="deck" id="deck" aria-label="Taqdimot">' +
-    '<div class="slide" id="slide" data-k="' + esc(cur.k) + '" role="group" aria-roledescription="slayd" aria-label="' + esc(nameOf(cur, i)) + '"><div class="slide-in" id="slideIn">' + (cur.p ? slideProject(idx, cur.p) : slideAll(idx)) + '</div></div>' +
-    '<div class="deck-nav">' +
-      '<button type="button" class="btn btn-sq" data-act="slide" data-d="-1" data-fk="sl-prev" data-fk-alt="sl-next" aria-label="Oldingi slayd"' + (i === 0 ? ' disabled' : '') + '>←</button>' +
-      '<span class="deck-dots">' + slides.map((s, j) => '<button type="button" class="dot' + (j === i ? ' on' : '') + '" data-act="slide-to" data-k="' + esc(s.k) + '" data-fk="sd-' + esc(s.k) + '" aria-label="' + esc(nameOf(s, j)) + '"' + (j === i ? ' aria-current="true"' : '') + '>' + (j === 0 ? '≡' : j) + '</button>').join('') + '</span>' +
-      '<button type="button" class="btn btn-sq" data-act="slide" data-d="1" data-fk="sl-next" data-fk-alt="sl-prev" aria-label="Keyingi slayd"' + (i === last ? ' disabled' : '') + '>→</button>' +
-      (document.fullscreenEnabled ? '<button type="button" class="btn deck-full" data-act="fullscreen" data-fk="sl-full">' + (document.fullscreenElement ? 'Ekrandan chiqish' : 'To‘liq ekran') + '</button>' : '') +
-    '</div></section>';
+  return '<div class="deck" id="deck" tabindex="0" role="region" aria-label="Loyihalar. Keyingi loyihaga o‘tish uchun pastga suring">' +
+    slides.map((s, j) => '<section class="slide" data-k="' + esc(s.k) + '" aria-label="' + esc(nameOf(s, j)) + '"><div class="slide-in">' + (s.p ? slideProject(idx, s.p) : slideAll(idx)) + '</div></section>').join('') +
+    '</div>' +
+    '<nav class="rail" aria-label="Slaydlar">' + slides.map((s, j) => '<button type="button" class="rdot" data-act="slide-to" data-k="' + esc(s.k) + '" data-fk="sd-' + esc(s.k) + '" aria-label="' + esc(nameOf(s, j)) + '" title="' + esc(s.p ? s.p.name : 'Hamma loyihalar') + '"></button>').join('') + '</nav>';
 }
 function slideAll(idx){
   const all = idx.all, c = counts(all);
@@ -763,7 +756,8 @@ function slideAll(idx){
         '<span class="sl-goal' + (goal ? '' : ' miss') + '">' + (goal ? esc(goal) : 'Maqsad belgilanmagan') + '</span>' +
         '<span class="sl-lead">' + (lead ? esc(lead) : 'Mas’ul tayinlanmagan') + ' · ' + pc.done + '/' + pc.total + '</span></button>';
     }).join('') + '</div>' +
-    (editing_on() && S.site ? '<p class="sl-note">Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.</p>' : '');
+    (editing_on() && S.site ? '<p class="sl-note">Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.</p>' : '') +
+    (idx.projects.length ? '<p class="sl-hint" aria-hidden="true">Pastga suring ↓</p>' : '');
 }
 function slideProject(idx, p){
   const pi = idx.projects.indexOf(p) + 1, secs = idx.secs.get(p.id) || [], pc = counts(projectTasks(idx, p.id));
@@ -793,23 +787,40 @@ function slideProject(idx, p){
       '<button type="button" class="link-btn" data-act="new-section" data-proj="' + esc(p.id) + '" data-fk="ns-' + esc(p.id) + '">+ Bo‘lim</button></div>' : '') +
     '</div><div class="sl-secs n' + Math.min(secs.length, 3) + '">' + (cols || '<p class="sl-empty">Hali bo‘lim yo‘q</p>') + '</div></div>';
 }
-// Give the deck exactly the room left on the screen, then shrink the type until the slide fits it.
-// Below a readable size the slide scrolls instead (a long project on a phone).
-function fitSlide(){
-  const deck = $('#deck'), box = $('#slide'), inn = $('#slideIn');
-  if (!deck || !box || !inn) return;
-  deck.style.height = document.fullscreenElement === deck ? '' : Math.max(240, window.innerHeight - deck.getBoundingClientRect().top) + 'px';
-  inn.style.fontSize = '';
-  let px = parseFloat(getComputedStyle(inn).fontSize) || 16;
-  for (let n = 0; n < 24 && px > 11.5 && (box.scrollHeight > box.clientHeight + 1 || box.scrollWidth > box.clientWidth + 1); n++) {
-    px = Math.max(11.5, px * 0.95);
-    inn.style.fontSize = px.toFixed(2) + 'px';
-  }
+// Give the deck exactly the room left on the screen, then shrink the type of each slide until it fits one screen.
+// Below a readable size the slide is simply taller than the screen and scrolls on (a long project on a small phone).
+function fitSlides(){
+  const deck = $('#deck');
+  if (!deck) return;
+  deck.style.height = Math.max(240, window.innerHeight - deck.getBoundingClientRect().top) + 'px';
+  const H = deck.clientHeight;
+  deck.querySelectorAll('.slide').forEach(sl => {
+    const inn = sl.firstElementChild;
+    inn.style.fontSize = '';
+    let px = parseFloat(getComputedStyle(inn).fontSize) || 16;
+    for (let n = 0; n < 24 && px > 11.5 && (sl.offsetHeight > H + 1 || inn.scrollWidth > inn.clientWidth + 1); n++) {
+      px = Math.max(11.5, px * 0.95);
+      inn.style.fontSize = px.toFixed(2) + 'px';
+    }
+  });
 }
-function moveSlide(d){
-  const keys = ['all'].concat([...S.projects.values()].sort(byOrder).map(p => p.id));
-  const i = Math.max(0, keys.indexOf(S.slide)), j = Math.min(keys.length - 1, Math.max(0, i + d));
-  if (j !== i) { S.slide = keys[j]; render(); }
+const slideEls = () => [...document.querySelectorAll('#deck > .slide')];
+function slideAt(){ // index of the slide that fills most of the screen
+  const deck = $('#deck'), els = slideEls();
+  if (!deck || !els.length) return 0;
+  const mid = deck.scrollTop + deck.clientHeight / 2;
+  let i = els.findIndex(el => mid < el.offsetTop + el.offsetHeight);
+  return i < 0 ? els.length - 1 : i;
+}
+function markSlide(){
+  const i = slideAt();
+  document.querySelectorAll('.rail .rdot').forEach((b, j) => { if (j === i) b.setAttribute('aria-current', 'true'); else b.removeAttribute('aria-current'); });
+}
+const calm = () => window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+function toSlide(k, smooth){
+  const deck = $('#deck'), els = slideEls();
+  const el = typeof k === 'number' ? els[Math.min(els.length - 1, Math.max(0, k))] : els.find(x => x.dataset.k === k);
+  if (deck && el) deck.scrollTo({top: el.offsetTop, behavior: smooth && !calm() ? 'smooth' : 'auto'});
 }
 /* ---------- writes ---------- */
 const queues = new Map();
@@ -1012,7 +1023,7 @@ function saveMeta(){
       lead: names(M.lead.value).join(', '), team: M.team.value.trim(), goal: M.goal.value.trim(), order: existing ? num(existing.order) : nextOrder([...S.projects.values()]), updatedAt: nowIso()});
     const id = metaEdit.id || S.db.collection('projects').doc().id;
     MD.close();
-    write('projects/' + id, r => r.set(data)).then(() => { toast(existing ? 'Loyiha saqlandi' : 'Loyiha qo‘shildi'); if (!existing) { S.slide = id; render(); } }).catch(() => {});
+    write('projects/' + id, r => r.set(data)).then(() => { toast(existing ? 'Loyiha saqlandi' : 'Loyiha qo‘shildi'); if (!existing) { S.go = id; render(); } }).catch(() => {});
   } else {
     const existing = metaEdit.id ? S.sections.get(metaEdit.id) : null;
     if (metaEdit.id && !existing) { MD.close(); toast('Bu bo‘lim o‘chirib yuborilgan — o‘zgarish saqlanmadi.'); return; }
@@ -1073,13 +1084,7 @@ document.addEventListener('click', e => {
   const act = el.dataset.act;
   if (act === 'toggle-edit') { S.edit = !S.edit; savePrefs(); render(); }
   else if (act === 'reload') location.reload();
-  else if (act === 'slide') moveSlide(Number(el.dataset.d) || 0);
-  else if (act === 'slide-to') { S.slide = el.dataset.k; render(); }
-  else if (act === 'fullscreen') {
-    const deck = $('#deck');
-    if (document.fullscreenElement) document.exitFullscreen();
-    else if (deck && deck.requestFullscreen) deck.requestFullscreen().catch(() => {});
-  }
+  else if (act === 'slide-to') toSlide(el.dataset.k, true);
   else if (act === 'edit-task') openTask(el.dataset.id);
   else if (act === 'new-task') { if (canWrite()) openTask(null, el.dataset.sec); }
   else if (act === 'edit-section') openMeta('section', el.dataset.id);
@@ -1087,26 +1092,37 @@ document.addEventListener('click', e => {
   else if (act === 'edit-project') openMeta('project', el.dataset.id);
   else if (act === 'new-project') openMeta('project', null);
 });
-// presentation: arrow keys and swipes turn the slides; the deck is re-fitted when the window changes
+// the deck scrolls by itself (wheel, touch); keys move one slide at a time, and the rail follows the scroll
 document.addEventListener('keydown', e => {
   if (!$('#deck') || TD.open || MD.open || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (/^(INPUT|TEXTAREA|SELECT|BUTTON|A)$/.test((e.target && e.target.tagName) || '') && (e.key === ' ' || e.key === 'Enter')) return;
   if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
-  const d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
-  if (d) { e.preventDefault(); moveSlide(d); }
-  else if (e.key === 'Home') { e.preventDefault(); moveSlide(-999); }
-  else if (e.key === 'End') { e.preventDefault(); moveSlide(999); }
+  const d = {ArrowDown: 1, ArrowRight: 1, PageDown: 1, ' ': 1, ArrowUp: -1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (d) { e.preventDefault(); toSlide(slideAt() + d, true); }
+  else if (e.key === 'Home') { e.preventDefault(); toSlide(0, true); }
+  else if (e.key === 'End') { e.preventDefault(); toSlide(1e6, true); }
 });
-let swipe = null;
-document.addEventListener('touchstart', e => { swipe = e.touches.length === 1 && e.target.closest && e.target.closest('#slide') ? {x: e.touches[0].clientX, y: e.touches[0].clientY} : null; }, {passive: true});
-document.addEventListener('touchend', e => {
-  if (!swipe || !e.changedTouches.length) return;
-  const dx = e.changedTouches[0].clientX - swipe.x, dy = e.changedTouches[0].clientY - swipe.y;
-  swipe = null;
-  if (Math.abs(dx) > 60 && Math.abs(dx) > 2 * Math.abs(dy)) moveSlide(dx < 0 ? 1 : -1);
-}, {passive: true});
+// a mouse wheel moves exactly one slide per turn (a small turn would otherwise snap back);
+// inside a slide taller than the screen it scrolls that slide first
+let wheelLock = 0;
+document.addEventListener('wheel', e => {
+  const deck = $('#deck');
+  if (!deck || TD.open || MD.open || e.ctrlKey || !(e.target && e.target.closest && e.target.closest('#deck'))) return;
+  if (Math.abs(e.deltaY) <= Math.abs(e.deltaX)) return;
+  const els = slideEls(), i = slideAt(), el = els[i], dir = e.deltaY > 0 ? 1 : -1;
+  if (!el) return;
+  const top = deck.scrollTop, H = deck.clientHeight;
+  if (el.offsetHeight > H + 1 && (dir > 0 ? top + H < el.offsetTop + el.offsetHeight - 2 : top > el.offsetTop + 2)) return;
+  e.preventDefault();
+  if (Math.abs(e.deltaY) < 12 || Date.now() < wheelLock) return; // the tail of a trackpad swipe must not turn a second slide
+  wheelLock = Date.now() + 800;
+  toSlide(i + dir, true);
+}, {passive: false});
+let markT = 0;
+document.addEventListener('scroll', e => { if (e.target && e.target.id === 'deck' && !markT) markT = requestAnimationFrame(() => { markT = 0; markSlide(); }); }, true);
 let fitT = 0;
-window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { if (document.body.classList.contains('presenting')) fitSlide(); }, 80); });
-document.addEventListener('fullscreenchange', () => { if ($('#deck')) render(); });
+window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { if ($('#deck')) { const i = slideAt(); fitSlides(); toSlide(i, false); markSlide(); } }, 80); });
+
 /* ---------- boot ---------- */
 // People who open a public link without signing in to claude.ai get no live data,
 // so the page carries a read-only copy of the plan (refreshed whenever the page is republished).
