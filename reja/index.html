@@ -1,7 +1,9 @@
-<!doctype html><html lang="uz"><head><meta charset="utf-8">
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>Loyihalar ketma-ketligi</title>
 <meta name="description" content="6 ta loyiha ketma-ketlikda: Ekspeditorlik → Garaj → Presep → Qozog‘iston → 123yuk → Lorry. Bo‘limlar, qadamlar, kim qiladi, dedlayn va holat.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Loyihalar ketma-ketligi">
@@ -9,217 +11,1387 @@
 <meta name="theme-color" content="#F1F3F5" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#0E141A" media="(prefers-color-scheme: dark)">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3Cpattern%20id%3D%22s%22%20width%3D%228%22%20height%3D%228%22%20patternUnits%3D%22userSpaceOnUse%22%20patternTransform%3D%22rotate%2845%29%22%3E%3Crect%20width%3D%224%22%20height%3D%228%22%20fill%3D%22%23EE9A12%22%2F%3E%3Crect%20x%3D%224%22%20width%3D%224%22%20height%3D%228%22%20fill%3D%22%2316202A%22%2F%3E%3C%2Fpattern%3E%3C%2Fdefs%3E%3Crect%20width%3D%2232%22%20height%3D%2232%22%20rx%3D%227%22%20fill%3D%22url%28%23s%29%22%2F%3E%3C%2Fsvg%3E">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@500&family=IBM+Plex+Sans:wght@400;600&display=swap">
-<style>:root{--bg:#F1F3F5;--sf:#FFF;--sf2:#E7EBEF;--ink:#16202A;--ink2:#4A5866;--ink3:#5E6A76;--line:#D2D9E0;--acc:#EE9A12;--acci:#8F5400;--accs:#FCEACB;
---done:#17733E;--dones:#DBEFE2;--doing:#2360C4;--doings:#DCE6F7;--bl:#BF372B;--bls:#FAE6E3;--todo:#5A6773;--todos:#E3E8EC;--on:#FFF;
---fd:"Archivo","Arial Narrow",system-ui,sans-serif;--fb:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--fm:"IBM Plex Mono",ui-monospace,Menlo,monospace}
-@media (prefers-color-scheme:dark){:root{--bg:#0E141A;--sf:#161F28;--sf2:#1E2A35;--ink:#E5EBF0;--ink2:#A6B3BF;--ink3:#8593A0;--line:#2A3743;--acc:#F2A93B;--acci:#F5BB5E;--accs:#3A2A0F;
---done:#4DC27F;--dones:#14301F;--doing:#70A3F5;--doings:#172A47;--bl:#F07A6E;--bls:#3D1B17;--todo:#8D9AA6;--todos:#232E38;--on:#0E141A;color-scheme:dark}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 var(--fb)}
-h1,h2,h3{font-family:var(--fd);font-stretch:112%;margin:0;line-height:1.15;text-wrap:balance}p{margin:0}button{font:inherit;color:inherit}
-:focus-visible{outline:2px solid var(--acc);outline-offset:2px}
-.w{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
-.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
-.ti{display:flex;align-items:center;flex-wrap:wrap;gap:10px 20px;padding-block:12px}
-.br{display:flex;align-items:center;gap:12px;flex:1 1 280px;min-width:0}
-.mk{width:28px;height:28px;border-radius:6px;flex:none;background:repeating-linear-gradient(135deg,var(--acc) 0 6px,var(--ink) 6px 12px)}
-.br h1{font-size:18px;font-weight:800}.br p{font-size:13px;color:var(--ink2)}
-.tabs{display:flex;gap:4px;background:var(--sf2);padding:4px;border-radius:10px}
-.tab{border:0;background:none;padding:7px 16px;border-radius:7px;font-weight:600;font-size:14px;color:var(--ink2);cursor:pointer}
-.tab[aria-current=true]{background:var(--sf);color:var(--ink)}
-@media (max-width:700px){.br p{display:none}.tabs{flex:1 1 100%}.tab{flex:1}}
-main{padding-block:18px 60px;display:grid;gap:16px}
-.ban{background:var(--sf2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--ink2)}
-.lbl{font:500 11.5px var(--fm);letter-spacing:.09em;text-transform:uppercase;color:var(--ink3)}
-.bar{display:flex;height:7px;border-radius:9px;overflow:hidden;background:var(--todos);width:100%}.bar i{height:100%}
-.b3{background:var(--done)}.b1{background:var(--doing)}.b2{background:var(--bl)}
-.cards{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
-@media (min-width:760px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}@media (min-width:1080px){.cards{grid-template-columns:repeat(3,minmax(0,1fr))}}
-.card{display:grid;grid-template-columns:36px minmax(0,1fr);gap:2px 12px;align-content:start;text-align:left;background:var(--sf);border:1px solid var(--line);border-radius:12px;padding:14px 16px;cursor:pointer;color:var(--ink)}
-.card:hover{border-color:var(--ink3)}.card>span{display:block;grid-column:2;min-width:0}
-.card>.n{grid-column:1;grid-row:1/span 6;font:800 32px/1 var(--fd);font-stretch:125%;color:var(--acci)}
-.card>.hd{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.nm{font:800 17px/1.2 var(--fd);font-stretch:112%}.ct{font:500 12.5px var(--fm);color:var(--ink2);white-space:nowrap}
-.card>.bar{display:flex;margin-top:6px}.card>.k{margin-top:10px;font-size:12.5px;color:var(--ink3)}
-.card>.v{font-weight:600;font-size:14.5px;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-.card>.f{margin-top:7px;font-size:13px;color:var(--ink2)}.f b{color:var(--ink);font-weight:600}.f b.m{color:var(--acci)}
-.row{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 8px;margin:0 -2px}
-.st{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--sf);color:var(--ink2);border-radius:10px;padding:8px 13px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
-.st[aria-current=true]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
-.st .x{font:800 14px var(--fd);font-stretch:125%;color:var(--acci)}.st[aria-current=true] .x{color:inherit}
-.st .c{font:500 12px var(--fm);opacity:.75}.st.sm{border-radius:99px;padding:6px 12px;font-size:13.5px}
-.st .t{max-width:240px;overflow:hidden;text-overflow:ellipsis}
-.ph{display:grid;grid-template-columns:auto minmax(0,1fr);gap:4px 14px;padding-bottom:12px;border-bottom:2px solid var(--ink)}
-.ph .n{font:800 40px/.9 var(--fd);font-stretch:125%;color:var(--acci)}.ph h2{font-size:24px;font-weight:800}
-.ph p{margin-top:4px;color:var(--ink2);max-width:72ch}.ph .ct{margin-top:6px;display:block}
-.sec{background:var(--sf);border:1px solid var(--line);border-radius:12px;overflow:hidden}
-.sh{padding:16px 18px 14px;border-bottom:1px solid var(--line)}.sh h3{font-size:18px}
-.eb{font:500 11.5px var(--fm);letter-spacing:.09em;text-transform:uppercase;color:var(--acci)}
-.ss{margin-top:4px;color:var(--ink2);font-size:14px}
+<style>body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Loyihalar ketma-ketligi</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..800&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a dispatch-style route sheet. The overview is one plain card per project, in sequence.
+   The projects view shows one project and one section at a time through two rows of sub-tabs;
+   each step is a numbered stop on a route line (solid = travelled). */
+:root{
+  --bg:#F1F3F5; --surface:#FFFFFF; --surface-2:#E7EBEF; --ink:#16202A; --ink-2:#4A5866; --ink-3:#5E6A76; --line:#D2D9E0;
+  --accent:#EE9A12; --accent-ink:#8F5400; --accent-soft:#FCEACB; --on-accent:#1C1300;
+  --done:#17733E; --done-soft:#DBEFE2; --doing:#2360C4; --doing-soft:#DCE6F7;
+  --blocked:#BF372B; --blocked-soft:#FAE6E3; --todo:#5A6773; --todo-soft:#E3E8EC; --on-sem:#FFFFFF;
+  --shadow-sm:0 1px 2px rgba(22,32,42,.08);
+  --shadow-lg:0 12px 40px rgba(22,32,42,.18);
+  --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0E141A; --surface:#161F28; --surface-2:#1E2A35; --ink:#E5EBF0; --ink-2:#A6B3BF; --ink-3:#8593A0; --line:#2A3743;
+    --accent:#F2A93B; --accent-ink:#F5BB5E; --accent-soft:#3A2A0F; --on-accent:#1C1300;
+    --done:#4DC27F; --done-soft:#14301F; --doing:#70A3F5; --doing-soft:#172A47;
+    --blocked:#F07A6E; --blocked-soft:#3D1B17; --todo:#8D9AA6; --todo-soft:#232E38; --on-sem:#0E141A;
+    --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-lg:0 12px 40px rgba(0,0,0,.55);
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0E141A; --surface:#161F28; --surface-2:#1E2A35; --ink:#E5EBF0; --ink-2:#A6B3BF; --ink-3:#8593A0; --line:#2A3743;
+  --accent:#F2A93B; --accent-ink:#F5BB5E; --accent-soft:#3A2A0F; --on-accent:#1C1300;
+  --done:#4DC27F; --done-soft:#14301F; --doing:#70A3F5; --doing-soft:#172A47;
+  --blocked:#F07A6E; --blocked-soft:#3D1B17; --todo:#8D9AA6; --todo-soft:#232E38; --on-sem:#0E141A;
+  --shadow-sm:0 1px 2px rgba(0,0,0,.4); --shadow-lg:0 12px 40px rgba(0,0,0,.55);
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--f-display);font-stretch:112%;text-wrap:balance;margin:0;line-height:1.15}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.k{color:var(--ink-3)}
+.mono{font-family:var(--f-mono)}
+
+/* header */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.top-in{display:flex;align-items:center;gap:10px 20px;flex-wrap:wrap;padding-block:12px}
+.brand{display:flex;align-items:center;gap:12px;min-width:0;flex:1 1 300px}
+.brand-mark{width:30px;height:30px;border-radius:6px;flex:none;background:repeating-linear-gradient(135deg,var(--accent) 0 6px,var(--ink) 6px 12px);box-shadow:inset 0 0 0 2px var(--accent)}
+.brand h1{font-size:19px;font-weight:800;letter-spacing:-.005em}
+.brand p{color:var(--ink-2);font-size:13px}
+.tabs{display:flex;gap:4px;background:var(--surface-2);padding:4px;border-radius:10px}
+.tab{border:0;background:transparent;padding:7px 14px;border-radius:7px;font-weight:600;font-size:14px;color:var(--ink-2);cursor:pointer;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-current="page"]{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-sm)}
+.top-actions{display:flex;align-items:center;gap:10px}
+.save-state{font:500 12px var(--f-mono);color:var(--ink-3);white-space:nowrap}
+/* the save note sits on the header's bottom edge so it never reflows the header */
+.top-in{position:relative}
+.save-state{position:absolute;right:max(16px,env(safe-area-inset-right,0px));bottom:-8px;padding:0 6px;line-height:16px;background:var(--bg);pointer-events:none;z-index:1}
+.save-state:empty{display:none}
+@media (max-width:860px){.tabs{order:3;flex:1 1 100%}.tab{flex:1}}
+@media (max-width:700px){
+  .brand p{display:none}
+  .brand{flex:1 1 0}
+  .brand h1{font-size:16px}
+  .brand-mark{width:26px;height:26px}
+  .top-actions .btn{padding:7px 11px}
+  .tabs{order:3;flex:1 1 100%}
+  .tab{flex:1;padding-inline:4px;font-size:13px}
+}
+
+/* main */
+main.wrap{padding-block:20px 72px;display:flex;flex-direction:column;gap:22px}
+.notice{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px 24px;display:grid;gap:10px;max-width:640px}
+.notice h2{font-size:20px}
+.notice p{color:var(--ink-2)}
+.banner{background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;color:var(--ink-2)}
+.banner a{color:var(--accent-ink);font-weight:600;overflow-wrap:anywhere}
+.banner .link-btn{font-size:14px;margin-left:4px}
+.loading-rows{display:grid;gap:10px}
+.loading-rows span{display:block;height:64px;border-radius:12px;background:var(--surface-2)}
+@media (prefers-reduced-motion:no-preference){
+  .loading-rows span{animation:pulse 1.4s ease-in-out infinite}
+  @keyframes pulse{50%{opacity:.55}}
+}
+
+/* overview: one plain card per project, in sequence */
+.ov{display:grid;gap:14px}
+.ov-head{display:flex;justify-content:space-between;align-items:flex-end;gap:10px 20px;flex-wrap:wrap}
+.label{font:500 11.5px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+.ov-head .today{font-size:13.5px;color:var(--ink-2);margin-top:2px}
+.overall{display:flex;align-items:center;gap:12px;font-size:14px;color:var(--ink-2);flex:0 1 380px;min-width:240px}
+.overall strong{font-family:var(--f-display);font-stretch:112%;font-size:24px;color:var(--ink);font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.overall .bar{flex:1}
+.bar{display:flex;height:8px;border-radius:99px;overflow:hidden;background:var(--todo-soft);width:100%}
+.bar i{display:block;height:100%}
+.bar .b-done{background:var(--done)} .bar .b-doing{background:var(--doing)} .bar .b-blocked{background:var(--blocked)}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.kpi{display:grid;gap:2px;align-content:start;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;cursor:pointer;min-width:0;color:var(--ink)}
+.kpi:hover:not(:disabled){border-color:var(--ink-3)}
+.kpi:disabled{cursor:default}
+.kpi strong{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:24px;line-height:1.1;font-variant-numeric:tabular-nums}
+.kpi span{font-size:12.5px;color:var(--ink-2);line-height:1.25}
+.kpi.alert strong{color:var(--blocked)} .kpi.warn strong{color:var(--accent-ink)} .kpi.zero strong{color:var(--ink-3)}
+@media (max-width:560px){.kpis{gap:6px}.kpi{padding:8px}.kpi strong{font-size:19px}.kpi span{font-size:11px}}
+.pcards{display:grid;gap:10px;grid-template-columns:minmax(0,1fr)}
+@media (min-width:760px){.pcards{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (min-width:1080px){.pcards{grid-template-columns:repeat(3,minmax(0,1fr))}}
+.pcard{display:grid;grid-template-columns:38px minmax(0,1fr);gap:2px 12px;align-content:start;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px 16px 16px;cursor:pointer;min-width:0;color:var(--ink)}
+.pcard:hover{border-color:var(--ink-3)}
+.pcard > span{display:block;grid-column:2;min-width:0}
+.pcard > .pc-num{grid-column:1;grid-row:1 / span 6;font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:34px;line-height:1;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.pcard > .pc-top{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.pc-name{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:18px;line-height:1.2}
+.pc-count{font:500 12.5px var(--f-mono);color:var(--ink-2);white-space:nowrap;font-variant-numeric:tabular-nums}
+.pcard > .bar{display:flex;height:6px;margin-top:6px}
+.pcard > .pc-k{margin-top:10px;font-size:12.5px;color:var(--ink-3)}
+.pcard > .pc-v{font-size:14.5px;font-weight:600;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard > .pc-facts{display:flex;flex-wrap:wrap;align-items:center;gap:4px 12px;margin-top:8px;font-size:13px;color:var(--ink-2)}
+.pc-facts b,.pc-own b{font-weight:600;color:var(--ink)}
+.pc-facts b.miss,.pc-own b.miss{color:var(--accent-ink)}
+.pcard > .pc-own{margin-top:8px;font-size:13px;line-height:1.4;color:var(--ink-2);overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.pcard > .pc-own + .pc-own{margin-top:2px}
+.pc-facts .late{color:var(--blocked);font-weight:600}
+.pcard > .pc-alert{margin-top:8px;font-size:13px;color:var(--blocked);font-weight:600}
+.stag{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--f-body);padding:2px 9px;border-radius:99px;color:var(--todo);background:var(--todo-soft);white-space:nowrap}
+.stag::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.stag.s-doing{color:var(--doing);background:var(--doing-soft)}
+.stag.s-blocked{color:var(--blocked);background:var(--blocked-soft)}
+.stag.s-done{color:var(--done);background:var(--done-soft)}
+.legend{font-size:12.5px;color:var(--ink-3)}
+
+/* sub-tabs: the six projects in order, then the chosen project's sections */
+.subtabs{display:flex;gap:6px;overflow-x:auto;padding:2px 2px 8px;margin:0 -2px;scrollbar-width:thin}
+.stab{flex:none;display:inline-flex;align-items:center;gap:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:10px;padding:9px 13px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+.stab:hover{border-color:var(--ink-3);color:var(--ink)}
+.stab[aria-current="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.stab .n{font:800 14px var(--f-display);font-stretch:125%;color:var(--accent-ink)}
+.stab[aria-current="true"] .n{color:inherit}
+.stab .c{font:500 12px var(--f-mono);opacity:.75;font-variant-numeric:tabular-nums}
+.stab.small{border-radius:99px;padding:7px 12px;font-size:13.5px}
+.stab.add{border-style:dashed;background:transparent;color:var(--accent-ink)}
+.sectabs{display:flex;flex-wrap:wrap;gap:6px}
+@media (max-width:640px){
+  .sectabs{flex-wrap:nowrap;overflow-x:auto;padding:2px 2px 8px;margin:0 -2px}
+  .stab .t{max-width:210px;overflow:hidden;text-overflow:ellipsis}
+  /* a long project description is folded to three lines on phones; "Batafsil" opens it */
+  .proj-head .psum{display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .proj-head.full .psum{display:block}
+}
+@media (min-width:641px){.more-btn{display:none}}
+.more-btn{margin-top:4px}
+.secnav{display:flex;justify-content:space-between;gap:10px}
+.filterbar{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;padding:10px 14px;background:var(--accent-soft);border-radius:10px;font-size:14px;color:var(--ink)}
+
+/* project route */
+.view{display:grid;gap:34px}
+.proj{display:grid;gap:14px}
+.proj-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:6px 16px;align-items:start;padding-bottom:12px;border-bottom:2px solid var(--ink)}
+.proj-num{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:44px;line-height:.85;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.proj-head h2{font-size:26px;font-weight:800}
+.proj-head p{margin-top:4px;color:var(--ink-2);max-width:72ch}
+.pfacts{display:grid;gap:2px;margin-top:6px;font-size:14px;line-height:1.45;color:var(--ink);max-width:72ch;overflow-wrap:anywhere}
+.pfacts b{font-weight:600}
+.pfacts b.miss{color:var(--accent-ink)}
+.proj-side{display:grid;justify-items:end;gap:8px;text-align:right}
+.proj-side .mono{font-size:12.5px;color:var(--ink-2);white-space:nowrap}
+@media (max-width:640px){
+  .proj-head{grid-template-columns:auto minmax(0,1fr)}
+  .proj-side{grid-column:1 / -1;justify-items:start;text-align:left;grid-auto-flow:column;justify-content:space-between;align-items:center}
+  .proj-head h2{font-size:22px}
+  .proj-num{font-size:36px}
+}
+.group-label{font:600 11.5px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:10px;margin-top:4px}
+.group-label::after{content:"";flex:1;border-top:1px dashed var(--line)}
+.sec{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.sec-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px 18px;padding:16px 18px 14px;border-bottom:1px solid var(--line)}
+.eyebrow{font:500 11.5px var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--accent-ink)}
+.sec-head h3{font-size:18px;font-weight:700;margin-top:2px}
+.sec-sum{margin-top:4px;color:var(--ink-2);font-size:14px;max-width:72ch}
 .terms{list-style:none;margin:10px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
-.terms li{font-size:12.5px;padding:4px 9px;border-radius:6px;background:var(--accs)}
-ol.steps{list-style:none;margin:0;padding:14px 18px 4px}
-.step{display:grid;grid-template-columns:30px minmax(0,1fr);gap:4px 12px;padding-bottom:16px}
-.dot{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line);font:700 13px var(--fd);color:var(--ink3);background:var(--sf)}
-.s1 .dot{background:var(--doing);border-color:var(--doing);color:var(--on)}.s3 .dot{background:var(--done);border-color:var(--done);color:var(--on)}
-.s2 .dot{background:var(--bls);border-color:var(--bl);color:var(--bl)}
-.tt{font-weight:600;font-size:15px;line-height:1.4;padding-top:3px}.s3 .tt{color:var(--ink2)}
-.fx{display:flex;flex-wrap:wrap;gap:2px 16px;font-size:13.5px;color:var(--ink2);margin-top:3px}.fx .k{color:var(--ink3)}
-.fx .m{color:var(--acci)}.late{color:var(--bl)}
-.tag{display:inline-flex;align-items:center;gap:6px;font:600 12px var(--fb);padding:2px 9px;border-radius:99px;color:var(--todo);background:var(--todos)}
-.tag::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
-.tag.s1{color:var(--doing);background:var(--doings)}.tag.s2{color:var(--bl);background:var(--bls)}.tag.s3{color:var(--done);background:var(--dones)}
-.note{margin-top:5px;font-size:13.5px;color:var(--ink2);border-left:2px solid var(--line);padding-left:10px;white-space:pre-wrap}
-.nav{display:flex;justify-content:space-between;gap:10px}
-.btn{border:1px solid var(--line);background:var(--sf);border-radius:8px;padding:8px 14px;font-weight:600;font-size:14px;cursor:pointer}
-.lg{font-size:12.5px;color:var(--ink3)}</style></head><body>
-<header class="top"><div class="w ti"><div class="br"><span class="mk" aria-hidden="true"></span><div><h1>Loyihalar ketma-ketligi</h1><p>Ekspeditorlik → Garaj → Presep → Qozog‘iston → 123yuk → Lorry</p></div></div>
-<nav class="tabs" aria-label="Ko‘rinish"><button type="button" class="tab" data-v="o">Umumiy</button><button type="button" class="tab" data-v="p">Loyihalar</button></nav></div></header>
-<main class="w" id="m"></main>
-<script type="application/json" id="d">{"at":"2026-11-20","p":[["ekspeditorlik","Ekspeditorlik (hozirgi ish)","Hozir ishlab turgan yuk ekspeditorligi, ketma-ketlikda birinchi. Qolgan loyihalar shunga tayanadi: Garaj va Presep 2-bosqichiga yuk beradi, Qozog‘iston ko‘chiradigan modelni yozib beradi, dasturlar uchun reys datasini yig‘adi. Bu yerdagi qadamlar taklif, jamoa o‘z vazifalari bilan almashtiradi."],
-["garaj","Garaj (to‘liq model)","To‘liq model: investor garajga kamida 10 ta mashina bilan kiradi va umumiy foydadan ulush oladi; foyda ham, zarar ham bo‘linadi (foyda kelishilgan ulushda, zarar kiritilgan kapital nisbatida). Mashinalar ekspeditorlik yuklari bilan ishlaydi. Qabul akti shabloni Presepda ham ishlatiladi, 3 oylik tajribadan Qozog‘istonda foydalanish mumkin."],
-["presep","Presep (tirkama)","Faqat tirkama yo‘nalishi, 3 bosqich ketma-ket: xohlagan tanish odamga 1 oylik ijara, tyagachi bor barcha hamkorlar bilan topilgan pulning 20% ulushi, zavodlarga ijara. Har bir bosqich oldingisi baholangandan keyin boshlanadi. Qabul akti shabloni Garajdan olinadi; 2-bosqichda yuk ekspeditorlikdan ham berilishi mumkin."],
-["qozogiston","Qozog‘iston","1 hodim Arysga borib 3 oy bozorni o‘rganadi va fuqarolikni oladi. Keyin Investor A, so‘ng yaponiyalik hamkorlar qo‘shiladi. 20 ta mashina bilan boshlab Coca-Coladan buyurtma olamiz, keyin O‘zbekistondagi kabi ko‘cha bilan ishlaymiz va bu yerdagi modelni ko‘chiramiz. Data yig‘ilgach, O‘zbekistonda sinalgan Lorry va 123yuk bozorga olib kiriladi."],
-["yuk123","123yuk","Kompaniyaning dasturiy platformasi: Zavod, Transport kompaniya, Investor, Super admin panellari, Landing sayt va haydovchi ilovasi (123YUK-Mobile). Vazifasi: zavodlarda yuk nazorati, haydovchilar va faktoring. Ish hozirgi holatni ko‘rib chiqishdan boshlanadi, talablar ekspeditorlik datasi asosida yakunlanadi. Pul oqimlari islomiy moliya bo‘yicha: foiz yo‘q, belgilangan ustama, kechikish uchun foyda yo‘q. Tayyor versiya Qozog‘istonga olib kiriladi."],
-["lorry","Lorry","Ikkinchi dasturiy mahsulot. Berilgan tavsif (zavodlarda yuk nazorati, haydovchilar, faktoring) 123yuk bilan bir xil, Lorryning farqi hali ma’lum emas. Shuning uchun birinchi qadam: Lorry doirasini va 123yukdan farqini aniqlash; keyingi qadamlar shu hujjatga qarab o‘zgaradi. Sinalgan versiya Qozog‘istonga olib kiriladi."]],"s":[["eksp-s1","ekspeditorlik","","Joriy modelni yozib olish","O‘zbekistonda ish qanday yurishini qog‘ozga tushirish: ko‘cha bilan ishlash, narx, haydovchi, hujjat, to‘lov. Qozog‘iston aynan shu modelni ko‘chiradi.",["Ko‘cha bilan ishlash","Qozog‘iston shu modelni ko‘chiradi"]],
-["garaj-s1","garaj","Tayyorgarlik","Investor shartlari va hujjatlar","Investor bilan nima kelishilishini yozib, islomiy moliya bo‘yicha tekshirib, yuridik hujjatga aylantirish.",["Investor kamida 10 ta mashina bilan kiradi","Umumiy foydadan ulush hisobida","Foyda ham, zarar ham ulushga qarab"]],
-["kz-s1","qozogiston","","Bozorni o‘rganish (Arys, 3 oy)","Hodim Arysda 3 oy bozorni o‘rganadi, kirish qarori uchun hisobot beradi, fuqarolik uchun hujjat topshirib, hujjatni qo‘lga oladi.",["1 hodim Arysga boradi","3 oy bozorni o‘rganadi","Fuqarolikni oladi"]],
-["lorry-s1","lorry","","Doira va 123yukdan farqi","Lorry nima, kim uchun va 123yukdan nimasi bilan farq qilishini yozib tasdiqlash.",["Zavodlarda yuk nazorati","Haydovchilar","Faktoringni yo‘lga qo‘yish"]],
-["presep-s1","presep","","1-bosqich: tanishlarga 1 oylik ijara","Tirkamani xohlagan tanish odamga 1 oyga ijaraga berib, tartibni sinab ko‘ramiz.",["Xohlagan tanish odamga","1 oylik ijara"]],
-["yuk-s1","yuk123","","Hozirgi holat va talablar","Avval platformaning qaysi qismi tayyorligi ko‘rib chiqiladi, keyin talablar ekspeditorlikning 3 oylik data tahlili asosida yakunlanadi.",["Zavodlarda yuk nazorati, haydovchilar, faktoring"]],
-["eksp-s2","ekspeditorlik","","Reys datasini yig‘ish","Har bir reysni bitta jadvalga yozish. Shu data Garaj va Presep hisob-kitobiga, 123yuk va Lorry talablariga asos bo‘ladi.",["123yuk va Lorry uchun data kerak"]],
-["garaj-s2","garaj","Tayyorgarlik","Investor jalb qilish","Ekspeditorlikning real raqamlari bilan hisob ko‘rsatib, birinchi investorni topish.",["Kamida 10 ta mashina","Umumiy foydadan ulush"]],
-["kz-s2","qozogiston","","Investor va hamkorlar","Avval Investor A qo‘shiladi, keyin yaponiyalik hamkorlar. Shartlar islomiy moliya bo‘yicha.",["Avval Investor A qo‘shiladi","Keyin yaponiyalik hamkorlar"]],
-["lorry-s2","lorry","","Prototip, 1-versiya va sinov","Tasdiqlangan doira bo‘yicha prototipdan sinalgan versiyagacha, Qozog‘istonga olib kirishdan oldin.",["Qozog‘iston bozoriga olib kiriladi"]],
-["presep-s2","presep","","2-bosqich: tyagachi borlar bilan 20% ulush","Tyagachi bor barcha hamkorlar bilan ishlaymiz: tirkama bizdan, topilgan pulning 20% ulush hisobida beriladi. 1-bosqich baholangandan keyin boshlanadi.",["Tyagachi bor barcha hamkorlar bilan","Topilgan pulning 20% ulushi"]],
-["yuk-s2","yuk123","","Zavodlarda yuk nazorati (Zavod paneli)","Zavod o‘z yukini panelda yaratadi, kuzatadi va qabul qiladi.",["Zavodlarda yuklarni nazorat qilish"]],
-["eksp-s3","ekspeditorlik","","Garaj va Presep uchun yuk","Garaj mashinalari va Presep 2-bosqichidagi (tyagachli hamkorlar bilan ishlaydigan) tirkamalar bo‘sh turmasligi uchun ekspeditorlik ularni yuk bilan ta’minlaydi va reyslarini hisobga oladi. 1- va 3-bosqichda tirkama ijarachida bo‘ladi.",["Garaj: kamida 10 ta mashina","Presep 2-bosqich: topilgan pulning 20% ulushi"]],
-["garaj-s3","garaj","Ishga tushirish","Mashinalarni ishga tushirish va hisobot","Investor mashinalarini qabul qilish, ekspeditorlik buyurtmalariga ulash, har oy foyda-zarar hisobotini berish.",["Kamida 10 ta mashina","Foyda ham, zarar ham ulushga qarab"]],
-["kz-s3","qozogiston","","Ishga tushirish","Kompaniya ochiladi, 20 ta mashina bilan boshlanadi, avval Coca-Cola buyurtmasi, keyin O‘zbekistondagi kabi ko‘cha bilan ishlash.",["20 ta mashina bilan boshlanadi","Keyin Coca-Coladan buyurtma","Keyin ko‘cha bilan ishlash"]],
-["presep-s3","presep","","3-bosqich: zavodlarga ijara","Tirkamani zavodlarga ijaraga beramiz; natijada zavod yo‘l narxini arzonlashtira oladi. 2-bosqich baholangandan keyin boshlanadi.",["Zavodlarga ijaraga beriladi","Natija: zavod uchun yo‘l narxi arzonlashadi"]],
-["yuk-s3","yuk123","","Haydovchilar (123YUK-Mobile)","Tekshirilgan haydovchilar bazasi va mobil ilova orqali zavod buyurtmalarini bajarish.",["Haydovchilar"]],
-["kz-s4","qozogiston","","Data va dasturlar","Qozog‘istondagi reys datasini yig‘ib, O‘zbekistonda sinalgan Lorry va 123yukni bozorga olib kirish.",["Avval data yig‘iladi","Keyin Lorry va 123yuk bozorga"]],
-["yuk-s4","yuk123","","Faktoring (Investor paneli)","Transport kompaniyasi va haydovchiga pulni tezroq berish; mablag‘ Investor paneli orqali, islomiy moliya bo‘yicha. Ustama imzolashda bir marta belgilanadi, muddat cho‘zilsa oshmaydi.",["Foiz yo‘q","Belgilangan ustama","Kechikish uchun jarima-foyda yo‘q"]],
-["yuk-s5","yuk123","","Sinov va tayyor versiya","Barcha panel va ilovani O‘zbekistonda birga sinab, tayyor versiyani chiqarish.",["Qozog‘istonga olib kirishdan oldin tayyor bo‘ladi"]]],"t":[["eksp-s1","Joriy ish jarayonini yozib chiqish: buyurtma, ko‘chadan yuk va mashina topish, narx kelishish, hujjat, to‘lov","","1-2 sahifalik jarayon xaritasi, har bosqichda kim nima qiladi; Arysga boradigan hodimga ham beriladi","2026-12-05",1,0,""],
-["eksp-s2","Yagona reys jadvalini joriy etish va jamoani har bir reysni yozishga o‘tkazish: mijoz/zavod, yo‘nalish, yuk, narx, haydovchi, to‘lov muddati","","Hamma to‘ldiradigan bitta jadval; har hafta reyslar soni, tushum va kechikkan to‘lovlar tekshiriladi","2026-12-10",1,0,""],
-["eksp-s3","Ichki yuk taqsimlash qoidasini yozish: Garaj mashinalari va Presep 2-bosqich tirkamalari uchun yo‘nalishlar, oylik yuk hajmi, ko‘cha tashuvchilari bilan teng shartlar (navbat, narx)","","Yozma qoida va oylik yuk hajmi; investor ulushi va 20% adolatli, ochiq hisoblanadi","2027-01-10",1,0,""],
-["garaj-s1","Investor shartlari loyihasini tuzish: kirish (kamida 10 ta mashina), mashinalarni baholash (kapital hissasi), ulush hajmi (%), foyda va zararni taqsimlash formulasi","","Shartlar loyihasi, mashinalar bahosi va ulush formulasi loyihasi (tekshiruvdan keyin tasdiqlanadi)","2026-12-05",1,0,""],
-["garaj-s2","Investor kiritadigan mashinalar (kamida 10 ta) uchun oylik daromad-xarajat hisobini ekspeditorlik reyslari asosida tayyorlash","","Investorga ko‘rsatiladigan hisob-kitob: yo‘nalish va narxlar real reyslardan, ekspeditorlik ajratgan oylik yuk hajmi asosida","2027-01-12",1,0,""],
-["garaj-s3","Investor mashinalarini (kamida 10 ta) texnik ko‘rikdan o‘tkazib qabul qilish","","Har bir mashina bo‘yicha imzolangan qabul akti","2027-02-25",1,0,""],
-["kz-s1","Arysga boradigan hodimni tanlash, ekspeditorlik jarayoni va ko‘cha qo‘llanmasi bo‘yicha o‘qitib jo‘natish","","Hodim Arysda; yozma topshiriq, 3 oylik byudjet va haftalik hisobot tartibi tasdiqlangan","2027-01-10",1,0,""],
-["kz-s2","Investor A qo‘shilishi: Garaj shartnomasi asosida shartlarni kelishish va shartnoma imzolash","Investor A","Imzolangan shartnoma: ulush, mablag‘ kiritish jadvali, oylik hisobot tartibi; qarz foizi (ribo) va kafolatlangan foyda yo‘q","2027-05-31",1,0,""],
-["kz-s3","Kompaniyani ro‘yxatdan o‘tkazish, bank hisobini ochish va Coca-Colaga tashuvchi sifatida ariza topshirish","","Ro‘yxatdan o‘tgan kompaniya, ochilgan bank hisobi va Coca-Colaga topshirilgan ariza","2027-06-15",1,0,""],
-["kz-s4","Har bir reysni ekspeditorlik reys jadvali shabloni bilan yozib borish","","Zavod, yo‘nalish va narxlar bo‘yicha yig‘ilgan data va qisqa tahlil","2027-12-15",1,0,""],
-["lorry-s1","Lorry doirasini aniqlash: kim uchun, zavodlarda yuk nazorati, haydovchilar va faktoringdan qaysi qismi Lorryda bo‘ladi, 123yukdan nimasi bilan farq qiladi","","Bir sahifalik doira hujjati, rahbariyat tasdiqlagan","2027-04-15",1,0,""],
-["lorry-s2","Asosiy ekranlar prototipini tayyorlash va bir nechta foydalanuvchida sinash","","Tasdiqlangan prototip va foydalanuvchi fikrlari","2027-06-30",1,0,""],
-["presep-s1","Mavjud tirkamalarni ro‘yxatga olish va texnik holatini tekshirish","","Tirkamalar ro‘yxati: turi, holati, surat, ta’mir kerakmi","2026-12-08",1,0,""],
-["presep-s2","20% ulush shartlarini yozish: «topilgan pul» nimaga teng, 20% ulushni kim kimga beradi, qachon to‘lanadi, tirkama ta’miri kimda","","Ulush shartnomasi loyihasi; qarz foizi (ribo) ham, kafolatlangan summa ham yo‘q; faqat topilgan puldan 20% ulush; islomiy moliya mutaxassisi tekshirgan, kechikish uchun jarima-foyda yo‘q","2027-02-20",1,0,""],
-["presep-s3","Zavod uchun tejash hisobini ekspeditorlik datasi asosida qilish va mos zavodlarga taklif yuborish","","Tejash hisob-kitobi (hozirgi yo‘l narxi va ijaradagi tirkama bilan narx), zavodlar ro‘yxati va yuborilgan takliflar","2027-05-05",1,0,""],
-["yuk-s1","Hozirgi 123yuk holatini ko‘rib chiqish: Zavod, Transport kompaniya, Investor, Super admin panellari, Landing va 123YUK-Mobile qaysi qismi tayyor","","Holat jadvali: tayyor, qisman tayyor va boshlanmagan qismlar, ish tartibi","2027-01-15",1,0,""],
-["yuk-s2","Zavod panelida yuk nazorati funksiyasini ishlab chiqish: buyurtma, yuklash, hujjat, yuk holati, qabul","","Ichki sinovdan o‘tgan versiya","2027-06-30",1,0,""],
-["yuk-s3","Haydovchilar bazasini yig‘ish va tekshirish: ekspeditorlik, Garaj va Presep haydovchilari, hujjat va guvohnoma","","Transport kompaniya panelida tekshirilgan haydovchilar bazasi","2027-04-30",1,0,""],
-["yuk-s4","Faktoring modelini yozish: kim mablag‘ beradi (Garaj investorlari yoki moliya hamkori), kimga, qancha muddatga; belgilangan ustama, kechikkan to‘lov holati","","Model hujjati va hisob misoli; ustama imzolashda bir marta belgilanadi va muddat cho‘zilsa oshmaydi","2027-04-30",1,0,""],
-["yuk-s5","Zavod, Transport kompaniya, Investor, Super admin panellari va ilovani O‘zbekistonda birga sinash","","Sinov hisoboti, muhim xatolar tuzatilgan","2027-09-30",1,0,""],
-["eksp-s1","Ko‘cha (ochiq yuk bozori) bilan ishlash tartibini yozish, hujjat shablonlari va yangi hodimni o‘qitish rejasini yig‘ish","","Ko‘cha qo‘llanmasi (yuk qayerdan topiladi, narx qanday kelishiladi, mashina qanday tanlanadi), shablonlar papkasi va qisqa o‘qitish rejasi; Arysga boradigan hodim shu bilan o‘qitiladi","2026-12-20",1,0,""],
-["eksp-s2","3 oylik data tahlili: yo‘nalishlar, zavodlar, haydovchilar, to‘lov kechikishlari","","Tahlil hisoboti; 123yuk talablari, Lorry doirasi va Presep 3-bosqich tejash hisobi uchun topshiriladi","2027-03-15",1,0,""],
-["eksp-s3","Reys jadvaliga Garaj va Presep reyslari uchun alohida belgi va ulush hisobi ustunlarini qo‘shish","","Garaj va Presep reyslari birinchi reysdan jadvalda; investor ulushi va 20% hisobi shundan olinadi","2027-03-01",1,0,""],
-["garaj-s1","«Umumiy foyda» va zarar hisobini yozish: ulushdan oldin ayiriladigan xarajatlar (yoqilg‘i, ta’mir, haydovchi maoshi, sug‘urta, garaj xarajati), oylik hisobot shakli","","Shartnomaga kiradigan yozma ta’rif, oylik foyda-zarar hisoboti shabloni va zarar bo‘lgan oy qoidasi (zarar har bir tomon kiritgan kapital nisbatida bo‘linadi; investor kapitali kafolatlanmaydi, ehtiyotsizlik bundan mustasno)","2026-12-10",1,0,""],
-["garaj-s2","Investor nomzodlarini topish va uchrashuvlar o‘tkazish","","Nomzodlar ro‘yxati va har bir uchrashuv natijasi","2027-01-31",1,0,""],
-["garaj-s3","Haydovchilarni biriktirish, GPS o‘rnatish, mashinalarni ekspeditorlik buyurtmalariga ulash","","Birinchi reyslar boshlangan, har bir mashina reys jadvalida","2027-03-10",1,0,""],
-["kz-s1","Oraliq bozor hisoboti (1,5 oy): yuk oqimi, narxlar, raqobatchilar, ko‘cha qanday ishlaydi, yirik yuk egalari (Coca-Cola ham)","Arysdagi hodim","Oraliq hisobot; Coca-Colaning tashuvchiga talablari va tanlov tartibi bo‘yicha birinchi ma’lumot","2027-02-25",1,0,""],
-["kz-s2","Yaponiyalik hamkorlarni qo‘shish: hamkorlik shakli va ulushini kelishish","","Yaponiyalik hamkorlar bilan imzolangan kelishuv, islomiy moliya talablariga mos","2027-06-30",1,0,""],
-["kz-s3","20 ta mashinani tayyorlash: qabul, haydovchilar, GPS, sug‘urta, ruxsatnomalar (Garaj tajribasi asosida)","","Ishga tayyor 20 ta mashina va haydovchilar","2027-08-01",1,0,""],
-["kz-s4","Lorry va 123yukni Qozog‘iston uchun moslash: til, tenge, mahalliy hujjatlar va soliq","","Qozog‘istonda sinovdan o‘tgan versiyalar","2028-01-31",1,0,""],
-["lorry-s1","123yuk bilan umumiy va alohida qismlarni ajratish, ishlab chiqish rejasini tuzish","","Umumiy va alohida qismlar ro‘yxati, tasdiqlangan reja; pul oqimi bo‘lsa, islomiy moliya shartlari bilan","2027-05-20",1,0,""],
-["lorry-s2","Tasdiqlangan doiradagi 1-versiyani ishlab chiqish","","Ichki sinovdan o‘tgan 1-versiya","2027-09-30",1,0,""],
-["presep-s1","Alohida ijara shartnomasi va shartlarini tayyorlash (topshirish-qabul akti Garaj shablonidan): oylik narx, depozit, shikast uchun javobgarlik, to‘lov tartibi","","Imzoga tayyor shartnoma va akt; ijara haqi oldindan belgilangan, kechikish uchun jarima-foyda yo‘q","2026-12-28",1,0,""],
-["presep-s2","Daromad nazoratini qo‘yish: reys hujjatlari, GPS, ekspeditorlik reys jadvali","","Har bir reys daromadi ko‘rinadigan nazorat tartibi","2027-03-01",1,0,""],
-["presep-s3","Bitta zavod bilan pilot ijarani boshlash","","Imzolangan pilot shartnoma: muddat, texnik xizmat kimda, oylik to‘lov (oldindan belgilangan, kechikish uchun jarima-foyda yo‘q); ishlayotgan tirkama; zavodga 123yuk Zavod paneli pilotida qatnashish taklif qilingan","2027-06-01",1,0,""],
-["yuk-s1","Talablarni yakunlash: zavodlarda yuk nazorati, haydovchilar, faktoring (ekspeditorlik data tahlili va zavodlar bilan suhbat asosida)","","Tasdiqlangan talablar hujjati","2027-03-31",1,0,""],
-["yuk-s2","Pilot zavodda sinash (Presep 3-bosqich zavodi yoki ekspeditorlik mijozi bo‘lishi mumkin)","","Pilot hisoboti va tuzatishlar ro‘yxati","2027-08-15",1,0,""],
-["yuk-s3","Haydovchi ilovasini sinovga chiqarish va zavod buyurtmalarini ilova orqali taqsimlash","","Garaj haydovchilarida sinalgan ilova (reys qabul qilish, holat, hujjat surati) va Zavod paneli bilan ishlaydigan taqsimlash","2027-08-31",1,0,""],
-["yuk-s4","Faktoring shartnoma shablonlarini (zavod, transport kompaniya, investor) tayyorlash va islomiy moliya mutaxassisi hamda yurist bilan tekshirtirish","","Yozma xulosa va tasdiqlangan shablonlar","2027-05-31",1,0,""],
-["yuk-s5","Tayyor 1-versiyani chiqarish va Landing saytni yangilash","","Ishlaydigan 1-versiya; Qozog‘iston jamoasiga topshirilgan","2027-10-31",1,0,""],
-["eksp-s1","O‘zbekiston modeli qo‘llanmasini yakunlash: Garaj va Presep saboqlarini qo‘shish","","Qozog‘iston jamoasi ishlatadigan to‘liq qo‘llanma","2027-06-30",1,0,""],
-["garaj-s1","Shartlarni islomiy moliya bo‘yicha tekshirish: qarz foizi (ribo) yo‘q, kafolatlangan foyda yo‘q, zarar kiritilgan kapital nisbatida","","Tekshiruv xulosasi va shu asosda tuzatilgan, rahbariyat tasdiqlagan yakuniy shartlar hujjati","2026-12-14",1,0,""],
-["garaj-s2","Birinchi investor bilan shartnoma imzolash","","Imzolangan investor shartnomasi","2027-02-15",1,0,""],
-["garaj-s3","Birinchi oy yakuni: foyda-zarar hisobotini investorga topshirish va ulushni hisoblash","","Investor qabul qilgan 1-oy hisoboti; foyda bo‘lsa ulush to‘langan, zarar bo‘lsa qoida bo‘yicha kiritilgan kapital nisbatida yozilgan","2027-04-10",1,0,""],
-["kz-s1","Fuqarolikni olish uchun hujjatlarni rasmiylashtirish va topshirish","Arysdagi hodim","Topshirilgan hujjatlar, ariza raqami va kutilayotgan muddat","2027-03-20",1,0,""],
-["kz-s3","Coca-Coladan buyurtma olish: tashuvchi tanlovidan o‘tish, shartnoma, birinchi reyslar","","Imzolangan shartnoma va bajarilgan birinchi reyslar","2027-08-20",1,0,""],
-["kz-s4","Lorry va 123yukni bozorga olib kirish: birinchi zavod va transport kompaniyalarini ulash","","Dasturda ishlayotgan birinchi mijozlar","2028-03-01",1,0,""],
-["lorry-s2","Doira hujjatida belgilangan foydalanuvchilar bilan pilot o‘tkazish, xatolarni tuzatib sinalgan versiyani chiqarish","","Pilot hisoboti, sinalgan versiya va qisqa qo‘llanma; Qozog‘iston jamoasiga topshirilgan","2027-11-30",1,0,""],
-["presep-s1","Ijaraga oluvchilarni tanlash va tirkamalarni topshirish","","Ijaraga oluvchilar ro‘yxati va imzolangan topshirish aktlari","2027-01-10",1,0,""],
-["presep-s2","Tyagachi bor hamkorlarni topish, shartnoma imzolash va tirkamalarni topshirish","","Imzolangan hamkorlik shartnomalari va topshirish aktlari","2027-03-15",1,0,""],
-["presep-s3","Pilotni baholash va uzoq muddatli shartnomaga o‘tish","","Zavod tejagan summa hisoboti va uzoq muddatli shartnoma","2027-08-01",1,0,""],
-["yuk-s4","Investor panelida faktoring oqimini qurish: mablag‘ berish, qaytarish, ustama hisobi","","Investor o‘z mablag‘i va belgilangan ustamasini ko‘radigan, ichki sinovdan o‘tgan funksiya; muddat o‘tsa ustama avtomatik oshmaydi, kechikish jarimasi hisoblanmaydi","2027-08-15",1,0,""],
-["garaj-s1","Investor shartnomasi va mashina qabul aktini tayyorlash: mulk egasi, sug‘urta, investorning chiqish tartibi","","Yuridik tekshirilgan shablonlar; qabul akti shabloni Presepda ham ishlatiladi","2026-12-22",1,0,""],
-["garaj-s3","3 oy natijasini yakunlash va saboqlarni yozish","","Garaj natijalari hisoboti; Qozog‘istondagi 20 ta mashina rejasida foydalanish uchun beriladi","2027-06-15",1,0,""],
-["kz-s1","Yakuniy bozor hisoboti: kompaniya ochish, soliq va mashinalarni ro‘yxatdan o‘tkazish talablari bilan","Arysdagi hodim","Yakuniy hisobot, boshlash xarajatlari hisobi va kirish bo‘yicha tavsiya","2027-04-10",1,0,""],
-["kz-s3","Ko‘cha bilan ishlashni boshlash: ekspeditorlik qo‘llanmasini Qozog‘istonga moslash","","Moslangan qo‘llanma, ko‘chadan muntazam yuk, reys jadvali yuritiladi","2027-09-15",1,0,""],
-["presep-s1","1 oy yakunida tirkamani qaytarib olish, holatini tekshirish va natijani baholash","","Qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori","2027-02-12",1,0,""],
-["presep-s2","Birinchi oylik 20% hisob-kitobni o‘tkazish va 2-bosqichni baholash","","Har bir hamkor bo‘yicha hisob-kitob akti, tushgan ulush va 3-bosqichga o‘tish qarori","2027-04-15",1,0,""],
-["yuk-s4","Pilot: birinchi faktoring bitimlarini ekspeditorlik reyslarida sinov rejimida o‘tkazish","","Yopilgan pilot bitimlar; har birida ustama shartnomadagidek, kechikkan to‘lov uchun qo‘shimcha haq olinmagan","2027-09-15",1,0,""],
-["kz-s1","Hisobot asosida Qozog‘istonga kirish qarorini qabul qilish","","Yozma qaror: boshlash, kechiktirish yoki to‘xtatish","2027-04-20",1,0,""],
-["kz-s1","Fuqarolikni olish: ariza natijasini kuzatib, hujjatni qo‘lga olish","Arysdagi hodim","Olingan fuqarolik hujjati (agar shu nazarda tutilgan bo‘lsa, yashash ruxsatnomasi); kompaniya ochishga tayyor","2027-06-01",1,0,""]]}</script>
-<script>(function(){
-var D=JSON.parse(document.getElementById('d').textContent);
-var SL=['Boshlanmagan','Jarayonda','To‘xtagan','Bajarildi'],NOW=['Navbatda','Hozir','To‘xtab qolgan'];
-var M=['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
-function e(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]})}
-function pd(s){if(!/^\d{4}-\d{2}-\d{2}$/.test(s||''))return null;var a=s.split('-').map(Number),d=new Date(a[0],a[1]-1,a[2]);return d.getMonth()===a[1]-1?d:null}
-function fd(s){var d=pd(s);return d?('0'+d.getDate()).slice(-2)+'.'+('0'+(d.getMonth()+1)).slice(-2)+'.'+d.getFullYear():''}
-function left(s){var d=pd(s);if(!d)return null;var t=new Date();t.setHours(0,0,0,0);return Math.round((d-t)/864e5)}
-function rel(n){if(n==null)return'';if(n===0)return'bugun';if(n===1)return'ertaga';if(n<0)return(-n)+' kun kechikdi';if(n>60)return Math.round(n/30.4)+' oy qoldi';return n+' kun qoldi'}
-var P=D.p.map(function(r){return{id:r[0],name:r[1],sum:r[2]}});
-var S=D.s.map(function(r){return{id:r[0],pid:r[1],g:r[2],name:r[3],sum:r[4],terms:r[5]||[]}});
-var T=D.t.map(function(r){return{sid:r[0],title:r[1],owner:r[2],resp:r[3],dl:r[4],dr:r[5],st:r[6],note:r[7]}});
-function secs(pid){return S.filter(function(s){return s.pid===pid})}
-function tasks(sid){return T.filter(function(t){return t.sid===sid})}
-function ptasks(pid){var o=[];secs(pid).forEach(function(s){o=o.concat(tasks(s.id))});return o}
-function now(ts){return ts.find(function(t){return t.st===1})||ts.find(function(t){return t.st===2})||ts.find(function(t){return t.st!==3})||null}
-function cnt(ts){var c=[0,0,0,0];ts.forEach(function(t){c[t.st]++});return c}
-function bar(c){var n=c[0]+c[1]+c[2]+c[3]||1;return'<span class="bar"><i class="b3" style="width:'+c[3]/n*100+'%"></i><i class="b1" style="width:'+c[1]/n*100+'%"></i><i class="b2" style="width:'+c[2]/n*100+'%"></i></span>'}
-function short(n){return String(n).replace(/\s*\(.*\)\s*$/,'')}
-var st={v:'o',p:P[0]&&P[0].id,s:{}};
-try{var sv=JSON.parse(localStorage.getItem('reja-public')||'{}');if(sv.v)st.v=sv.v;if(sv.p)st.p=sv.p;if(sv.s)st.s=sv.s}catch(x){}
-function save(){try{localStorage.setItem('reja-public',JSON.stringify(st))}catch(x){}}
-function dl(t){if(!pd(t.dl))return'Dedlayn yo‘q';var n=left(t.dl);return(t.dr?'Taxminiy dedlayn':'Dedlayn')+': <b'+(n<0&&t.st!==3?' class="late"':'')+'>'+fd(t.dl)+'</b> · '+(t.st===3?'bajarilgan':rel(n))}
-function who(t){return t.owner?'<b>'+e(t.owner)+'</b>':'<b class="m">tayinlanmagan</b>'}
-function overview(){
-  var h='<div><span class="lbl">'+P.length+' ta loyiha · ketma-ketlik bo‘yicha</span></div><div class="cards">';
-  P.forEach(function(p,i){var ts=ptasks(p.id),c=cnt(ts),n=now(ts);
-    h+='<button type="button" class="card" data-p="'+e(p.id)+'"><span class="n">'+(i+1)+'</span><span class="hd"><span class="nm">'+e(p.name)+'</span><span class="ct">'+c[3]+'/'+ts.length+'</span></span>'+bar(c);
-    if(n)h+='<span class="k">'+NOW[n.st]+':</span><span class="v">'+e(n.title)+'</span><span class="f">Kim qiladi: '+who(n)+'<br>'+dl(n)+'</span>';
-    else h+='<span class="k">'+(ts.length?'Hamma qadamlar bajarildi':'Hali qadam yo‘q')+'</span>';
-    h+='</button>'});
-  return h+'</div><p class="lg">Kartani bosing: loyihaning bo‘limlari va qadamlari ochiladi.</p>'}
-function project(){
-  var p=P.find(function(x){return x.id===st.p})||P[0];if(!p)return'';st.p=p.id;var pi=P.indexOf(p)+1;
-  var h='<div class="row" id="pr">'+P.map(function(x,i){var ts=ptasks(x.id),c=cnt(ts);return'<button type="button" class="st" data-p="'+e(x.id)+'" aria-current="'+(x.id===p.id)+'"><span class="x">'+(i+1)+'</span>'+e(short(x.name))+'<span class="c">'+c[3]+'/'+ts.length+'</span></button>'}).join('')+'</div>';
-  var ss=secs(p.id),pts=ptasks(p.id),pc=cnt(pts);
-  var s=ss.find(function(x){return x.id===st.s[p.id]});
-  if(!s){var n=now(pts);s=(n&&ss.find(function(x){return x.id===n.sid}))||ss[0]}
-  h+='<header class="ph"><div class="n">'+pi+'</div><div><h2>'+e(p.name)+'</h2>'+(p.sum?'<p>'+e(p.sum)+'</p>':'')+'<span class="ct">'+pc[3]+'/'+pts.length+' bajarildi</span></div></header>';
-  if(!s)return h+'<p class="lg">Bu loyihada hali bo‘lim yo‘q.</p>';
-  h+='<div class="row" id="sr">'+ss.map(function(x,i){var c=cnt(tasks(x.id));return'<button type="button" class="st sm" data-s="'+e(x.id)+'" aria-current="'+(x.id===s.id)+'" title="'+e(x.name)+'">'+(/^\d/.test(x.name)?'':'<span class="x">'+(i+1)+'</span>')+'<span class="t">'+e(x.name)+'</span><span class="c">'+c[3]+'/'+tasks(x.id).length+'</span></button>'}).join('')+'</div>';
-  var ts=tasks(s.id),cur=now(ts);
-  h+='<article class="sec"><div class="sh">'+(s.g?'<span class="eb">'+e(s.g)+'</span>':'')+'<h3>'+e(s.name)+'</h3>'+(s.sum?'<p class="ss">'+e(s.sum)+'</p>':'')+(s.terms.length?'<ul class="terms">'+s.terms.map(function(x){return'<li>'+e(x)+'</li>'}).join('')+'</ul>':'')+'</div>';
-  h+=ts.length?'<ol class="steps">'+ts.map(function(t,i){return'<li class="step s'+t.st+'"><span class="dot">'+(t.st===3?'✓':i+1)+'</span><div><div class="tt">'+e(t.title)+(t===cur?' <span class="tag s'+t.st+'">'+(t.st===0?'navbatda':SL[t.st])+'</span>':'')+'</div>'+
-    '<div class="fx"><span><span class="k">Kim qiladi:</span> '+(t.owner?e(t.owner):'<span class="m">tayinlanmagan</span>')+'</span>'+(t.resp?'<span><span class="k">Nimaga mas’ul:</span> '+e(t.resp)+'</span>':'')+'</div>'+
-    '<div class="fx"><span>'+dl(t)+'</span><span class="tag s'+t.st+'">'+SL[t.st]+'</span></div>'+(t.note?'<p class="note">'+e(t.note)+'</p>':'')+'</div></li>'}).join('')+'</ol>':'<p class="lg" style="padding:16px 18px">Bu bo‘limda hali qadam yo‘q.</p>';
-  h+='</article>';var si=ss.indexOf(s);
-  if(ss.length>1)h+='<div class="nav">'+(si>0?'<button type="button" class="btn" data-s="'+e(ss[si-1].id)+'" data-nav="1">← Oldingi bo‘lim</button>':'<span></span>')+(si<ss.length-1?'<button type="button" class="btn" data-s="'+e(ss[si+1].id)+'" data-nav="1">Keyingi bo‘lim →</button>':'')+'</div>';
-  if(ts.some(function(t){return t.dr}))h+='<p class="lg">“Taxminiy dedlayn” — sana hali jamoa bilan kelishilmagan.</p>';
-  return h}
+.terms li{font-size:12.5px;line-height:1.35;padding:4px 9px;border-radius:6px;background:var(--accent-soft);color:var(--ink)}
+.sec-side{display:grid;justify-items:end;align-content:start;gap:7px;min-width:120px}
+.sec-count{font:500 13px var(--f-mono);color:var(--ink-2);font-variant-numeric:tabular-nums}
+.sec-side .bar{width:120px}
+@media (max-width:560px){
+  .sec-head{grid-template-columns:minmax(0,1fr)}
+  .sec-side{justify-items:start;grid-auto-flow:column;align-items:center;justify-content:start;gap:12px}
+}
+.link-btn{border:0;background:transparent;padding:2px 0;font-size:13px;font-weight:600;color:var(--accent-ink);cursor:pointer}
+.link-btn:hover{text-decoration:underline}
+.steps{list-style:none;margin:0;padding:16px 18px 2px}
+.step{position:relative;display:grid;grid-template-columns:32px minmax(0,1fr) auto;gap:6px 14px;padding-bottom:20px}
+.step::after{content:"";position:absolute;left:15px;top:36px;bottom:4px;border-left:2px dashed var(--line)}
+.step:last-child::after{display:none}
+.step.s-done::after{border-left-style:solid;border-color:var(--done)}
+.marker{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:2px solid var(--line);background:var(--surface);font:700 13px var(--f-display);color:var(--ink-3);position:relative;z-index:1;font-variant-numeric:tabular-nums}
+.marker svg{width:15px;height:15px}
+.s-doing .marker{background:var(--doing);border-color:var(--doing);color:var(--on-sem)}
+.s-done .marker{background:var(--done);border-color:var(--done);color:var(--on-sem)}
+.s-blocked .marker{background:var(--blocked-soft);border-color:var(--blocked);color:var(--blocked)}
+.is-current .marker{box-shadow:0 0 0 4px var(--accent-soft)}
+.s-todo.is-current .marker{border-color:var(--accent);color:var(--accent-ink)}
+.step-body{min-width:0;padding-top:4px}
+.title{display:inline;border:0;background:none;padding:0;text-align:left;font-weight:600;font-size:15.5px;line-height:1.4;color:var(--ink);cursor:pointer}
+.title:hover{text-decoration:underline;text-decoration-color:var(--accent);text-underline-offset:3px}
+.s-done .title{color:var(--ink-2)}
+.now-tag{display:inline-block;font:600 10.5px var(--f-mono);letter-spacing:.1em;background:var(--accent);color:var(--on-accent);padding:1px 6px;border-radius:4px;margin-left:8px;vertical-align:2px}
+.facts{display:flex;flex-wrap:wrap;gap:2px 18px;font-size:13.5px;color:var(--ink-2);margin-top:4px}
+.who.missing .v{color:var(--accent-ink);border-bottom:1px dashed var(--accent-ink)}
+.note{margin-top:6px;font-size:13.5px;color:var(--ink-2);border-left:2px solid var(--line);padding-left:10px;white-space:pre-wrap;overflow-wrap:anywhere}
+.meta{display:flex;flex-direction:column;align-items:flex-end;gap:7px;padding-top:2px}
+.due{font:500 13px var(--f-mono);text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap;line-height:1.3}
+.due small{display:block;font:500 11.5px var(--f-body);color:var(--ink-3)}
+.due.draft .d{border-bottom:1px dashed var(--ink-3)}
+.due.soon small{color:var(--accent-ink)}
+.due.overdue,.due.overdue small{color:var(--blocked)}
+.due.none{color:var(--ink-3)}
+.due.finished{color:var(--ink-3)}
+@media (max-width:640px){
+  .step{grid-template-columns:32px minmax(0,1fr)}
+  .meta{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;gap:10px;padding-top:0}
+  .due{text-align:left}
+}
+.add-step{display:flex;align-items:center;gap:8px;width:100%;border:0;border-top:1px dashed var(--line);background:transparent;padding:11px 18px;color:var(--accent-ink);font-weight:600;font-size:13.5px;cursor:pointer;text-align:left}
+.add-step:hover{background:var(--surface-2)}
+.empty-sec{padding:16px 18px;color:var(--ink-3);font-size:14px}
+.add-sec{border:1px dashed var(--line);background:transparent;border-radius:12px;padding:12px 16px;color:var(--accent-ink);font-weight:600;font-size:14px;cursor:pointer;text-align:left}
+.add-sec:hover{background:var(--surface)}
+
+/* status select pill */
+.sel{position:relative;display:inline-flex;align-items:center;border-radius:99px;color:var(--todo);background:var(--todo-soft)}
+.sel select{appearance:none;-webkit-appearance:none;border:0;background:transparent;color:inherit;font:600 12.5px var(--f-body);padding:5px 28px 5px 25px;border-radius:99px;cursor:pointer;line-height:1.3}
+.sel::before{content:"";position:absolute;left:10px;top:50%;width:8px;height:8px;margin-top:-4px;border-radius:50%;background:currentColor;pointer-events:none}
+.sel::after{content:"";position:absolute;right:11px;top:50%;width:6px;height:6px;margin-top:-5px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(45deg);pointer-events:none}
+.sel[data-s="doing"]{color:var(--doing);background:var(--doing-soft)}
+.sel[data-s="blocked"]{color:var(--blocked);background:var(--blocked-soft)}
+.sel[data-s="done"]{color:var(--done);background:var(--done-soft)}
+.sel.ro select{cursor:default;padding-right:12px}
+.sel.ro::after{display:none}
+.sel select option{color:var(--ink);background:var(--surface)}
+/* touch screens: 16px controls stop iOS from zooming in, and give a larger target */
+@media (pointer:coarse){
+  .sel select{font-size:16px;padding:8px 30px 8px 27px}
+}
+
+/* grouped lists (people / dates) */
+.groups{display:grid;gap:16px}
+.group{background:var(--surface);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.group-head{display:flex;align-items:center;justify-content:space-between;gap:8px 16px;flex-wrap:wrap;padding:13px 18px;border-bottom:1px solid var(--line)}
+.group-head h3{font-size:17px;font-weight:700}
+.group-head .gstats{display:flex;align-items:center;gap:12px;font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.group-head .bar{width:110px}
+.group.warn .group-head{background:var(--accent-soft)}
+.group.danger .group-head h3{color:var(--blocked)}
+.group-hint{font-size:13px;color:var(--ink-2);width:100%}
+.crows{list-style:none;margin:0;padding:0}
+.crow{display:grid;grid-template-columns:10px minmax(0,1fr) auto;gap:6px 14px;align-items:start;padding:12px 18px}
+.crow + .crow{border-top:1px solid var(--line)}
+.sdot{width:10px;height:10px;border-radius:50%;margin-top:7px;background:var(--todo)}
+.s-doing .sdot{background:var(--doing)} .s-blocked .sdot{background:var(--blocked)} .s-done .sdot{background:var(--done)}
+.crumb{display:block;font-size:12.5px;color:var(--ink-3);margin-top:2px}
+@media (max-width:640px){
+  .crow{grid-template-columns:10px minmax(0,1fr)}
+  .crow .meta{grid-column:2;flex-direction:row;align-items:center;justify-content:space-between;gap:10px}
+  .crow .due{text-align:left}
+}
+.nomatch{padding:28px 20px;text-align:center;color:var(--ink-2);background:var(--surface);border:1px dashed var(--line);border-radius:12px;display:grid;gap:10px;justify-items:center}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--surface);color:var(--ink);border-radius:8px;padding:8px 14px;font-weight:600;font-size:14px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:var(--surface-2)}
+.btn-primary{background:var(--accent);border-color:var(--accent);color:var(--on-accent)}
+.btn-primary:hover{background:var(--accent);filter:brightness(.95)}
+.btn-danger{color:var(--blocked);border-color:transparent;background:transparent;padding-inline:8px}
+.btn-danger:hover{background:var(--blocked-soft)}
+.btn-danger[data-armed="1"]{background:var(--blocked);color:var(--on-sem);border-color:var(--blocked)}
+.btn-sq{width:36px;padding:8px 0}
+.btn:disabled{opacity:.45;cursor:default}
+
+/* dialogs */
+dialog{border:1px solid var(--line);border-radius:14px;background:var(--surface);color:var(--ink);padding:0;width:min(600px,calc(100vw - 32px));max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);box-shadow:var(--shadow-lg)}
+dialog::backdrop{background:rgba(6,10,14,.5)}
+dialog form{display:flex;flex-direction:column;max-height:calc(100vh - 34px);max-height:calc(100dvh - 34px)}
+.dlg-head{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--line)}
+.dlg-head h2{font-size:18px;font-weight:800}
+.x-btn{border:0;background:transparent;width:34px;height:34px;border-radius:8px;cursor:pointer;color:var(--ink-2);font-size:22px;line-height:1}
+.x-btn:hover{background:var(--surface-2)}
+.dlg-body{padding:16px 20px 18px;display:grid;gap:14px;overflow:auto}
+.dlg-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap;padding:14px 20px;border-top:1px solid var(--line)}
+.foot-group{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.field{display:grid;gap:6px;min-width:0}
+.field>span{font-size:13px;font-weight:600;color:var(--ink-2)}
+.field input,.field select,.field textarea{width:100%;font-size:15px;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+.field textarea{resize:vertical;min-height:64px}
+.field input[readonly],.field textarea[readonly]{background:var(--surface-2)}
+.field input[aria-invalid="true"]{border-color:var(--blocked)}
+.field .err{font-size:12.5px;color:var(--blocked)}
+.field .hint{font-size:12.5px;color:var(--ink-3)}
+/* must come after the base size above, or it never applies */
+@media (pointer:coarse){.field input,.field select,.field textarea{font-size:16px}}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;align-items:end}
+@media (max-width:520px){.row2{grid-template-columns:minmax(0,1fr)}}
+.check{display:flex;align-items:center;gap:8px;font-size:14px;padding-bottom:10px;cursor:pointer}
+.check input{width:17px;height:17px;accent-color:var(--accent)}
+.dlg-meta{font-size:12.5px;color:var(--ink-3)}
+
+.toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,8px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:10px;font-size:14px;opacity:0;pointer-events:none;max-width:calc(100vw - 32px);z-index:30;box-shadow:var(--shadow-lg)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+@media (prefers-reduced-motion:no-preference){.toast{transition:opacity .2s,transform .2s}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap top-in">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <div>
+        <h1>Loyihalar ketma-ketligi</h1>
+        <p>Ekspeditorlik → Garaj → Presep → Qozog‘iston → 123yuk → Lorry</p>
+      </div>
+    </div>
+    <nav class="tabs" aria-label="Ko‘rinish">
+      <button class="tab" type="button" data-act="view" data-v="overview" data-fk="tab-overview">Umumiy</button>
+      <button class="tab" type="button" data-act="view" data-v="projects" data-fk="tab-projects">Loyihalar</button>
+      <button class="tab" type="button" data-act="view" data-v="people" data-fk="tab-people">Mas’ullar</button>
+      <button class="tab" type="button" data-act="view" data-v="dates" data-fk="tab-dates">Dedlaynlar</button>
+    </nav>
+    <div class="top-actions">
+      <span class="save-state" id="saveState" aria-live="polite"></span>
+      <button class="btn btn-primary" type="button" data-act="new-project" id="newProjectBtn" hidden>+ Loyiha</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="main">
+  <div class="loading-rows" aria-label="Reja yuklanmoqda"><span></span><span></span><span></span></div>
+</main>
+
+<dialog id="taskDlg" aria-labelledby="taskDlgTitle">
+  <form id="taskForm" novalidate>
+    <div class="dlg-head">
+      <h2 id="taskDlgTitle">Qadam</h2>
+      <button type="button" class="x-btn" data-close aria-label="Yopish">×</button>
+    </div>
+    <div class="dlg-body">
+      <label class="field"><span>Vazifa (nima qilinadi)</span>
+        <input id="f-title" maxlength="300" autocomplete="off">
+        <span class="err" id="f-title-err" hidden>Vazifa nomini yozing.</span>
+      </label>
+      <label class="field"><span>Loyiha va bo‘lim</span>
+        <select id="f-section"></select>
+      </label>
+      <div class="row2">
+        <label class="field"><span>Kim qiladi</span>
+          <input id="f-owner" list="ownerList" maxlength="120" autocomplete="off" placeholder="Ism (bir nechtasi vergul bilan)">
+        </label>
+        <label class="field"><span>Holat</span>
+          <select id="f-status">
+            <option value="todo">Boshlanmagan</option>
+            <option value="doing">Jarayonda</option>
+            <option value="blocked">To‘xtagan</option>
+            <option value="done">Bajarildi</option>
+          </select>
+        </label>
+      </div>
+      <label class="field"><span>Nimaga mas’ul (natija)</span>
+        <input id="f-resp" maxlength="400" autocomplete="off" placeholder="Qadam yakunida nima tayyor bo‘ladi">
+      </label>
+      <div class="row2">
+        <label class="field"><span>Dedlayn</span>
+          <input id="f-deadline" type="date">
+        </label>
+        <label class="check"><input id="f-draft" type="checkbox"><span>Taxminiy muddat (hali kelishilmagan)</span></label>
+      </div>
+      <label class="field"><span>Izoh</span>
+        <textarea id="f-note" rows="3" maxlength="2000" placeholder="Muammo, kutilayotgan narsa, havola…"></textarea>
+      </label>
+      <p class="dlg-meta" id="f-meta"></p>
+    </div>
+    <div class="dlg-foot">
+      <div class="foot-group">
+        <button type="button" class="btn btn-danger" id="t-del" data-confirm="Ha, o‘chirilsin">O‘chirish</button>
+        <button type="button" class="btn btn-sq" id="t-up" aria-label="Ketma-ketlikda oldinga surish" title="Oldinga surish">↑</button>
+        <button type="button" class="btn btn-sq" id="t-down" aria-label="Ketma-ketlikda keyinga surish" title="Keyinga surish">↓</button>
+      </div>
+      <div class="foot-group">
+        <button type="button" class="btn" data-close id="t-cancel">Bekor qilish</button>
+        <button type="submit" class="btn btn-primary" id="t-save">Saqlash</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<dialog id="metaDlg" aria-labelledby="metaDlgTitle">
+  <form id="metaForm" novalidate>
+    <div class="dlg-head">
+      <h2 id="metaDlgTitle">Bo‘lim</h2>
+      <button type="button" class="x-btn" data-close aria-label="Yopish">×</button>
+    </div>
+    <div class="dlg-body">
+      <label class="field" id="m-project-wrap"><span>Loyiha</span><select id="m-project"></select></label>
+      <label class="field"><span id="m-name-label">Nomi</span>
+        <input id="m-name" maxlength="200" autocomplete="off">
+        <span class="err" id="m-name-err" hidden>Nomini yozing.</span>
+      </label>
+      <label class="field" id="m-group-wrap"><span>Guruh (ixtiyoriy)</span>
+        <input id="m-group" maxlength="80" autocomplete="off" placeholder="Masalan: Faqat tirkama">
+        <span class="hint">Bir xil guruhdagi bo‘limlar bitta sarlavha ostida ko‘rsatiladi.</span>
+      </label>
+      <label class="field" id="m-lead-wrap"><span>Loyiha mas’uli</span>
+        <input id="m-lead" list="ownerList" maxlength="120" autocomplete="off" placeholder="Ism">
+        <span class="hint">Ikki kishi bo‘lsa, vergul bilan ajrating.</span>
+      </label>
+      <label class="field" id="m-team-wrap"><span>Jamoa (ixtiyoriy)</span>
+        <input id="m-team" maxlength="200" autocomplete="off" placeholder="Masalan: Ilxom aka (dasturlash)">
+      </label>
+      <label class="field" id="m-goal-wrap"><span>Maqsad (ixtiyoriy)</span>
+        <input id="m-goal" maxlength="200" autocomplete="off" placeholder="Masalan: yil oxirigacha 7 ta zavod">
+      </label>
+      <label class="field"><span>Qisqacha</span><textarea id="m-summary" rows="2" maxlength="600"></textarea></label>
+      <label class="field" id="m-terms-wrap"><span>Asosiy shartlar</span>
+        <textarea id="m-terms" rows="3" maxlength="1200" placeholder="Har bir shart yangi qatorda"></textarea>
+      </label>
+    </div>
+    <div class="dlg-foot">
+      <div class="foot-group">
+        <button type="button" class="btn btn-danger" id="m-del">O‘chirish</button>
+      </div>
+      <div class="foot-group">
+        <button type="button" class="btn" data-close>Bekor qilish</button>
+        <button type="submit" class="btn btn-primary" id="m-save">Saqlash</button>
+      </div>
+    </div>
+  </form>
+</dialog>
+
+<datalist id="ownerList"></datalist>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script type="application/json" id="snapshot">{"at":"2026-11-20","projects":[{"name":"Ekspeditorlik (hozirgi ish)","order":1,"summary":"Hozir ishlab turgan yuk ekspeditorligi, ketma-ketlikda birinchi. Qolgan loyihalar shunga tayanadi: Garaj va Presep 2-bosqichiga yuk beradi, Qozog‘iston ko‘chiradigan modelni yozib beradi, dasturlar uchun reys datasini yig‘adi. Bu yerdagi qadamlar taklif, jamoa o‘z vazifalari bilan almashtiradi.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Muhammadjon aka, Sherzodbek","team":"","goal":"","id":"ekspeditorlik"},{"name":"Garaj (to‘liq model)","order":2,"summary":"To‘liq model: investor garajga kamida 10 ta mashina bilan kiradi va umumiy foydadan ulush oladi; foyda ham, zarar ham bo‘linadi (foyda kelishilgan ulushda, zarar kiritilgan kapital nisbatida). Mashinalar ekspeditorlik yuklari bilan ishlaydi. Qabul akti shabloni Presepda ham ishlatiladi, 3 oylik tajribadan Qozog‘istonda foydalanish mumkin.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Jasurbek","team":"","goal":"","id":"garaj"},{"name":"Lorry","order":6,"summary":"Ikkinchi dasturiy mahsulot. Berilgan tavsif (zavodlarda yuk nazorati, haydovchilar, faktoring) 123yuk bilan bir xil, Lorryning farqi hali ma’lum emas. Shuning uchun birinchi qadam: Lorry doirasini va 123yukdan farqini aniqlash; keyingi qadamlar shu hujjatga qarab o‘zgaradi. Sinalgan versiya Qozog‘istonga olib kiriladi.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Ayubjon","team":"Ilxom aka (dasturlash), Sherzodbek (marketing)","goal":"","id":"lorry"},{"name":"Presep (tirkama)","order":3,"summary":"Faqat tirkama yo‘nalishi, 3 bosqich ketma-ket: xohlagan tanish odamga 1 oylik ijara, tyagachi bor barcha hamkorlar bilan topilgan pulning 20% ulushi, zavodlarga ijara. Har bir bosqich oldingisi baholangandan keyin boshlanadi. Qabul akti shabloni Garajdan olinadi; 2-bosqichda yuk ekspeditorlikdan ham berilishi mumkin.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Jasurbek","team":"","goal":"","id":"presep"},{"name":"Qozog‘iston","order":4,"summary":"1 hodim Arysga borib 3 oy bozorni o‘rganadi va fuqarolikni oladi. Keyin Investor A, so‘ng yaponiyalik hamkorlar qo‘shiladi. 20 ta mashina bilan boshlab Coca-Coladan buyurtma olamiz, keyin O‘zbekistondagi kabi ko‘cha bilan ishlaymiz va bu yerdagi modelni ko‘chiramiz. Data yig‘ilgach, O‘zbekistonda sinalgan Lorry va 123yuk bozorga olib kiriladi.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Aris","team":"","goal":"","id":"qozogiston"},{"name":"123yuk","order":5,"summary":"Kompaniyaning dasturiy platformasi: Zavod, Transport kompaniya, Investor, Super admin panellari, Landing sayt va haydovchi ilovasi (123YUK-Mobile). Vazifasi: zavodlarda yuk nazorati, haydovchilar va faktoring. Ish hozirgi holatni ko‘rib chiqishdan boshlanadi, talablar ekspeditorlik datasi asosida yakunlanadi. Pul oqimlari islomiy moliya bo‘yicha: foiz yo‘q, belgilangan ustama, kechikish uchun foyda yo‘q. Tayyor versiya Qozog‘istonga olib kiriladi.","updatedAt":"2026-11-20T02:00:00.000Z","lead":"Ayubjon","team":"","goal":"31.12.2026 gacha 7 ta zavodda ishlaydi","id":"yuk123"}],"sections":[{"group":"","name":"Joriy modelni yozib olish","order":1,"projectId":"ekspeditorlik","summary":"O‘zbekistonda ish qanday yurishini qog‘ozga tushirish: ko‘cha bilan ishlash, narx, haydovchi, hujjat, to‘lov. Qozog‘iston aynan shu modelni ko‘chiradi.","terms":["Ko‘cha bilan ishlash","Qozog‘iston shu modelni ko‘chiradi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"eksp-s1"},{"group":"","name":"Reys datasini yig‘ish","order":2,"projectId":"ekspeditorlik","summary":"Har bir reysni bitta jadvalga yozish. Shu data Garaj va Presep hisob-kitobiga, 123yuk va Lorry talablariga asos bo‘ladi.","terms":["123yuk va Lorry uchun data kerak"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"eksp-s2"},{"group":"","name":"Garaj va Presep uchun yuk","order":3,"projectId":"ekspeditorlik","summary":"Garaj mashinalari va Presep 2-bosqichidagi (tyagachli hamkorlar bilan ishlaydigan) tirkamalar bo‘sh turmasligi uchun ekspeditorlik ularni yuk bilan ta’minlaydi va reyslarini hisobga oladi. 1- va 3-bosqichda tirkama ijarachida bo‘ladi.","terms":["Garaj: kamida 10 ta mashina","Presep 2-bosqich: topilgan pulning 20% ulushi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"eksp-s3"},{"group":"Tayyorgarlik","name":"Investor shartlari va hujjatlar","order":1,"projectId":"garaj","summary":"Investor bilan nima kelishilishini yozib, islomiy moliya bo‘yicha tekshirib, yuridik hujjatga aylantirish.","terms":["Investor kamida 10 ta mashina bilan kiradi","Umumiy foydadan ulush hisobida","Foyda ham, zarar ham ulushga qarab"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"garaj-s1"},{"group":"Tayyorgarlik","name":"Investor jalb qilish","order":2,"projectId":"garaj","summary":"Ekspeditorlikning real raqamlari bilan hisob ko‘rsatib, birinchi investorni topish.","terms":["Kamida 10 ta mashina","Umumiy foydadan ulush"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"garaj-s2"},{"group":"Ishga tushirish","name":"Mashinalarni ishga tushirish va hisobot","order":3,"projectId":"garaj","summary":"Investor mashinalarini qabul qilish, ekspeditorlik buyurtmalariga ulash, har oy foyda-zarar hisobotini berish.","terms":["Kamida 10 ta mashina","Foyda ham, zarar ham ulushga qarab"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"garaj-s3"},{"group":"","name":"Bozorni o‘rganish (Arys, 3 oy)","order":1,"projectId":"qozogiston","summary":"Hodim Arysda 3 oy bozorni o‘rganadi, kirish qarori uchun hisobot beradi, fuqarolik uchun hujjat topshirib, hujjatni qo‘lga oladi.","terms":["1 hodim Arysga boradi","3 oy bozorni o‘rganadi","Fuqarolikni oladi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"kz-s1"},{"group":"","name":"Investor va hamkorlar","order":2,"projectId":"qozogiston","summary":"Avval Investor A qo‘shiladi, keyin yaponiyalik hamkorlar. Shartlar islomiy moliya bo‘yicha.","terms":["Avval Investor A qo‘shiladi","Keyin yaponiyalik hamkorlar"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"kz-s2"},{"group":"","name":"Ishga tushirish","order":3,"projectId":"qozogiston","summary":"Kompaniya ochiladi, 20 ta mashina bilan boshlanadi, avval Coca-Cola buyurtmasi, keyin O‘zbekistondagi kabi ko‘cha bilan ishlash.","terms":["20 ta mashina bilan boshlanadi","Keyin Coca-Coladan buyurtma","Keyin ko‘cha bilan ishlash"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"kz-s3"},{"group":"","name":"Data va dasturlar","order":4,"projectId":"qozogiston","summary":"Qozog‘istondagi reys datasini yig‘ib, O‘zbekistonda sinalgan Lorry va 123yukni bozorga olib kirish.","terms":["Avval data yig‘iladi","Keyin Lorry va 123yuk bozorga"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"kz-s4"},{"group":"","name":"Doira va 123yukdan farqi","order":1,"projectId":"lorry","summary":"Lorry nima, kim uchun va 123yukdan nimasi bilan farq qilishini yozib tasdiqlash.","terms":["Zavodlarda yuk nazorati","Haydovchilar","Faktoringni yo‘lga qo‘yish"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"lorry-s1"},{"group":"","name":"Prototip, 1-versiya va sinov","order":2,"projectId":"lorry","summary":"Tasdiqlangan doira bo‘yicha prototipdan sinalgan versiyagacha, Qozog‘istonga olib kirishdan oldin.","terms":["Qozog‘iston bozoriga olib kiriladi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"lorry-s2"},{"group":"","name":"1-bosqich: tanishlarga 1 oylik ijara","order":1,"projectId":"presep","summary":"Tirkamani xohlagan tanish odamga 1 oyga ijaraga berib, tartibni sinab ko‘ramiz.","terms":["Xohlagan tanish odamga","1 oylik ijara"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"presep-s1"},{"group":"","name":"2-bosqich: tyagachi borlar bilan 20% ulush","order":2,"projectId":"presep","summary":"Tyagachi bor barcha hamkorlar bilan ishlaymiz: tirkama bizdan, topilgan pulning 20% ulush hisobida beriladi. 1-bosqich baholangandan keyin boshlanadi.","terms":["Tyagachi bor barcha hamkorlar bilan","Topilgan pulning 20% ulushi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"presep-s2"},{"group":"","name":"3-bosqich: zavodlarga ijara","order":3,"projectId":"presep","summary":"Tirkamani zavodlarga ijaraga beramiz; natijada zavod yo‘l narxini arzonlashtira oladi. 2-bosqich baholangandan keyin boshlanadi.","terms":["Zavodlarga ijaraga beriladi","Natija: zavod uchun yo‘l narxi arzonlashadi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"presep-s3"},{"group":"","name":"Hozirgi holat va talablar","order":1,"projectId":"yuk123","summary":"Avval platformaning qaysi qismi tayyorligi ko‘rib chiqiladi, keyin talablar ekspeditorlikning 3 oylik data tahlili asosida yakunlanadi.","terms":["Zavodlarda yuk nazorati, haydovchilar, faktoring"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"yuk-s1"},{"group":"","name":"Zavodlarda yuk nazorati (Zavod paneli)","order":2,"projectId":"yuk123","summary":"Zavod o‘z yukini panelda yaratadi, kuzatadi va qabul qiladi.","terms":["Zavodlarda yuklarni nazorat qilish"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"yuk-s2"},{"group":"","name":"Haydovchilar (123YUK-Mobile)","order":3,"projectId":"yuk123","summary":"Tekshirilgan haydovchilar bazasi va mobil ilova orqali zavod buyurtmalarini bajarish.","terms":["Haydovchilar"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"yuk-s3"},{"group":"","name":"Faktoring (Investor paneli)","order":4,"projectId":"yuk123","summary":"Transport kompaniyasi va haydovchiga pulni tezroq berish; mablag‘ Investor paneli orqali, islomiy moliya bo‘yicha. Ustama imzolashda bir marta belgilanadi, muddat cho‘zilsa oshmaydi.","terms":["Foiz yo‘q","Belgilangan ustama","Kechikish uchun jarima-foyda yo‘q"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"yuk-s4"},{"group":"","name":"Sinov va tayyor versiya","order":5,"projectId":"yuk123","summary":"Barcha panel va ilovani O‘zbekistonda birga sinab, tayyor versiyani chiqarish.","terms":["Qozog‘istonga olib kirishdan oldin tayyor bo‘ladi"],"updatedAt":"2026-11-18T12:00:00.000Z","id":"yuk-s5"}],"tasks":[{"deadline":"2026-12-05","deadlineDraft":true,"note":"","order":1,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"1-2 sahifalik jarayon xaritasi, har bosqichda kim nima qiladi; Arysga boradigan hodimga ham beriladi","sectionId":"eksp-s1","status":"todo","title":"Joriy ish jarayonini yozib chiqish: buyurtma, ko‘chadan yuk va mashina topish, narx kelishish, hujjat, to‘lov","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s1-1"},{"deadline":"2026-12-20","deadlineDraft":true,"note":"","order":2,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Ko‘cha qo‘llanmasi (yuk qayerdan topiladi, narx qanday kelishiladi, mashina qanday tanlanadi), shablonlar papkasi va qisqa o‘qitish rejasi; Arysga boradigan hodim shu bilan o‘qitiladi","sectionId":"eksp-s1","status":"todo","title":"Ko‘cha (ochiq yuk bozori) bilan ishlash tartibini yozish, hujjat shablonlari va yangi hodimni o‘qitish rejasini yig‘ish","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s1-2"},{"deadline":"2027-06-30","deadlineDraft":true,"note":"","order":3,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Qozog‘iston jamoasi ishlatadigan to‘liq qo‘llanma","sectionId":"eksp-s1","status":"todo","title":"O‘zbekiston modeli qo‘llanmasini yakunlash: Garaj va Presep saboqlarini qo‘shish","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s1-3"},{"deadline":"2026-12-10","deadlineDraft":true,"note":"","order":1,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Hamma to‘ldiradigan bitta jadval; har hafta reyslar soni, tushum va kechikkan to‘lovlar tekshiriladi","sectionId":"eksp-s2","status":"todo","title":"Yagona reys jadvalini joriy etish va jamoani har bir reysni yozishga o‘tkazish: mijoz/zavod, yo‘nalish, yuk, narx, haydovchi, to‘lov muddati","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s2-1"},{"deadline":"2027-03-15","deadlineDraft":true,"note":"","order":2,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Tahlil hisoboti; 123yuk talablari, Lorry doirasi va Presep 3-bosqich tejash hisobi uchun topshiriladi","sectionId":"eksp-s2","status":"todo","title":"3 oylik data tahlili: yo‘nalishlar, zavodlar, haydovchilar, to‘lov kechikishlari","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s2-2"},{"deadline":"2027-01-10","deadlineDraft":true,"note":"","order":1,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Yozma qoida va oylik yuk hajmi; investor ulushi va 20% adolatli, ochiq hisoblanadi","sectionId":"eksp-s3","status":"todo","title":"Ichki yuk taqsimlash qoidasini yozish: Garaj mashinalari va Presep 2-bosqich tirkamalari uchun yo‘nalishlar, oylik yuk hajmi, ko‘cha tashuvchilari bilan teng shartlar (navbat, narx)","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s3-1"},{"deadline":"2027-03-01","deadlineDraft":true,"note":"","order":2,"owner":"Muhammadjon aka, Sherzodbek","projectId":"ekspeditorlik","responsibility":"Garaj va Presep reyslari birinchi reysdan jadvalda; investor ulushi va 20% hisobi shundan olinadi","sectionId":"eksp-s3","status":"todo","title":"Reys jadvaliga Garaj va Presep reyslari uchun alohida belgi va ulush hisobi ustunlarini qo‘shish","updatedAt":"2026-11-20T02:00:00.000Z","id":"eksp-s3-2"},{"deadline":"2026-12-05","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"garaj","responsibility":"Shartlar loyihasi, mashinalar bahosi va ulush formulasi loyihasi (tekshiruvdan keyin tasdiqlanadi)","sectionId":"garaj-s1","status":"todo","title":"Investor shartlari loyihasini tuzish: kirish (kamida 10 ta mashina), mashinalarni baholash (kapital hissasi), ulush hajmi (%), foyda va zararni taqsimlash formulasi","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s1-1"},{"deadline":"2026-12-10","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"garaj","responsibility":"Shartnomaga kiradigan yozma ta’rif, oylik foyda-zarar hisoboti shabloni va zarar bo‘lgan oy qoidasi (zarar har bir tomon kiritgan kapital nisbatida bo‘linadi; investor kapitali kafolatlanmaydi, ehtiyotsizlik bundan mustasno)","sectionId":"garaj-s1","status":"todo","title":"«Umumiy foyda» va zarar hisobini yozish: ulushdan oldin ayiriladigan xarajatlar (yoqilg‘i, ta’mir, haydovchi maoshi, sug‘urta, garaj xarajati), oylik hisobot shakli","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s1-2"},{"deadline":"2026-12-14","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"garaj","responsibility":"Tekshiruv xulosasi va shu asosda tuzatilgan, rahbariyat tasdiqlagan yakuniy shartlar hujjati","sectionId":"garaj-s1","status":"todo","title":"Shartlarni islomiy moliya bo‘yicha tekshirish: qarz foizi (ribo) yo‘q, kafolatlangan foyda yo‘q, zarar kiritilgan kapital nisbatida","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s1-3"},{"deadline":"2026-12-22","deadlineDraft":true,"note":"","order":4,"owner":"Jasurbek","projectId":"garaj","responsibility":"Yuridik tekshirilgan shablonlar; qabul akti shabloni Presepda ham ishlatiladi","sectionId":"garaj-s1","status":"todo","title":"Investor shartnomasi va mashina qabul aktini tayyorlash: mulk egasi, sug‘urta, investorning chiqish tartibi","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s1-4"},{"deadline":"2027-01-12","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"garaj","responsibility":"Investorga ko‘rsatiladigan hisob-kitob: yo‘nalish va narxlar real reyslardan, ekspeditorlik ajratgan oylik yuk hajmi asosida","sectionId":"garaj-s2","status":"todo","title":"Investor kiritadigan mashinalar (kamida 10 ta) uchun oylik daromad-xarajat hisobini ekspeditorlik reyslari asosida tayyorlash","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s2-1"},{"deadline":"2027-01-31","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"garaj","responsibility":"Nomzodlar ro‘yxati va har bir uchrashuv natijasi","sectionId":"garaj-s2","status":"todo","title":"Investor nomzodlarini topish va uchrashuvlar o‘tkazish","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s2-2"},{"deadline":"2027-02-15","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"garaj","responsibility":"Imzolangan investor shartnomasi","sectionId":"garaj-s2","status":"todo","title":"Birinchi investor bilan shartnoma imzolash","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s2-3"},{"deadline":"2027-02-25","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"garaj","responsibility":"Har bir mashina bo‘yicha imzolangan qabul akti","sectionId":"garaj-s3","status":"todo","title":"Investor mashinalarini (kamida 10 ta) texnik ko‘rikdan o‘tkazib qabul qilish","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s3-1"},{"deadline":"2027-03-10","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"garaj","responsibility":"Birinchi reyslar boshlangan, har bir mashina reys jadvalida","sectionId":"garaj-s3","status":"todo","title":"Haydovchilarni biriktirish, GPS o‘rnatish, mashinalarni ekspeditorlik buyurtmalariga ulash","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s3-2"},{"deadline":"2027-04-10","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"garaj","responsibility":"Investor qabul qilgan 1-oy hisoboti; foyda bo‘lsa ulush to‘langan, zarar bo‘lsa qoida bo‘yicha kiritilgan kapital nisbatida yozilgan","sectionId":"garaj-s3","status":"todo","title":"Birinchi oy yakuni: foyda-zarar hisobotini investorga topshirish va ulushni hisoblash","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s3-3"},{"deadline":"2027-06-15","deadlineDraft":true,"note":"","order":4,"owner":"Jasurbek","projectId":"garaj","responsibility":"Garaj natijalari hisoboti; Qozog‘istondagi 20 ta mashina rejasida foydalanish uchun beriladi","sectionId":"garaj-s3","status":"todo","title":"3 oy natijasini yakunlash va saboqlarni yozish","updatedAt":"2026-11-20T02:00:00.000Z","id":"garaj-s3-4"},{"deadline":"2027-01-10","deadlineDraft":true,"note":"","order":1,"owner":"Aris","projectId":"qozogiston","responsibility":"Hodim Arysda; yozma topshiriq, 3 oylik byudjet va haftalik hisobot tartibi tasdiqlangan","sectionId":"kz-s1","status":"todo","title":"Arysga boradigan hodimni tanlash, ekspeditorlik jarayoni va ko‘cha qo‘llanmasi bo‘yicha o‘qitib jo‘natish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-1"},{"deadline":"2027-02-25","deadlineDraft":true,"note":"","order":2,"owner":"Arysdagi hodim","projectId":"qozogiston","responsibility":"Oraliq hisobot; Coca-Colaning tashuvchiga talablari va tanlov tartibi bo‘yicha birinchi ma’lumot","sectionId":"kz-s1","status":"todo","title":"Oraliq bozor hisoboti (1,5 oy): yuk oqimi, narxlar, raqobatchilar, ko‘cha qanday ishlaydi, yirik yuk egalari (Coca-Cola ham)","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-2"},{"deadline":"2027-03-20","deadlineDraft":true,"note":"","order":3,"owner":"Arysdagi hodim","projectId":"qozogiston","responsibility":"Topshirilgan hujjatlar, ariza raqami va kutilayotgan muddat","sectionId":"kz-s1","status":"todo","title":"Fuqarolikni olish uchun hujjatlarni rasmiylashtirish va topshirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-3"},{"deadline":"2027-04-10","deadlineDraft":true,"note":"","order":4,"owner":"Arysdagi hodim","projectId":"qozogiston","responsibility":"Yakuniy hisobot, boshlash xarajatlari hisobi va kirish bo‘yicha tavsiya","sectionId":"kz-s1","status":"todo","title":"Yakuniy bozor hisoboti: kompaniya ochish, soliq va mashinalarni ro‘yxatdan o‘tkazish talablari bilan","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-4"},{"deadline":"2027-04-20","deadlineDraft":true,"note":"","order":5,"owner":"Aris","projectId":"qozogiston","responsibility":"Yozma qaror: boshlash, kechiktirish yoki to‘xtatish","sectionId":"kz-s1","status":"todo","title":"Hisobot asosida Qozog‘istonga kirish qarorini qabul qilish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-5"},{"deadline":"2027-06-01","deadlineDraft":true,"note":"","order":6,"owner":"Arysdagi hodim","projectId":"qozogiston","responsibility":"Olingan fuqarolik hujjati (agar shu nazarda tutilgan bo‘lsa, yashash ruxsatnomasi); kompaniya ochishga tayyor","sectionId":"kz-s1","status":"todo","title":"Fuqarolikni olish: ariza natijasini kuzatib, hujjatni qo‘lga olish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s1-6"},{"deadline":"2027-05-31","deadlineDraft":true,"note":"","order":1,"owner":"Investor A","projectId":"qozogiston","responsibility":"Imzolangan shartnoma: ulush, mablag‘ kiritish jadvali, oylik hisobot tartibi; qarz foizi (ribo) va kafolatlangan foyda yo‘q","sectionId":"kz-s2","status":"todo","title":"Investor A qo‘shilishi: Garaj shartnomasi asosida shartlarni kelishish va shartnoma imzolash","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s2-1"},{"deadline":"2027-06-30","deadlineDraft":true,"note":"","order":2,"owner":"Aris","projectId":"qozogiston","responsibility":"Yaponiyalik hamkorlar bilan imzolangan kelishuv, islomiy moliya talablariga mos","sectionId":"kz-s2","status":"todo","title":"Yaponiyalik hamkorlarni qo‘shish: hamkorlik shakli va ulushini kelishish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s2-2"},{"deadline":"2027-06-15","deadlineDraft":true,"note":"","order":1,"owner":"Aris","projectId":"qozogiston","responsibility":"Ro‘yxatdan o‘tgan kompaniya, ochilgan bank hisobi va Coca-Colaga topshirilgan ariza","sectionId":"kz-s3","status":"todo","title":"Kompaniyani ro‘yxatdan o‘tkazish, bank hisobini ochish va Coca-Colaga tashuvchi sifatida ariza topshirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s3-1"},{"deadline":"2027-08-01","deadlineDraft":true,"note":"","order":2,"owner":"Aris","projectId":"qozogiston","responsibility":"Ishga tayyor 20 ta mashina va haydovchilar","sectionId":"kz-s3","status":"todo","title":"20 ta mashinani tayyorlash: qabul, haydovchilar, GPS, sug‘urta, ruxsatnomalar (Garaj tajribasi asosida)","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s3-2"},{"deadline":"2027-08-20","deadlineDraft":true,"note":"","order":3,"owner":"Aris","projectId":"qozogiston","responsibility":"Imzolangan shartnoma va bajarilgan birinchi reyslar","sectionId":"kz-s3","status":"todo","title":"Coca-Coladan buyurtma olish: tashuvchi tanlovidan o‘tish, shartnoma, birinchi reyslar","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s3-3"},{"deadline":"2027-09-15","deadlineDraft":true,"note":"","order":4,"owner":"Aris","projectId":"qozogiston","responsibility":"Moslangan qo‘llanma, ko‘chadan muntazam yuk, reys jadvali yuritiladi","sectionId":"kz-s3","status":"todo","title":"Ko‘cha bilan ishlashni boshlash: ekspeditorlik qo‘llanmasini Qozog‘istonga moslash","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s3-4"},{"deadline":"2027-12-15","deadlineDraft":true,"note":"","order":1,"owner":"Aris","projectId":"qozogiston","responsibility":"Zavod, yo‘nalish va narxlar bo‘yicha yig‘ilgan data va qisqa tahlil","sectionId":"kz-s4","status":"todo","title":"Har bir reysni ekspeditorlik reys jadvali shabloni bilan yozib borish","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s4-1"},{"deadline":"2028-01-31","deadlineDraft":true,"note":"","order":2,"owner":"Aris","projectId":"qozogiston","responsibility":"Qozog‘istonda sinovdan o‘tgan versiyalar","sectionId":"kz-s4","status":"todo","title":"Lorry va 123yukni Qozog‘iston uchun moslash: til, tenge, mahalliy hujjatlar va soliq","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s4-2"},{"deadline":"2028-03-01","deadlineDraft":true,"note":"","order":3,"owner":"Aris","projectId":"qozogiston","responsibility":"Dasturda ishlayotgan birinchi mijozlar","sectionId":"kz-s4","status":"todo","title":"Lorry va 123yukni bozorga olib kirish: birinchi zavod va transport kompaniyalarini ulash","updatedAt":"2026-11-20T02:00:00.000Z","id":"kz-s4-3"},{"deadline":"2027-04-15","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"lorry","responsibility":"Bir sahifalik doira hujjati, rahbariyat tasdiqlagan","sectionId":"lorry-s1","status":"todo","title":"Lorry doirasini aniqlash: kim uchun, zavodlarda yuk nazorati, haydovchilar va faktoringdan qaysi qismi Lorryda bo‘ladi, 123yukdan nimasi bilan farq qiladi","updatedAt":"2026-11-20T02:00:00.000Z","id":"lorry-s1-1"},{"deadline":"2027-05-20","deadlineDraft":true,"note":"","order":2,"owner":"Ilxom aka","projectId":"lorry","responsibility":"Umumiy va alohida qismlar ro‘yxati, tasdiqlangan reja; pul oqimi bo‘lsa, islomiy moliya shartlari bilan","sectionId":"lorry-s1","status":"todo","title":"123yuk bilan umumiy va alohida qismlarni ajratish, ishlab chiqish rejasini tuzish","updatedAt":"2026-11-20T02:00:00.000Z","id":"lorry-s1-2"},{"deadline":"2027-06-30","deadlineDraft":true,"note":"","order":1,"owner":"Ilxom aka","projectId":"lorry","responsibility":"Tasdiqlangan prototip va foydalanuvchi fikrlari","sectionId":"lorry-s2","status":"todo","title":"Asosiy ekranlar prototipini tayyorlash va bir nechta foydalanuvchida sinash","updatedAt":"2026-11-20T02:00:00.000Z","id":"lorry-s2-1"},{"deadline":"2027-09-30","deadlineDraft":true,"note":"","order":2,"owner":"Ilxom aka","projectId":"lorry","responsibility":"Ichki sinovdan o‘tgan 1-versiya","sectionId":"lorry-s2","status":"todo","title":"Tasdiqlangan doiradagi 1-versiyani ishlab chiqish","updatedAt":"2026-11-20T02:00:00.000Z","id":"lorry-s2-2"},{"deadline":"2027-11-30","deadlineDraft":true,"note":"","order":3,"owner":"Ayubjon, Ilxom aka","projectId":"lorry","responsibility":"Pilot hisoboti, sinalgan versiya va qisqa qo‘llanma; Qozog‘iston jamoasiga topshirilgan","sectionId":"lorry-s2","status":"todo","title":"Doira hujjatida belgilangan foydalanuvchilar bilan pilot o‘tkazish, xatolarni tuzatib sinalgan versiyani chiqarish","updatedAt":"2026-11-20T02:00:00.000Z","id":"lorry-s2-3"},{"deadline":"2026-12-08","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"presep","responsibility":"Tirkamalar ro‘yxati: turi, holati, surat, ta’mir kerakmi","sectionId":"presep-s1","status":"todo","title":"Mavjud tirkamalarni ro‘yxatga olish va texnik holatini tekshirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s1-1"},{"deadline":"2026-12-28","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"presep","responsibility":"Imzoga tayyor shartnoma va akt; ijara haqi oldindan belgilangan, kechikish uchun jarima-foyda yo‘q","sectionId":"presep-s1","status":"todo","title":"Alohida ijara shartnomasi va shartlarini tayyorlash (topshirish-qabul akti Garaj shablonidan): oylik narx, depozit, shikast uchun javobgarlik, to‘lov tartibi","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s1-2"},{"deadline":"2027-01-10","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"presep","responsibility":"Ijaraga oluvchilar ro‘yxati va imzolangan topshirish aktlari","sectionId":"presep-s1","status":"todo","title":"Ijaraga oluvchilarni tanlash va tirkamalarni topshirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s1-3"},{"deadline":"2027-02-12","deadlineDraft":true,"note":"","order":4,"owner":"Jasurbek","projectId":"presep","responsibility":"Qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori","sectionId":"presep-s1","status":"todo","title":"1 oy yakunida tirkamani qaytarib olish, holatini tekshirish va natijani baholash","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s1-4"},{"deadline":"2027-02-20","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"presep","responsibility":"Ulush shartnomasi loyihasi; qarz foizi (ribo) ham, kafolatlangan summa ham yo‘q; faqat topilgan puldan 20% ulush; islomiy moliya mutaxassisi tekshirgan, kechikish uchun jarima-foyda yo‘q","sectionId":"presep-s2","status":"todo","title":"20% ulush shartlarini yozish: «topilgan pul» nimaga teng, 20% ulushni kim kimga beradi, qachon to‘lanadi, tirkama ta’miri kimda","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s2-1"},{"deadline":"2027-03-01","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"presep","responsibility":"Har bir reys daromadi ko‘rinadigan nazorat tartibi","sectionId":"presep-s2","status":"todo","title":"Daromad nazoratini qo‘yish: reys hujjatlari, GPS, ekspeditorlik reys jadvali","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s2-2"},{"deadline":"2027-03-15","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"presep","responsibility":"Imzolangan hamkorlik shartnomalari va topshirish aktlari","sectionId":"presep-s2","status":"todo","title":"Tyagachi bor hamkorlarni topish, shartnoma imzolash va tirkamalarni topshirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s2-3"},{"deadline":"2027-04-15","deadlineDraft":true,"note":"","order":4,"owner":"Jasurbek","projectId":"presep","responsibility":"Har bir hamkor bo‘yicha hisob-kitob akti, tushgan ulush va 3-bosqichga o‘tish qarori","sectionId":"presep-s2","status":"todo","title":"Birinchi oylik 20% hisob-kitobni o‘tkazish va 2-bosqichni baholash","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s2-4"},{"deadline":"2027-05-05","deadlineDraft":true,"note":"","order":1,"owner":"Jasurbek","projectId":"presep","responsibility":"Tejash hisob-kitobi (hozirgi yo‘l narxi va ijaradagi tirkama bilan narx), zavodlar ro‘yxati va yuborilgan takliflar","sectionId":"presep-s3","status":"todo","title":"Zavod uchun tejash hisobini ekspeditorlik datasi asosida qilish va mos zavodlarga taklif yuborish","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s3-1"},{"deadline":"2027-06-01","deadlineDraft":true,"note":"","order":2,"owner":"Jasurbek","projectId":"presep","responsibility":"Imzolangan pilot shartnoma: muddat, texnik xizmat kimda, oylik to‘lov (oldindan belgilangan, kechikish uchun jarima-foyda yo‘q); ishlayotgan tirkama; zavodga 123yuk Zavod paneli pilotida qatnashish taklif qilingan","sectionId":"presep-s3","status":"todo","title":"Bitta zavod bilan pilot ijarani boshlash","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s3-2"},{"deadline":"2027-08-01","deadlineDraft":true,"note":"","order":3,"owner":"Jasurbek","projectId":"presep","responsibility":"Zavod tejagan summa hisoboti va uzoq muddatli shartnoma","sectionId":"presep-s3","status":"todo","title":"Pilotni baholash va uzoq muddatli shartnomaga o‘tish","updatedAt":"2026-11-20T02:00:00.000Z","id":"presep-s3-3"},{"deadline":"2027-01-15","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Holat jadvali: tayyor, qisman tayyor va boshlanmagan qismlar, ish tartibi","sectionId":"yuk-s1","status":"todo","title":"Hozirgi 123yuk holatini ko‘rib chiqish: Zavod, Transport kompaniya, Investor, Super admin panellari, Landing va 123YUK-Mobile qaysi qismi tayyor","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s1-1"},{"deadline":"2027-03-31","deadlineDraft":true,"note":"","order":2,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Tasdiqlangan talablar hujjati","sectionId":"yuk-s1","status":"todo","title":"Talablarni yakunlash: zavodlarda yuk nazorati, haydovchilar, faktoring (ekspeditorlik data tahlili va zavodlar bilan suhbat asosida)","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s1-2"},{"deadline":"2027-06-30","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Ichki sinovdan o‘tgan versiya","sectionId":"yuk-s2","status":"todo","title":"Zavod panelida yuk nazorati funksiyasini ishlab chiqish: buyurtma, yuklash, hujjat, yuk holati, qabul","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s2-1"},{"deadline":"2027-08-15","deadlineDraft":true,"note":"","order":2,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Pilot hisoboti va tuzatishlar ro‘yxati","sectionId":"yuk-s2","status":"todo","title":"Pilot zavodda sinash (Presep 3-bosqich zavodi yoki ekspeditorlik mijozi bo‘lishi mumkin)","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s2-2"},{"deadline":"2027-04-30","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Transport kompaniya panelida tekshirilgan haydovchilar bazasi","sectionId":"yuk-s3","status":"todo","title":"Haydovchilar bazasini yig‘ish va tekshirish: ekspeditorlik, Garaj va Presep haydovchilari, hujjat va guvohnoma","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s3-1"},{"deadline":"2027-08-31","deadlineDraft":true,"note":"","order":2,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Garaj haydovchilarida sinalgan ilova (reys qabul qilish, holat, hujjat surati) va Zavod paneli bilan ishlaydigan taqsimlash","sectionId":"yuk-s3","status":"todo","title":"Haydovchi ilovasini sinovga chiqarish va zavod buyurtmalarini ilova orqali taqsimlash","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s3-2"},{"deadline":"2027-04-30","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Model hujjati va hisob misoli; ustama imzolashda bir marta belgilanadi va muddat cho‘zilsa oshmaydi","sectionId":"yuk-s4","status":"todo","title":"Faktoring modelini yozish: kim mablag‘ beradi (Garaj investorlari yoki moliya hamkori), kimga, qancha muddatga; belgilangan ustama, kechikkan to‘lov holati","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s4-1"},{"deadline":"2027-05-31","deadlineDraft":true,"note":"","order":2,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Yozma xulosa va tasdiqlangan shablonlar","sectionId":"yuk-s4","status":"todo","title":"Faktoring shartnoma shablonlarini (zavod, transport kompaniya, investor) tayyorlash va islomiy moliya mutaxassisi hamda yurist bilan tekshirtirish","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s4-2"},{"deadline":"2027-08-15","deadlineDraft":true,"note":"","order":3,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Investor o‘z mablag‘i va belgilangan ustamasini ko‘radigan, ichki sinovdan o‘tgan funksiya; muddat o‘tsa ustama avtomatik oshmaydi, kechikish jarimasi hisoblanmaydi","sectionId":"yuk-s4","status":"todo","title":"Investor panelida faktoring oqimini qurish: mablag‘ berish, qaytarish, ustama hisobi","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s4-3"},{"deadline":"2027-09-15","deadlineDraft":true,"note":"","order":4,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Yopilgan pilot bitimlar; har birida ustama shartnomadagidek, kechikkan to‘lov uchun qo‘shimcha haq olinmagan","sectionId":"yuk-s4","status":"todo","title":"Pilot: birinchi faktoring bitimlarini ekspeditorlik reyslarida sinov rejimida o‘tkazish","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s4-4"},{"deadline":"2027-09-30","deadlineDraft":true,"note":"","order":1,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Sinov hisoboti, muhim xatolar tuzatilgan","sectionId":"yuk-s5","status":"todo","title":"Zavod, Transport kompaniya, Investor, Super admin panellari va ilovani O‘zbekistonda birga sinash","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s5-1"},{"deadline":"2027-10-31","deadlineDraft":true,"note":"","order":2,"owner":"Ayubjon","projectId":"yuk123","responsibility":"Ishlaydigan 1-versiya; Qozog‘iston jamoasiga topshirilgan","sectionId":"yuk-s5","status":"todo","title":"Tayyor 1-versiyani chiqarish va Landing saytni yangilash","updatedAt":"2026-11-20T02:00:00.000Z","id":"yuk-s5-2"}]}</script>
+<script type="application/json" id="cfg">{"url":"https://ynqkglusayqgmgiujndq.supabase.co","key":"sb_publishable_x0HQRiDUzwHi3tcCYD0c1Q_m57RnUNG"}</script>
+
+<script>
+(function(){
+'use strict';
+const $ = (s, r) => (r || document).querySelector(s);
+const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+const STATUSES = [
+  {k:'todo', label:'Boshlanmagan'},
+  {k:'doing', label:'Jarayonda'},
+  {k:'blocked', label:'To‘xtagan'},
+  {k:'done', label:'Bajarildi'}
+];
+const ST = {}; STATUSES.forEach(s => { ST[s.k] = s; });
+const stOf = t => (t && ST[t.status]) ? t.status : 'todo';
+const MONTHS = ['yanvar','fevral','mart','aprel','may','iyun','iyul','avgust','sentabr','oktabr','noyabr','dekabr'];
+const CHECK = '<svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3.2 3L13 4.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+
+const S = {
+  db: null,
+  projects: new Map(), sections: new Map(), tasks: new Map(),
+  got: {projects:false, sections:false, tasks:false},
+  confirmed: {projects:false, sections:false, tasks:false},
+  error: null, phase: 'loading', slow: false,
+  readOnly: false, writeKnown: false, pending: 0,
+  view: 'overview', project: '', status: 'all', flag: null,
+  secSel: {}, // project id -> the section sub-tab this viewer last opened
+  snapshot: false, snapshotAt: '', // true when showing the copy built into the page (no live data for this viewer)
+  site: false, // true on the public website, where the plan is stored in a database instead of claude.ai
+  moved: ''    // set on the claude.ai page once the plan has moved to the website: its address
+};
+
+const PREF_KEY = 'yol-xarita-prefs-3';
+try {
+  const p = JSON.parse(localStorage.getItem(PREF_KEY) || '{}');
+  if (['overview','projects','people','dates'].includes(p.view)) S.view = p.view;
+  if (typeof p.project === 'string') S.project = p.project;
+  if (p.secSel && typeof p.secSel === 'object') Object.keys(p.secSel).forEach(k => { if (typeof p.secSel[k] === 'string') S.secSel[k] = p.secSel[k]; });
+} catch (e) {}
+function savePrefs(){ try { localStorage.setItem(PREF_KEY, JSON.stringify({view:S.view, project:S.project, secSel:S.secSel})); } catch (e) {} }
+
+/* ---------- dates ---------- */
+function todayMid(){ const d = new Date(); d.setHours(0,0,0,0); return d; }
+function parseDate(s){
+  if (typeof s !== 'string' || !/^\d{4}-\d{2}-\d{2}$/.test(s)) return null;
+  const a = s.split('-').map(Number); const d = new Date(a[0], a[1]-1, a[2]);
+  // reject impossible dates such as 2027-02-30 instead of rolling them into March
+  return (isNaN(d.getTime()) || d.getMonth() !== a[1]-1 || d.getDate() !== a[2]) ? null : d;
+}
+function daysLeft(s){ const d = parseDate(s); return d ? Math.round((d - todayMid()) / 86400000) : null; }
+function pad(n){ return String(n).padStart(2,'0'); }
+function fmtDate(s){ const d = parseDate(s); return d ? pad(d.getDate()) + '.' + pad(d.getMonth()+1) + '.' + d.getFullYear() : ''; }
+function fmtToday(){ const d = new Date(); return d.getDate() + '-' + MONTHS[d.getMonth()] + ', ' + d.getFullYear(); }
+function relText(n){
+  if (n == null) return '';
+  if (n === 0) return 'bugun';
+  if (n === 1) return 'ertaga';
+  if (n < 0) return (-n) + ' kun kechikdi';
+  if (n > 60) return Math.round(n / 30.4) + ' oy qoldi';
+  return n + ' kun qoldi';
+}
+function fmtStamp(iso){ const d = new Date(iso); if (isNaN(d.getTime())) return ''; return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes()); }
+
+/* ---------- derived index ---------- */
+const num = x => { const n = Number(x); return isFinite(n) ? n : 1e9; };
+const byOrder = (a, b) => (num(a.order) - num(b.order)) || String(a.id).localeCompare(String(b.id));
+function buildIndex(){
+  const projects = [...S.projects.values()].sort(byOrder);
+  const idx = {projects, secs: new Map(), tasks: new Map(), meta: new Map(), all: []};
+  const secsAll = [...S.sections.values()].sort(byOrder);
+  const tasksAll = [...S.tasks.values()].sort(byOrder);
+  projects.forEach((p, pi) => {
+    const secs = secsAll.filter(s => s.projectId === p.id);
+    idx.secs.set(p.id, secs);
+    secs.forEach(s => {
+      const ts = tasksAll.filter(t => t.sectionId === s.id);
+      idx.tasks.set(s.id, ts);
+      const cur = nowStep(ts); // same rule as the overview, so both screens agree on the current step
+      ts.forEach((t, i) => { idx.meta.set(t.id, {n: i+1, p, pn: pi+1, s, current: t === cur}); idx.all.push(t); });
+    });
+  });
+  return idx;
+}
+function isOverdue(t){ const n = daysLeft(t.deadline); return stOf(t) !== 'done' && n != null && n < 0; }
+function isSoon(t){ const n = daysLeft(t.deadline); return stOf(t) !== 'done' && n != null && n >= 0 && n <= 14; }
+// "Muhammadjon aka, Sherzodbek" -> two people; one step or project can have several
+const nameKey = s => String(s).toLowerCase().replace(/[‘’ʻʼ`]/g, "'");
+function names(v){
+  const seen = new Set();
+  return String(v || '').split(',').map(x => x.trim().replace(/\s+/g, ' ')).filter(x => { const k = nameKey(x); if (!x || seen.has(k)) return false; seen.add(k); return true; });
+}
+const ownerText = t => names(t.owner).join(', ');
+function isUnassigned(t){ return !names(t.owner).length; }
+function isDraft(t){ return !!(t.deadlineDraft && t.deadline); }
+const FLAGS = {
+  overdue: {label:'Kechikkan', test:isOverdue, cls:'alert'},
+  soon: {label:'Dedlayni 14 kun ichida', test:isSoon, cls:'warn'},
+  unassigned: {label:'Mas’ul tayinlanmagan', test:isUnassigned, cls:'warn'},
+  draft: {label:'Taxminiy dedlayn', test:isDraft, cls:''}
+};
+// the Mas’ullar and Dedlaynlar lists cover every project; an overview number can narrow them to one status or flag
+function matches(idx, t){
+  if (S.status !== 'all' && stOf(t) !== S.status) return false;
+  if (S.flag && FLAGS[S.flag] && !FLAGS[S.flag].test(t)) return false;
+  return true;
+}
+function counts(list){ const c = {todo:0, doing:0, blocked:0, done:0, total:list.length}; list.forEach(t => { c[stOf(t)]++; }); return c; }
+function barHTML(c){
+  const t = c.total || 1;
+  return '<span class="bar" role="img" aria-label="' + c.done + ' bajarildi, ' + c.doing + ' jarayonda, ' + c.blocked + ' to‘xtagan, ' + c.todo + ' boshlanmagan">' +
+    '<i class="b-done" style="width:' + (c.done/t*100) + '%"></i><i class="b-doing" style="width:' + (c.doing/t*100) + '%"></i><i class="b-blocked" style="width:' + (c.blocked/t*100) + '%"></i></span>';
+}
+
+/* ---------- render ---------- */
+let renderTimer = 0;
+function scheduleRender(){ if (renderTimer) return; renderTimer = setTimeout(() => { renderTimer = 0; render(); }, 16); }
+function canWrite(){ return !!S.db && !S.readOnly; }
+
 function render(){
-  document.querySelectorAll('.tab').forEach(function(b){b.setAttribute('aria-current',String(b.dataset.v===st.v))});
-  var m=document.getElementById('m'),at=fd(D.at);
-  m.innerHTML='<p class="ban">Rejaning '+e(at)+' holati. Bu sahifa faqat ko‘rish uchun.</p>'+(st.v==='p'?project():overview());
-  m.querySelectorAll('.row').forEach(function(r){var a=r.querySelector('[aria-current="true"]');if(a&&r.scrollWidth>r.clientWidth){var rb=r.getBoundingClientRect(),ab=a.getBoundingClientRect();if(ab.left<rb.left||ab.right>rb.right)r.scrollLeft+=(ab.left-rb.left)-(rb.width-ab.width)/2}})}
-document.addEventListener('click',function(ev){var b=ev.target.closest('button');if(!b)return;
-  if(b.classList.contains('tab')){st.v=b.dataset.v;save();render();scrollTo(0,0);return}
-  if(b.dataset.p){st.v='p';st.p=b.dataset.p;save();render();if(b.classList.contains('card'))scrollTo(0,0);return}
-  if(b.dataset.s){st.s[st.p]=b.dataset.s;save();render();if(b.dataset.nav){var r=document.getElementById('sr');if(r)r.scrollIntoView({block:'start'})}}});
+  const ae = document.activeElement;
+  const fk = ae && ae.dataset ? ae.dataset.fk : null;
+  const fkAlt = ae && ae.dataset ? ae.dataset.fkAlt : null; // where focus goes if that control disappears
+  document.querySelectorAll('.tab').forEach(b => { if (b.dataset.v === S.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
+  $('#newProjectBtn').hidden = !(canWrite() && S.phase === 'ready');
+  const main = $('#main');
+  if (S.phase === 'nodb') {
+    main.innerHTML = '<section class="notice"><span class="label">Ma’lumotlar ombori</span><h2>Reja bu yerda ochilmaydi</h2><p>Loyihalar, mas’ullar va dedlaynlar claude.ai’da saqlanadi. Sahifani claude.ai ichida, hisobingizga kirgan holda oching.</p></section>';
+    return;
+  }
+  if (S.error) {
+    main.innerHTML = '<section class="notice"><span class="label">Xatolik</span><h2>Rejani o‘qib bo‘lmadi</h2><p>Ma’lumotlar omboriga ulanish uzildi (' + esc(S.error) + '). Sahifani biroz keyin qayta oching.</p></section>';
+    return;
+  }
+  if (S.phase !== 'ready') {
+    main.innerHTML = (S.slow ? '<p class="banner">Ma’lumotlarga hozircha ulanib bo‘lmadi. Internet aloqasini tekshiring — sahifa o‘zi qayta urinyapti.</p>' : '') +
+      '<div class="loading-rows" aria-label="Reja yuklanmoqda"><span></span><span></span><span></span></div>';
+    return;
+  }
+  const idx = buildIndex();
+  fillOwnerList(idx);
+  if (idx.projects.length) $('.brand p').textContent = idx.projects.map(shortName).join(' → ');
+  let html = '';
+  if (S.slow) html += '<p class="banner">Ulanish sekin: ko‘rsatilayotgan holat eskirgan bo‘lishi mumkin.</p>';
+  if (S.snapshot && S.moved) html += '<p class="banner">Reja endi saytda yuritiladi: <a href="' + esc(S.moved) + '" target="_blank" rel="noopener">' + esc(S.moved.replace(/^https?:\/\//, '')) + '</a>. Quyida rejaning ' + esc(fmtDate(S.snapshotAt) || 'oldingi') + ' holatidagi nusxasi, faqat ko‘rish uchun.</p>';
+  else if (S.snapshot && S.site) html += '<p class="banner">Bazaga ulanib bo‘lmadi. Quyida rejaning ' + esc(fmtDate(S.snapshotAt) || 'oldingi') + ' holatidagi nusxasi, faqat ko‘rish uchun. <button type="button" class="link-btn" data-act="reload" data-fk="reload">Qayta urinish</button></p>';
+  else if (S.snapshot && S.snapshotPublic) html += '<p class="banner">Rejaning ' + esc(fmtDate(S.snapshotAt) || 'oxirgi') + ' holati. Bu sahifa faqat ko‘rish uchun.</p>';
+  else if (S.snapshot) html += '<p class="banner">' + (S.snapshotLost
+    ? 'Jonli ma’lumotga ulanib bo‘lmadi. Quyida rejaning ' + esc(fmtDate(S.snapshotAt) || 'oldingi') + ' holatidagi nusxasi, faqat ko‘rish uchun. Sahifani keyinroq qayta oching.'
+    : 'Bu rejaning ' + esc(fmtDate(S.snapshotAt) || 'oldingi') + ' holatidagi nusxasi. Siz uni faqat ko‘ra olasiz. Eng yangi holatni ko‘rish uchun claude.ai’ga kiring.') + '</p>';
+  else if (S.readOnly) html += '<p class="banner">Siz rejani faqat ko‘ra olasiz. O‘zgartirish uchun sahifa egasidan ruxsat so‘rang.</p>';
+  if (!idx.projects.length) {
+    html += '<section class="notice"><span class="label">Reja bo‘sh</span><h2>Hali loyiha qo‘shilmagan</h2><p>' + (canWrite() ? 'Loyiha qo‘shing, so‘ng uning bo‘limlari va qadamlarini kiriting: kim qiladi, nimaga mas’ul, dedlayn va holat.' : 'Reja egasi hali loyiha qo‘shmagan.') + '</p>' +
+      (canWrite() ? '<p><button class="btn btn-primary" type="button" data-act="new-project">+ Loyiha qo‘shish</button></p>' : '') + '</section>';
+    main.innerHTML = html; restoreFocus(fk, fkAlt); return;
+  }
+  if (S.view === 'people') html += filterBarHTML() + peopleHTML(idx);
+  else if (S.view === 'dates') html += filterBarHTML() + datesHTML(idx);
+  else if (S.view === 'projects') html += projectsHTML(idx);
+  else html += overviewHTML(idx);
+  const keepX = [...main.querySelectorAll('.subtabs,.sectabs')].map(r => r.scrollLeft);
+  main.innerHTML = html;
+  // a rebuilt sub-tab row starts scrolled to the left; keep where the viewer was and bring the open tab into view
+  main.querySelectorAll('.subtabs,.sectabs').forEach((row, i) => {
+    if (keepX[i]) row.scrollLeft = keepX[i];
+    const a = row.querySelector('[aria-current="true"]');
+    if (!a || row.scrollWidth <= row.clientWidth) return;
+    const rb = row.getBoundingClientRect(), ab = a.getBoundingClientRect();
+    if (ab.left < rb.left || ab.right > rb.right) row.scrollLeft += (ab.left - rb.left) - (rb.width - ab.width) / 2;
+  });
+  restoreFocus(fk, fkAlt);
+}
+function restoreFocus(fk, alt){
+  for (const k of [fk, alt]) {
+    if (!k) continue;
+    const el = document.querySelector('[data-fk="' + (window.CSS && CSS.escape ? CSS.escape(k) : k) + '"]');
+    if (el) { if (el !== document.activeElement) { try { el.focus({preventScroll:true}); } catch (e) {} } return; }
+  }
+}
+function fillOwnerList(idx){
+  const seen = new Map();
+  const add = n => { const k = nameKey(n); if (!seen.has(k)) seen.set(k, n); };
+  idx.all.forEach(t => names(t.owner).forEach(add));
+  idx.projects.forEach(p => names(p.lead).forEach(add));
+  idx.all.forEach(t => { const ns = names(t.owner); if (ns.length > 1) add(ns.join(', ')); }); // a pair already in use can be picked whole
+  $('#ownerList').innerHTML = [...seen.values()].sort((a,b) => a.localeCompare(b)).map(o => '<option value="' + esc(o) + '"></option>').join('');
+}
+
+/* ---------- overview (one screen) ---------- */
+// the step a project or section is on: something in progress, else something stuck, else the first not done
+function nowStep(ts){ return ts.find(t => stOf(t) === 'doing') || ts.find(t => stOf(t) === 'blocked') || ts.find(t => stOf(t) !== 'done') || null; }
+// "Hozir" only for work that has really started; a not-started step is next in line
+const NOW_LABEL = {doing: 'Hozir', blocked: 'To‘xtab qolgan', todo: 'Navbatda'};
+function shortName(p){ return String(p.name || '').replace(/\s*\(.*\)\s*$/, '') || String(p.name || ''); }
+function projectTasks(idx, pid){ return idx.all.filter(t => idx.meta.get(t.id).p.id === pid); }
+function overviewHTML(idx){
+  const all = idx.all, c = counts(all);
+  const nLate = all.filter(isOverdue).length, nUn = all.filter(isUnassigned).length;
+  const kpi = (n, label, cls, attrs) => '<button type="button" class="kpi ' + (n ? cls : 'zero') + '" ' + attrs + (n ? '' : ' disabled') + '><strong>' + n + '</strong><span>' + label + '</span></button>';
+  const cards = idx.projects.map((p, i) => {
+    const ts = projectTasks(idx, p.id), pc = counts(ts), now = nowStep(ts);
+    const late = ts.filter(isOverdue).length;
+    let next;
+    if (now) {
+      const owner = ownerText(now), n = daysLeft(now.deadline), st = stOf(now);
+      next = '<span class="pc-k">' + NOW_LABEL[st] + ':</span><span class="pc-v">' + esc(now.title) + '</span>' +
+        '<span class="pc-facts"><span>Kim qiladi: <b' + (owner ? '' : ' class="miss"') + '>' + (owner ? esc(owner) : 'tayinlanmagan') + '</b></span>' +
+          (parseDate(now.deadline) ? '<span' + (n < 0 ? ' class="late"' : '') + '>' + (isDraft(now) ? 'Taxminiy dedlayn' : 'Dedlayn') + ': <b>' + fmtDate(now.deadline) + '</b> · ' + relText(n) + '</span>' : '<span>Dedlayn yo‘q</span>') +
+          '</span>';
+    } else {
+      next = '<span class="pc-k">' + (pc.total ? 'Hamma qadamlar bajarildi' : 'Hali qadam yo‘q') + '</span>';
+    }
+    const alerts = [pc.blocked ? pc.blocked + ' ta to‘xtagan' : '', late ? late + ' ta kechikkan' : ''].filter(Boolean).join(' · ');
+    const lead = names(p.lead).join(', '), goal = String(p.goal || '').trim();
+    const own = '<span class="pc-own">Mas’ul: <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></span>' +
+      (goal ? '<span class="pc-own">Maqsad: <b>' + esc(goal) + '</b></span>' : '');
+    return '<button type="button" class="pcard" data-act="open-project" data-p="' + esc(p.id) + '" data-fk="pc-' + esc(p.id) + '" data-fk-alt="pp-' + esc(p.id) + '">' +
+      '<span class="pc-num" aria-hidden="true">' + (i + 1) + '</span>' +
+      '<span class="pc-top"><span class="pc-name">' + esc(p.name) + '</span><span class="pc-count">' + pc.done + '/' + pc.total + '</span></span>' +
+      barHTML(pc) + own + next + (alerts ? '<span class="pc-alert">' + alerts + '</span>' : '') +
+      '</button>';
+  }).join('');
+  return '<section class="ov" aria-label="Umumiy ko‘rinish">' +
+    '<div class="ov-head"><div><span class="label">' + idx.projects.length + ' ta loyiha · ketma-ketlik bo‘yicha</span><p class="today">Bugun: ' + esc(fmtToday()) + '</p></div>' +
+      '<div class="overall"><strong>' + c.done + '/' + c.total + '</strong><span>qadam bajarildi</span>' + barHTML(c) + '</div></div>' +
+    '<div class="kpis">' +
+      kpi(c.doing, 'jarayonda', '', 'data-act="goto" data-v="dates" data-s="doing" data-fk="k-doing" data-fk-alt="clr"') +
+      kpi(c.blocked, 'to‘xtagan', 'alert', 'data-act="goto" data-v="dates" data-s="blocked" data-fk="k-blocked" data-fk-alt="clr"') +
+      kpi(nLate, 'kechikkan', 'alert', 'data-act="goto" data-v="dates" data-f="overdue" data-fk="k-late" data-fk-alt="clr"') +
+      kpi(nUn, 'mas’ul yo‘q', 'warn', 'data-act="goto" data-v="people" data-f="unassigned" data-fk="k-un" data-fk-alt="clr"') +
+    '</div>' +
+    '<div class="pcards">' + cards + '</div>' +
+    '<p class="legend">Kartani bosing: loyihaning bo‘limlari va qadamlari ochiladi.' +
+      (S.site && canWrite() ? ' Reja ochiq: linki bor har kim ko‘radi va o‘zgartira oladi, o‘zgarishlar bazada saqlanadi.' : '') + '</p>' +
+    '</section>';
+}
+// shown above the Mas’ullar and Dedlaynlar lists when a summary number on the overview opened them
+function filterBarHTML(){
+  let what = '';
+  if (S.status !== 'all' && ST[S.status]) what = ST[S.status].label;
+  else if (S.flag && FLAGS[S.flag]) what = FLAGS[S.flag].label;
+  if (!what) return '';
+  return '<div class="filterbar"><span>Faqat: <b>' + esc(what) + '</b></span><button type="button" class="btn" data-act="clear-filters" data-fk="clr" data-fk-alt="tab-' + esc(S.view) + '">Hammasini ko‘rsatish</button></div>';
+}
+
+function dueHTML(t, compact){
+  const st = stOf(t);
+  if (!parseDate(t.deadline)) return '<div class="due none">Dedlayn yo‘q</div>';
+  const n = daysLeft(t.deadline);
+  let cls = 'due';
+  if (isDraft(t)) cls += ' draft';
+  if (st === 'done') cls += ' finished';
+  else if (n < 0) cls += ' overdue';
+  else if (n <= 14) cls += ' soon';
+  const sub = st === 'done' ? 'bajarilgan' : relText(n);
+  return '<div class="' + cls + '"' + (isDraft(t) ? ' title="Taxminiy dedlayn"' : '') + '><span class="d">' + fmtDate(t.deadline) + '</span>' + (isDraft(t) ? ' ~' : '') + '<small>' + esc(sub) + (isDraft(t) && st !== 'done' && !compact ? ' · taxminiy' : '') + '</small></div>';
+}
+function statusSel(t, alt, tag){
+  const st = stOf(t);
+  if (!canWrite()) return '<span class="stag s-' + st + '">' + ST[st].label + '</span>'; // view-only: plain text, not a dead control
+  const ro = !canWrite();
+  let opts = '';
+  STATUSES.forEach(s => { opts += '<option value="' + s.k + '"' + (s.k === st ? ' selected' : '') + '>' + s.label + '</option>'; });
+  return '<span class="sel' + (ro ? ' ro' : '') + '" data-s="' + st + '"><select data-act="status-set" data-id="' + esc(t.id) + '" data-fk="st-' + esc(t.id + (tag || '')) + '"' + (alt ? ' data-fk-alt="' + esc(alt) + '"' : '') + ' aria-label="Holat: ' + esc(t.title) + '"' + (ro ? ' disabled' : '') + '>' + opts + '</select></span>';
+}
+function factsHTML(t){
+  const owner = ownerText(t);
+  return '<div class="facts">' +
+    '<span class="who' + (owner ? '' : ' missing') + '"><span class="k">Kim qiladi:</span> <span class="v">' + (owner ? esc(owner) : 'tayinlanmagan') + '</span></span>' +
+    (t.responsibility ? '<span class="resp"><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '') +
+    '</div>';
+}
+
+// Loyihalar view: one project at a time (project sub-tabs), one section at a time (section sub-tabs)
+function selProject(idx){
+  let p = idx.projects.find(x => x.id === S.project);
+  if (!p) { p = idx.projects[0]; S.project = p.id; }
+  return p;
+}
+function selSection(idx, p){
+  const secs = idx.secs.get(p.id) || [];
+  let s = secs.find(x => x.id === S.secSel[p.id]);
+  if (!s) {
+    // start where the work is: the section of the project's current step, else the first section
+    const now = nowStep(projectTasks(idx, p.id));
+    s = (now && idx.meta.get(now.id).s) || secs[0] || null;
+  }
+  return s;
+}
+function projectsHTML(idx){
+  const p = selProject(idx), pi = idx.projects.indexOf(p) + 1;
+  let html = '<div class="subtabs" role="group" aria-label="Loyihalar">' + idx.projects.map((x, i) => {
+    const c = counts(projectTasks(idx, x.id));
+    return '<button type="button" class="stab" aria-current="' + (x.id === p.id) + '" data-act="pick-project" data-p="' + esc(x.id) + '" data-fk="pp-' + esc(x.id) + '">' +
+      '<span class="n">' + (i + 1) + '</span>' + esc(shortName(x)) + '<span class="c">' + c.done + '/' + c.total + '</span></button>';
+  }).join('') + '</div>';
+  const secs = idx.secs.get(p.id) || [], s = selSection(idx, p), pc = counts(projectTasks(idx, p.id));
+  const lead = names(p.lead).join(', '), team = String(p.team || '').trim(), goal = String(p.goal || '').trim();
+  const pfacts = '<div class="pfacts"><span><span class="k">Mas’ul:</span> <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></span>' +
+    (team ? '<span><span class="k">Jamoa:</span> ' + esc(team) + '</span>' : '') +
+    (goal ? '<span><span class="k">Maqsad:</span> <b>' + esc(goal) + '</b></span>' : '') + '</div>';
+  html += '<section class="proj" id="proj-' + esc(p.id) + '">' +
+    '<header class="proj-head"><div class="proj-num" aria-hidden="true">' + pi + '</div>' +
+      '<div><h2>' + esc(p.name) + '</h2>' + pfacts + (p.summary ? '<p class="psum">' + esc(p.summary) + '</p>' +
+        (String(p.summary).length > 140 ? '<button type="button" class="link-btn more-btn" data-act="more" data-fk="more-' + esc(p.id) + '">Batafsil</button>' : '') : '') + '</div>' +
+      '<div class="proj-side"><span class="mono">' + pc.done + '/' + pc.total + ' bajarildi</span>' +
+        (canWrite() ? '<button type="button" class="link-btn" data-act="edit-project" data-id="' + esc(p.id) + '" data-fk="ep-' + esc(p.id) + '" data-fk-alt="tab-projects" aria-label="Loyihani tahrirlash">Tahrirlash</button>' : '') +
+      '</div></header>';
+  if (secs.length || canWrite()) {
+    html += '<div class="sectabs" role="group" aria-label="Bo‘limlar">' + secs.map((x, i) => {
+      const c = counts(idx.tasks.get(x.id) || []);
+      // names like "1-bosqich: …" already carry their number
+      return '<button type="button" class="stab small" aria-current="' + (!!s && x.id === s.id) + '" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(x.id) + '" data-fk="ps-' + esc(x.id) + '" title="' + esc(x.name) + '">' +
+        (/^\d/.test(String(x.name || '')) ? '' : '<span class="n">' + (i + 1) + '</span>') + '<span class="t">' + esc(x.name) + '</span><span class="c">' + c.done + '/' + c.total + '</span></button>';
+    }).join('') +
+    (canWrite() ? '<button type="button" class="stab small add" data-act="new-section" data-proj="' + esc(p.id) + '" data-fk="ns-' + esc(p.id) + '">+ Bo‘lim qo‘shish</button>' : '') + '</div>';
+  }
+  if (!s) return html + '<p class="empty-sec">Bu loyihada hali bo‘lim yo‘q.' + (canWrite() ? ' “+ Bo‘lim qo‘shish” tugmasini bosing.' : '') + '</p></section>';
+  const ts = idx.tasks.get(s.id) || [], sc = counts(ts);
+  const terms = Array.isArray(s.terms) ? s.terms.filter(x => String(x).trim()) : [];
+  const g = String(s.group || '').trim();
+  html += '<article class="sec" id="sec-' + esc(s.id) + '">' +
+    '<header class="sec-head"><div>' +
+      (g ? '<span class="eyebrow">' + esc(g) + '</span>' : '') +
+      '<h3>' + esc(s.name) + '</h3>' +
+      (s.summary ? '<p class="sec-sum">' + esc(s.summary) + '</p>' : '') +
+      (terms.length ? '<ul class="terms">' + terms.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') +
+    '</div><div class="sec-side"><span class="sec-count">' + sc.done + '/' + sc.total + ' qadam</span>' + barHTML(sc) +
+      (canWrite() ? '<button type="button" class="link-btn" data-act="edit-section" data-id="' + esc(s.id) + '" data-fk="es-' + esc(s.id) + '" data-fk-alt="pp-' + esc(p.id) + '" aria-label="Bo‘limni tahrirlash">Tahrirlash</button>' : '') +
+    '</div></header>' +
+    (ts.length ? '<ol class="steps">' + ts.map(t => stepHTML(idx, t)).join('') + '</ol>' : '<p class="empty-sec">Bu bo‘limda hali qadam yo‘q.</p>') +
+    (canWrite() ? '<button type="button" class="add-step" data-act="new-task" data-sec="' + esc(s.id) + '" data-fk="nt-' + esc(s.id) + '">+ Qadam qo‘shish</button>' : '') +
+    '</article>';
+  const si = secs.indexOf(s);
+  if (secs.length > 1) {
+    html += '<div class="secnav">' +
+      (si > 0 ? '<button type="button" class="btn" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(secs[si - 1].id) + '" data-fk="prev-sec" data-fk-alt="ps-' + esc(secs[si - 1].id) + '">← Oldingi bo‘lim</button>' : '<span></span>') +
+      (si < secs.length - 1 ? '<button type="button" class="btn" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(secs[si + 1].id) + '" data-fk="next-sec" data-fk-alt="ps-' + esc(secs[si + 1].id) + '">Keyingi bo‘lim →</button>' : '') +
+      '</div>';
+  }
+  return html + (ts.some(isDraft) ? '<p class="legend">Sana ostidagi kesik chiziq — taxminiy dedlayn (hali kelishilmagan).' +
+    (canWrite() ? ' Kelishilgach, qadamni ochib “Taxminiy muddat” belgisini olib tashlang.' : '') + '</p>' : '') + '</section>';
+}
+function stepHTML(idx, t){
+  const m = idx.meta.get(t.id); const st = stOf(t);
+  return '<li class="step s-' + st + (m.current ? ' is-current' : '') + '">' +
+    '<div class="marker" aria-hidden="true">' + (st === 'done' ? CHECK : m.n) + '</div>' +
+    '<div class="step-body"><button type="button" class="title" data-act="edit-task" data-id="' + esc(t.id) + '" data-fk="et-' + esc(t.id) + '"><span class="k">' + m.n + '. </span>' + esc(t.title) + '</button>' +
+      (m.current ? '<span class="now-tag">' + (st === 'todo' ? 'NAVBATDA' : 'HOZIR') + '</span>' : '') + factsHTML(t) +
+      (t.note ? '<p class="note">' + esc(t.note) + '</p>' : '') + '</div>' +
+    '<div class="meta">' + dueHTML(t) + statusSel(t) + '</div></li>';
+}
+function crowHTML(idx, t, opts){
+  const m = idx.meta.get(t.id); const st = stOf(t);
+  const owner = ownerText(t), tag = (opts && opts.tag) || '';
+  // under one person's name, say who else shares the step
+  const others = opts && opts.group ? names(t.owner).filter(n => nameKey(n) !== opts.group) : [];
+  const facts = (others.length ? '<span><span class="k">Birga:</span> ' + esc(others.join(', ')) + '</span>' : '') +
+    (t.responsibility ? '<span><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '');
+  return '<li class="crow s-' + st + '"><span class="sdot" aria-hidden="true"></span>' +
+    '<div class="step-body"><button type="button" class="title" data-act="edit-task" data-id="' + esc(t.id) + '" data-fk="et-' + esc(t.id + tag) + '">' + esc(t.title) + '</button>' +
+      '<span class="crumb">' + m.pn + '. ' + esc(m.p.name) + ' › ' + esc(m.s.name) + ' · ' + m.n + '-qadam' + '</span>' +
+      (opts && opts.showOwner ? '<div class="facts"><span class="who' + (owner ? '' : ' missing') + '"><span class="k">Kim qiladi:</span> <span class="v">' + (owner ? esc(owner) : 'tayinlanmagan') + '</span></span>' + (t.responsibility ? '<span><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '') + '</div>'
+        : (facts ? '<div class="facts">' + facts + '</div>' : '')) +
+    '</div><div class="meta">' + dueHTML(t) + statusSel(t, 'clr', tag) + '</div></li>';
+}
+function noMatchHTML(){
+  return '<div class="nomatch"><p>Bu ro‘yxatda hozircha qadam yo‘q.</p><button type="button" class="btn" data-act="clear-filters" data-fk="clr2" data-fk-alt="tab-' + esc(S.view) + '">Hammasini ko‘rsatish</button></div>';
+}
+
+function peopleHTML(idx){
+  const list = idx.all.filter(t => matches(idx, t));
+  if (!list.length) return noMatchHTML();
+  const groups = new Map();
+  const put = (key, name, t) => { if (!groups.has(key)) groups.set(key, {key, name, tasks: []}); groups.get(key).tasks.push(t); };
+  // a step shared by two people is listed under each of them
+  list.forEach(t => { const ns = names(t.owner); if (!ns.length) put('', '', t); else ns.forEach(n => put(nameKey(n), n, t)); });
+  const arr = [...groups.values()].sort((a, b) => (a.name ? 1 : 0) - (b.name ? 1 : 0) || a.name.localeCompare(b.name));
+  return '<div class="groups">' + arr.map(g => {
+    const c = counts(g.tasks);
+    const head = g.name ? esc(g.name) : 'Mas’ul tayinlanmagan';
+    return '<section class="group' + (g.name ? '' : ' warn') + '"><header class="group-head"><h3>' + head + '</h3>' +
+      '<span class="gstats"><span>' + c.total + ' qadam · ' + c.done + ' bajarildi · ' + c.doing + ' jarayonda</span>' + barHTML(c) + '</span>' +
+      (g.name ? '' : '<p class="group-hint">' + (canWrite() ? 'Bu qadamlarga kim javob berishini belgilang: qadam nomini bosib, “Kim qiladi” maydonini to‘ldiring.' : 'Bu qadamlarga hali mas’ul tayinlanmagan.') + '</p>') +
+      '</header><ul class="crows">' + g.tasks.map(t => crowHTML(idx, t, {showOwner:false, group:g.key, tag:'@' + g.key})).join('') + '</ul></section>';
+  }).join('') + '</div>';
+}
+
+function datesHTML(idx){
+  const list = idx.all.filter(t => matches(idx, t));
+  if (!list.length) return noMatchHTML();
+  const byDate = (a, b) => a.deadline.localeCompare(b.deadline) || idx.all.indexOf(a) - idx.all.indexOf(b);
+  const overdue = list.filter(isOverdue).sort(byDate);
+  const months = new Map(); const none = [];
+  list.forEach(t => {
+    if (isOverdue(t)) return;
+    if (!parseDate(t.deadline)) { none.push(t); return; }
+    const k = t.deadline.slice(0, 7);
+    if (!months.has(k)) months.set(k, []);
+    months.get(k).push(t);
+  });
+  let out = '';
+  const group = (title, ts, cls, hint) => {
+    const c = counts(ts);
+    return '<section class="group' + (cls ? ' ' + cls : '') + '"><header class="group-head"><h3>' + title + '</h3>' +
+      '<span class="gstats"><span>' + c.total + ' qadam · ' + c.done + ' bajarildi</span>' + barHTML(c) + '</span>' +
+      (hint ? '<p class="group-hint">' + hint + '</p>' : '') +
+      '</header><ul class="crows">' + ts.map(t => crowHTML(idx, t, {showOwner:true})).join('') + '</ul></section>';
+  };
+  if (overdue.length) out += group('Kechikkan', overdue, 'danger', 'Bu qadamlarning dedlayni o‘tib ketdi.' + (canWrite() ? ' Holatini yangilang yoki yangi dedlayn kelishing.' : ''));
+  [...months.keys()].sort().forEach(k => {
+    const [y, mo] = k.split('-').map(Number);
+    const label = MONTHS[mo-1].charAt(0).toUpperCase() + MONTHS[mo-1].slice(1) + ' ' + y;
+    out += group(esc(label), months.get(k).sort(byDate), '', '');
+  });
+  if (none.length) out += group('Dedlayn belgilanmagan', none, 'warn', canWrite() ? 'Har bir qadamga dedlayn qo‘ying, shunda kechikish ko‘rinib turadi.' : '');
+  return '<div class="groups">' + out + '</div>';
+}
+
+/* ---------- writes ---------- */
+const queues = new Map();
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+function setSaving(){
+  const el = $('#saveState');
+  if (S.pending > 0) { el.textContent = 'Saqlanmoqda…'; return; }
+  el.textContent = 'Saqlandi';
+  clearTimeout(setSaving._t); setSaving._t = setTimeout(() => { if (!S.pending) el.textContent = ''; }, 2500);
+}
+function write(path, fn){
+  if (!canWrite()) return Promise.reject({code:'read_only'});
+  const prev = queues.get(path) || Promise.resolve();
+  S.pending++; setSaving();
+  const next = prev.catch(() => {}).then(() => attempt(path, fn, false)).finally(() => { S.pending--; setSaving(); });
+  queues.set(path, next);
+  return next;
+}
+async function attempt(path, fn, retried){
+  try { return await fn(S.db.doc(path)); }
+  catch (e) {
+    if (e && e.code === 'unavailable' && !retried) { await sleep(400 + Math.random() * 800); return attempt(path, fn, true); }
+    writeFailed(e); throw e;
+  }
+}
+let lastErrToast = 0;
+function writeFailed(e){
+  const code = e && e.code;
+  if (code === 'not_granted' || code === 'revoked' || (code === 'invalid_argument' && !S.writeKnown)) {
+    if (!S.readOnly) { S.readOnly = true; toast('Bu rejani o‘zgartirish huquqingiz yo‘q — o‘zgarish saqlanmadi.'); closeDialogs(); render(); }
+    return;
+  }
+  if (Date.now() - lastErrToast < 1500) return;
+  lastErrToast = Date.now();
+  if (code === 'not_found') { toast('Bu yozuv o‘chirib yuborilgan. O‘zgarish saqlanmadi.'); return; }
+  if (code === 'quota_exceeded') toast('Ombor to‘ldi: keraksiz qadamlarni o‘chirib, qayta urinib ko‘ring.');
+  else if (code === 'resource_exhausted') toast('Juda tez o‘zgartirilyapti. Biroz kutib, qayta urinib ko‘ring.');
+  else toast('Saqlanmadi. Internet aloqasini tekshirib, qayta urinib ko‘ring.');
+}
+function base(obj){ const b = Object.assign({}, obj || {}); delete b.id; return b; }
+const nowIso = () => new Date().toISOString();
+function nextOrder(list){ return list.reduce((m, x) => Math.max(m, num(x.order) < 1e9 ? num(x.order) : 0), 0) + 1; }
+
+function setStatus(id, st){
+  const t = S.tasks.get(id); if (!t || stOf(t) === st || !ST[st]) return;
+  write('tasks/' + id, r => r.update({status: st, updatedAt: nowIso()})).then(() => toast('Holat: ' + ST[st].label)).catch(() => { scheduleRender(); });
+}
+
+/* ---------- toast ---------- */
+let toastT = 0;
+function toast(msg){ const el = $('#toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(toastT); toastT = setTimeout(() => el.classList.remove('show'), 2800); }
+
+/* ---------- two-step delete ---------- */
+function resetArm(btn){ clearTimeout(btn._t); btn.dataset.armed = ''; if (btn.dataset.label) btn.textContent = btn.dataset.label; }
+function arm(btn, onConfirm){
+  if (btn.dataset.armed === '1') { resetArm(btn); onConfirm(); return; }
+  if (!btn.dataset.label) btn.dataset.label = btn.textContent;
+  btn.dataset.armed = '1'; btn.textContent = btn.dataset.confirm || 'Ha, o‘chirilsin';
+  clearTimeout(btn._t); btn._t = setTimeout(() => resetArm(btn), 4000);
+}
+function closeDialogs(){ ['taskDlg','metaDlg'].forEach(id => { const d = $('#' + id); if (d.open) d.close(); }); }
+
+/* ---------- task dialog ---------- */
+const TD = $('#taskDlg');
+const F = {title:$('#f-title'), section:$('#f-section'), owner:$('#f-owner'), status:$('#f-status'), resp:$('#f-resp'), deadline:$('#f-deadline'), draft:$('#f-draft'), note:$('#f-note'), meta:$('#f-meta')};
+let editing = null; // {id|null, sectionId, order}
+function sectionOptions(selected){
+  const idx = buildIndex();
+  return idx.projects.map((p, i) => '<optgroup label="' + esc((i+1) + '. ' + p.name) + '">' +
+    (idx.secs.get(p.id) || []).map(s => '<option value="' + esc(s.id) + '"' + (s.id === selected ? ' selected' : '') + '>' + esc((s.group ? s.group + ' · ' : '') + s.name) + '</option>').join('') + '</optgroup>').join('');
+}
+function openTask(id, secId){
+  const t = id ? S.tasks.get(id) : null;
+  if (id && !t) return;
+  const ro = !canWrite();
+  editing = {id: id || null, sectionId: t ? t.sectionId : secId, order: t ? t.order : null};
+  $('#taskDlgTitle').textContent = t ? (ro ? 'Qadam' : 'Qadamni tahrirlash') : 'Yangi qadam';
+  F.section.innerHTML = sectionOptions(editing.sectionId);
+  F.title.value = t ? (t.title || '') : '';
+  F.owner.value = t ? (t.owner || '') : '';
+  F.status.value = t ? stOf(t) : 'todo';
+  F.resp.value = t ? (t.responsibility || '') : '';
+  F.deadline.value = t && parseDate(t.deadline) ? t.deadline : '';
+  F.draft.checked = t ? !!t.deadlineDraft : false;
+  F.note.value = t ? (t.note || '') : '';
+  F.title.removeAttribute('aria-invalid'); $('#f-title-err').hidden = true;
+  updateTaskMeta();
+  // view-only: text stays readable and scrollable (readonly), choices are locked (disabled)
+  [F.title, F.owner, F.resp, F.deadline, F.note].forEach(el => { el.disabled = false; el.readOnly = ro; });
+  [F.section, F.status, F.draft].forEach(el => { el.disabled = ro; });
+  $('#t-save').hidden = ro; $('#t-del').hidden = ro || !t; $('#t-up').hidden = ro || !t; $('#t-down').hidden = ro || !t;
+  $('#t-cancel').textContent = ro ? 'Yopish' : 'Bekor qilish';
+  resetArm($('#t-del'));
+  TD.showModal();
+  if (!ro && !t) F.title.focus();
+}
+function updateTaskMeta(){
+  if (!editing) return;
+  const idx = buildIndex();
+  const t = editing.id ? S.tasks.get(editing.id) : null;
+  let txt = '';
+  if (t && idx.meta.get(t.id)) {
+    const m = idx.meta.get(t.id);
+    txt = m.pn + '-loyiha · ' + m.s.name + ' · ' + m.n + '-qadam';
+    if (t.updatedAt) txt += ' · oxirgi o‘zgarish: ' + fmtStamp(t.updatedAt);
+    const list = idx.tasks.get(t.sectionId) || [];
+    $('#t-up').disabled = m.n <= 1; $('#t-down').disabled = m.n >= list.length;
+  }
+  F.meta.textContent = txt;
+}
+F.deadline.addEventListener('change', () => { F.draft.checked = false; });
+$('#taskForm').addEventListener('submit', e => { e.preventDefault(); saveTask(); });
+function saveTask(){
+  if (!canWrite() || !editing) return;
+  const title = F.title.value.trim();
+  if (!title) { F.title.setAttribute('aria-invalid','true'); $('#f-title-err').hidden = false; F.title.focus(); return; }
+  const sec = S.sections.get(F.section.value);
+  if (!sec) { toast('Bo‘limni tanlang.'); return; }
+  const existing = editing.id ? S.tasks.get(editing.id) : null;
+  const moved = !existing || existing.sectionId !== sec.id;
+  const siblings = [...S.tasks.values()].filter(x => x.sectionId === sec.id && x.id !== editing.id);
+  const deadline = F.deadline.value && parseDate(F.deadline.value) ? F.deadline.value : '';
+  const data = Object.assign(base(existing), {
+    title, projectId: sec.projectId, sectionId: sec.id,
+    owner: names(F.owner.value).join(', '), responsibility: F.resp.value.trim(),
+    deadline, deadlineDraft: !!(F.draft.checked && deadline),
+    status: ST[F.status.value] ? F.status.value : 'todo',
+    note: F.note.value.trim(),
+    order: moved ? nextOrder(siblings) : num(editing.order),
+    updatedAt: nowIso()
+  });
+  const id = editing.id || S.db.collection('tasks').doc().id;
+  const isNew = !editing.id;
+  TD.close();
+  write('tasks/' + id, r => r.set(data)).then(() => toast(isNew ? 'Qadam qo‘shildi' : 'Saqlandi')).catch(() => {});
+}
+async function moveTask(dir){
+  if (!editing || !editing.id || !canWrite()) return;
+  const t = S.tasks.get(editing.id); if (!t) return;
+  const list = [...S.tasks.values()].filter(x => x.sectionId === t.sectionId).sort(byOrder);
+  const i = list.findIndex(x => x.id === t.id); const j = i + dir;
+  if (j < 0 || j >= list.length) return;
+  const a = list[i], b = list[j];
+  let oa = num(a.order), ob = num(b.order);
+  if (oa === ob) ob = oa + dir;
+  editing.order = ob;
+  try {
+    await Promise.all([write('tasks/' + a.id, r => r.update({order: ob})), write('tasks/' + b.id, r => r.update({order: oa}))]);
+    toast(dir < 0 ? 'Oldinga surildi' : 'Keyinga surildi');
+  } catch (e) {}
+}
+$('#t-up').addEventListener('click', () => moveTask(-1));
+$('#t-down').addEventListener('click', () => moveTask(1));
+$('#t-del').addEventListener('click', e => arm(e.currentTarget, () => {
+  if (!editing || !editing.id) return;
+  const id = editing.id; TD.close();
+  write('tasks/' + id, r => r.delete()).then(() => toast('Qadam o‘chirildi')).catch(() => {});
+}));
+
+/* ---------- project / section dialog ---------- */
+const MD = $('#metaDlg');
+const M = {project:$('#m-project'), name:$('#m-name'), group:$('#m-group'), summary:$('#m-summary'), terms:$('#m-terms'), lead:$('#m-lead'), team:$('#m-team'), goal:$('#m-goal')};
+let metaEdit = null; // {kind:'project'|'section', id|null}
+function openMeta(kind, id, projId){
+  if (!canWrite()) return;
+  const obj = id ? (kind === 'project' ? S.projects.get(id) : S.sections.get(id)) : null;
+  if (id && !obj) return;
+  metaEdit = {kind, id: id || null};
+  const isSec = kind === 'section';
+  $('#metaDlgTitle').textContent = isSec ? (obj ? 'Bo‘limni tahrirlash' : 'Yangi bo‘lim') : (obj ? 'Loyihani tahrirlash' : 'Yangi loyiha');
+  $('#m-name-label').textContent = isSec ? 'Bo‘lim nomi' : 'Loyiha nomi';
+  $('#m-project-wrap').hidden = !isSec; $('#m-group-wrap').hidden = !isSec; $('#m-terms-wrap').hidden = !isSec;
+  ['m-lead-wrap', 'm-team-wrap', 'm-goal-wrap'].forEach(w => { $('#' + w).hidden = isSec; });
+  if (isSec) {
+    const sel = obj ? obj.projectId : projId;
+    M.project.innerHTML = [...S.projects.values()].sort(byOrder).map(p => '<option value="' + esc(p.id) + '"' + (p.id === sel ? ' selected' : '') + '>' + esc(p.name) + '</option>').join('');
+  }
+  M.name.value = obj ? (obj.name || '') : '';
+  M.group.value = obj && obj.group ? obj.group : '';
+  M.summary.value = obj ? (obj.summary || '') : '';
+  M.terms.value = obj && Array.isArray(obj.terms) ? obj.terms.join('\n') : '';
+  M.lead.value = !isSec && obj ? (obj.lead || '') : '';
+  M.team.value = !isSec && obj ? (obj.team || '') : '';
+  M.goal.value = !isSec && obj ? (obj.goal || '') : '';
+  M.name.removeAttribute('aria-invalid'); $('#m-name-err').hidden = true;
+  const del = $('#m-del'); resetArm(del); del.dataset.label = ''; del.textContent = 'O‘chirish';
+  del.hidden = !obj;
+  if (obj) {
+    const nTasks = [...S.tasks.values()].filter(t => isSec ? t.sectionId === id : t.projectId === id).length;
+    del.dataset.confirm = nTasks ? 'Ha, ' + nTasks + ' ta qadam bilan o‘chirilsin' : 'Ha, o‘chirilsin';
+  }
+  MD.showModal();
+  if (!obj) M.name.focus();
+}
+$('#metaForm').addEventListener('submit', e => { e.preventDefault(); saveMeta(); });
+function saveMeta(){
+  if (!canWrite() || !metaEdit) return;
+  const name = M.name.value.trim();
+  if (!name) { M.name.setAttribute('aria-invalid','true'); $('#m-name-err').hidden = false; M.name.focus(); return; }
+  if (metaEdit.kind === 'project') {
+    const existing = metaEdit.id ? S.projects.get(metaEdit.id) : null;
+    const data = Object.assign(base(existing), {name, summary: M.summary.value.trim(),
+      lead: names(M.lead.value).join(', '), team: M.team.value.trim(), goal: M.goal.value.trim(), order: existing ? num(existing.order) : nextOrder([...S.projects.values()]), updatedAt: nowIso()});
+    const id = metaEdit.id || S.db.collection('projects').doc().id;
+    MD.close();
+    write('projects/' + id, r => r.set(data)).then(() => { toast(existing ? 'Loyiha saqlandi' : 'Loyiha qo‘shildi'); if (!existing) { S.project = id; S.view = 'projects'; savePrefs(); render(); } }).catch(() => {});
+  } else {
+    const existing = metaEdit.id ? S.sections.get(metaEdit.id) : null;
+    const projectId = M.project.value;
+    if (!S.projects.has(projectId)) { toast('Loyihani tanlang.'); return; }
+    const moved = !existing || existing.projectId !== projectId;
+    const terms = M.terms.value.split('\n').map(x => x.trim()).filter(Boolean).slice(0, 20);
+    const data = Object.assign(base(existing), {
+      name, projectId, group: M.group.value.trim(), summary: M.summary.value.trim(), terms,
+      order: moved ? nextOrder([...S.sections.values()].filter(s => s.projectId === projectId && s.id !== metaEdit.id)) : num(existing.order),
+      updatedAt: nowIso()
+    });
+    const id = metaEdit.id || S.db.collection('sections').doc().id;
+    MD.close();
+    (async () => {
+      try {
+        await write('sections/' + id, r => r.set(data));
+        if (existing && moved) {
+          for (const t of [...S.tasks.values()].filter(t => t.sectionId === id)) await write('tasks/' + t.id, r => r.update({projectId}));
+        }
+        if (!existing || moved) { S.secSel[projectId] = id; S.project = projectId; savePrefs(); scheduleRender(); }
+        toast(existing ? 'Bo‘lim saqlandi' : 'Bo‘lim qo‘shildi');
+      } catch (e) {}
+    })();
+  }
+}
+$('#m-del').addEventListener('click', e => arm(e.currentTarget, () => {
+  if (!metaEdit || !metaEdit.id) return;
+  const {kind, id} = metaEdit; MD.close();
+  (async () => {
+    try {
+      if (kind === 'section') {
+        for (const t of [...S.tasks.values()].filter(t => t.sectionId === id)) await write('tasks/' + t.id, r => r.delete());
+        await write('sections/' + id, r => r.delete());
+        toast('Bo‘lim o‘chirildi');
+      } else {
+        const secIds = [...S.sections.values()].filter(s => s.projectId === id).map(s => s.id);
+        for (const t of [...S.tasks.values()].filter(t => t.projectId === id || secIds.includes(t.sectionId))) await write('tasks/' + t.id, r => r.delete());
+        for (const sid of secIds) await write('sections/' + sid, r => r.delete());
+        await write('projects/' + id, r => r.delete());
+        if (S.project === id) { S.project = ''; delete S.secSel[id]; savePrefs(); }
+        toast('Loyiha o‘chirildi');
+      }
+    } catch (err) {}
+  })();
+}));
+
+/* ---------- dialog chrome ---------- */
+[TD, MD].forEach(d => {
+  d.addEventListener('click', e => {
+    if (e.target === d) { d.close(); return; }
+    if (e.target.closest('[data-close]')) d.close();
+  });
+});
+
+/* ---------- global events ---------- */
+document.addEventListener('click', e => {
+  const el = e.target.closest('[data-act]');
+  if (!el || el.tagName === 'SELECT') return;
+  const act = el.dataset.act;
+  if (act === 'view') { S.view = el.dataset.v; savePrefs(); render(); window.scrollTo({top:0}); }
+  else if (act === 'goto') { S.view = el.dataset.v; S.status = el.dataset.s || 'all'; S.flag = el.dataset.f || null; savePrefs(); render(); window.scrollTo({top:0}); }
+  else if (act === 'open-project') { S.view = 'projects'; S.project = el.dataset.p; savePrefs(); render(); window.scrollTo({top:0}); }
+  else if (act === 'pick-project') { S.project = el.dataset.p; savePrefs(); render(); }
+  else if (act === 'pick-section') {
+    const fromNav = !!el.closest('.secnav'); // read before render(): el is gone afterwards
+    S.project = el.dataset.p; S.secSel[el.dataset.p] = el.dataset.id; savePrefs(); render();
+    // previous/next sit below the steps: bring the new section's tabs back into view
+    const row = fromNav && $('.sectabs');
+    if (row) { const y = row.getBoundingClientRect().top - $('.top').getBoundingClientRect().bottom - 8; if (y < 0) window.scrollBy({top: y}); }
+  }
+  else if (act === 'more') { const head = el.closest('.proj-head'); if (head) { const open = head.classList.toggle('full'); el.textContent = open ? 'Yig‘ish' : 'Batafsil'; } }
+  else if (act === 'clear-filters') { S.status = 'all'; S.flag = null; render(); }
+  else if (act === 'reload') location.reload();
+  else if (act === 'edit-task') openTask(el.dataset.id);
+  else if (act === 'new-task') { if (canWrite()) openTask(null, el.dataset.sec); }
+  else if (act === 'edit-section') openMeta('section', el.dataset.id);
+  else if (act === 'new-section') openMeta('section', null, el.dataset.proj);
+  else if (act === 'edit-project') openMeta('project', el.dataset.id);
+  else if (act === 'new-project') openMeta('project', null);
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if (el.dataset && el.dataset.act === 'status-set') {
+    const wrap = el.closest('.sel'); if (wrap) wrap.dataset.s = el.value;
+    setStatus(el.dataset.id, el.value);
+  }
+});
+
+/* ---------- boot ---------- */
+// People who open a public link without signing in to claude.ai get no live data,
+// so the page carries a read-only copy of the plan (refreshed whenever the page is republished).
+function loadSnapshot(){
+  const el = document.getElementById('snapshot');
+  if (!el) return false;
+  try {
+    const d = JSON.parse(el.textContent || '{}');
+    if (!Array.isArray(d.projects) || !d.projects.length) return false;
+    ['projects', 'sections', 'tasks'].forEach(n => {
+      const m = new Map();
+      (Array.isArray(d[n]) ? d[n] : []).forEach(x => { if (x && typeof x.id === 'string') m.set(x.id, x); });
+      S[n] = m;
+    });
+    S.snapshot = true; S.snapshotAt = typeof d.at === 'string' ? d.at : '';
+    S.snapshotPublic = d.public === true; // the stand-alone public website copy (no claude.ai behind it)
+    S.moved = typeof d.moved === 'string' && /^https:\/\//.test(d.moved) ? d.moved : '';
+    S.readOnly = true; S.db = null; S.error = null; S.slow = false; S.phase = 'ready';
+    return true;
+  } catch (e) { return false; }
+}
+function noLiveData(){ if (!loadSnapshot()) S.phase = 'nodb'; render(); }
+function movedTo(){
+  try { const d = JSON.parse((document.getElementById('snapshot') || {}).textContent || '{}'); return typeof d.moved === 'string' && /^https:\/\//.test(d.moved) ? d.moved : ''; }
+  catch (e) { return ''; }
+}
+
+/* ---------- site mode ---------- */
+// On the public website the plan is kept in a database table reached over HTTPS. This adapter gives that
+// table the shape the code above expects from the claude.ai store: collection().onSnapshot(), doc().set/update/delete.
+// Other people's changes arrive by polling one small counter and re-reading the plan when it moves.
+function siteConfig(){
+  try {
+    const c = JSON.parse((document.getElementById('cfg') || {}).textContent || '{}');
+    return c && typeof c.url === 'string' && c.url && typeof c.key === 'string' && c.key ? c : null;
+  } catch (e) { return null; }
+}
+function remoteDb(cfg){
+  const api = cfg.url.replace(/\/+$/, '') + '/rest/v1';
+  const NAMES = ['projects', 'sections', 'tasks'];
+  const data = {}, subs = {};
+  NAMES.forEach(n => { data[n] = new Map(); subs[n] = new Set(); });
+  let rev = null, loaded = false, dead = false, started = false, ticking = false, again = false;
+  let gen = 0, busy = 0, fails = 0, timer = 0;
+  const self = {onHealth: null};
+  const err = (code, msg) => { const e = new Error(msg || code); e.code = code; return e; };
+  async function call(method, path, body, prefer){
+    const ctl = typeof AbortController === 'function' ? new AbortController() : null;
+    const to = ctl ? setTimeout(() => ctl.abort(), 20000) : 0;
+    let res, txt = '';
+    try {
+      const headers = {apikey: cfg.key};
+      if (body !== undefined) headers['Content-Type'] = 'application/json';
+      if (prefer) headers.Prefer = prefer;
+      res = await fetch(api + path, {method, headers, body: body === undefined ? undefined : JSON.stringify(body), cache: 'no-store', signal: ctl ? ctl.signal : undefined});
+      txt = await res.text();
+    } catch (e) { throw err('unavailable'); }
+    finally { clearTimeout(to); }
+    let j = null;
+    if (txt) { try { j = JSON.parse(txt); } catch (e) {} }
+    if (res.ok) return j;
+    const pg = j && j.code;
+    if (res.status === 401 || res.status === 403 || pg === '42501') throw err('not_granted');
+    if (res.status === 429) throw err('resource_exhausted');
+    if (pg === '53400') throw err('quota_exceeded');
+    if (res.status >= 500 || res.status === 408) throw err('unavailable');
+    throw err('invalid_argument', j && j.message);
+  }
+  const revOf = r => (Array.isArray(r) && r[0] && r[0].n != null ? r[0].n : null);
+  const snap = (name, cached) => ({docs: [...data[name]].map(([id, d]) => ({id, exists: true, data: () => d})), metadata: {fromCache: !!cached}});
+  function emit(name, cached){ [...subs[name]].forEach(s => { try { s.next(snap(name, cached)); } catch (e) {} }); }
+  function health(ok){ if (typeof self.onHealth === 'function') { try { self.onHealth(ok); } catch (e) {} } }
+  async function pull(){
+    const g = gen;
+    // counter first: if someone saves between the two reads, the counter is behind and the next round re-reads
+    const r = await call('GET', '/rev?select=n&id=eq.1');
+    const rows = await call('GET', '/docs?select=collection,id,data&limit=1000');
+    if (!Array.isArray(rows)) throw err('unavailable');
+    if (g !== gen || busy) return; // this page saved something meanwhile: keep what is on screen and re-read on the next round
+    NAMES.forEach(n => { data[n] = new Map(); });
+    rows.forEach(x => { if (x && NAMES.includes(x.collection) && typeof x.id === 'string' && x.data && typeof x.data === 'object' && !Array.isArray(x.data)) data[x.collection].set(x.id, x.data); });
+    rev = revOf(r);
+    loaded = true;
+    NAMES.forEach(n => emit(n, false));
+  }
+  async function tick(){
+    if (dead) return;
+    if (ticking) { again = true; return; }
+    ticking = true; again = false;
+    try {
+      if (!loaded) await pull();
+      else if (!busy && revOf(await call('GET', '/rev?select=n&id=eq.1')) !== rev) await pull();
+      fails = 0; health(true);
+    } catch (e) {
+      fails++;
+      if (!loaded && fails >= 3) {
+        // the plan cannot be read at all: tell the page, which falls back to its built-in copy
+        dead = true; ticking = false;
+        NAMES.forEach(n => [...subs[n]].forEach(s => { try { if (s.error) s.error(e); } catch (x) {} }));
+        return;
+      }
+      if (loaded && fails >= 2) health(false);
+    }
+    ticking = false;
+    plan(again ? 300 : undefined);
+  }
+  function plan(ms){
+    clearTimeout(timer);
+    if (dead) return;
+    timer = setTimeout(tick, ms != null ? ms : !loaded ? 1500 * fails : document.hidden ? 60000 : fails ? 15000 : 8000);
+  }
+  function start(){
+    if (started) return;
+    started = true;
+    document.addEventListener('visibilitychange', () => { if (!document.hidden) plan(150); });
+    window.addEventListener('online', () => plan(150));
+    plan(0);
+  }
+  const newId = () => {
+    const abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789', a = new Uint8Array(20);
+    (window.crypto || window.msCrypto).getRandomValues(a);
+    return Array.from(a, x => abc[x % abc.length]).join('');
+  };
+  function ref(path){
+    const i = path.indexOf('/'), name = path.slice(0, i), id = path.slice(i + 1);
+    // show the change at once, send it, and put the old content back if the database refuses it
+    async function run(apply, send){
+      if (!NAMES.includes(name)) throw err('invalid_argument');
+      const had = data[name].has(id), before = data[name].get(id);
+      busy++; gen++;
+      apply(); emit(name, true);
+      try { return await send(); }
+      catch (e) {
+        gen++;
+        if (had) data[name].set(id, before); else data[name].delete(id);
+        emit(name, true);
+        throw e;
+      }
+      finally { busy--; plan(300); }
+    }
+    const where = '/docs?collection=eq.' + encodeURIComponent(name) + '&id=eq.' + encodeURIComponent(id);
+    return {
+      id,
+      set: d => { const doc = JSON.parse(JSON.stringify(d)); return run(() => { data[name].set(id, doc); },
+        () => call('POST', '/docs?on_conflict=collection,id', {collection: name, id, data: doc}, 'resolution=merge-duplicates,return=minimal')); },
+      update: patch => { const p = JSON.parse(JSON.stringify(patch)); return run(() => { const cur = data[name].get(id); if (cur) data[name].set(id, Object.assign({}, cur, p)); },
+        async () => { if ((await call('POST', '/rpc/patch_doc', {p_collection: name, p_id: id, p_patch: p})) === null) throw err('not_found'); }); },
+      delete: () => run(() => { data[name].delete(id); }, () => call('DELETE', where, undefined, 'return=minimal'))
+    };
+  }
+  self.doc = ref;
+  self.collection = name => ({
+    doc: id => ({id: id || newId()}),
+    onSnapshot(next, error){
+      const s = {next, error};
+      subs[name].add(s);
+      if (loaded) setTimeout(() => { if (subs[name].has(s)) { try { next(snap(name, false)); } catch (e) {} } }, 0);
+      start();
+      return () => { subs[name].delete(s); if (!NAMES.some(n => subs[n].size)) { dead = true; clearTimeout(timer); } };
+    }
+  });
+  return self;
+}
+
 render();
-})();</script>
-</body></html>
+(async function boot(){
+  if (movedTo()) { noLiveData(); return; } // the plan now lives on the website: show the built-in copy and the link
+  const c = window.claude, hosted = !!c && typeof c.use === 'function';
+  const cfg = hosted ? null : siteConfig();
+  let db = null;
+  if (cfg) {
+    db = remoteDb(cfg);
+    S.site = true; S.writeKnown = true;
+    db.onHealth = ok => { if (S.phase === 'ready' && !S.snapshot && S.slow === ok) { S.slow = !ok; scheduleRender(); } };
+  } else if (hosted) {
+    try { db = await c.use('db'); } catch (e) { db = null; }
+  }
+  if (!db) { noLiveData(); return; }
+  S.db = db;
+  if (hosted) {
+    try {
+      const user = await c.use('user');
+      if (user) {
+        const w = await user.can('data.write');
+        if (w === false) S.readOnly = true;
+        if (w !== null && w !== undefined) S.writeKnown = true;
+      }
+    } catch (e) {}
+  }
+  const slowTimer = setTimeout(() => {
+    if (!(S.confirmed.projects && S.confirmed.sections && S.confirmed.tasks)) { S.slow = true; scheduleRender(); }
+  }, 10000);
+  // one failed listener ends live mode for all three, so live and copied data never mix
+  const unsubs = []; let live = true;
+  ['projects','sections','tasks'].forEach(name => {
+    unsubs.push(db.collection(name).onSnapshot(snap => {
+      if (!live) return;
+      const m = new Map();
+      snap.docs.forEach(d => { if (d.exists) { const v = d.data() || {}; m.set(d.id, Object.assign({}, v, {id: d.id})); } });
+      S[name] = m;
+      S.got[name] = true;
+      if (!snap.metadata.fromCache) S.confirmed[name] = true;
+      if (S.got.projects && S.got.sections && S.got.tasks) S.phase = 'ready';
+      if (S.confirmed.projects && S.confirmed.sections && S.confirmed.tasks) { clearTimeout(slowTimer); S.slow = false; }
+      scheduleRender();
+      if (TD.open) updateTaskMeta();
+    }, err => {
+      clearTimeout(slowTimer);
+      if (!live) return;
+      live = false;
+      unsubs.forEach(u => { try { if (typeof u === 'function') u(); } catch (e) {} });
+      const hadDialog = TD.open || MD.open;
+      closeDialogs();
+      if (hadDialog) toast('Ulanish uzildi — o‘zgarish saqlanmadi.');
+      if (loadSnapshot()) { S.snapshotLost = true; scheduleRender(); return; } // show the built-in copy instead of an error
+      S.error = (err && err.code) || 'unavailable';
+      if (err && err.code === 'revoked') S.readOnly = true;
+      scheduleRender();
+    }));
+  });
+})();
+})();
+</script>
+</body>
+</html>
