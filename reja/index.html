@@ -142,6 +142,14 @@ body.presenting main.wrap > .banner{margin:10px 16px}
 .sl-m{grid-column:2;font-size:.78em;color:var(--ink-2);overflow-wrap:anywhere}
 .sl-m .late{color:var(--blocked);font-weight:600}
 .sl-empty{color:var(--ink-3);font-size:.9em}
+.sl-b{font:inherit;font-weight:600;font-size:.95em;text-align:left;border:0;background:none;padding:0;color:inherit;cursor:pointer;text-decoration:underline;text-decoration-color:var(--ink-3);text-underline-offset:.2em}
+.sl-b:hover{text-decoration-color:var(--accent)}
+.sl-acts{display:flex;flex-wrap:wrap;gap:.2em 1.1em;margin-top:.55em}
+.sl-acts .link-btn{font-size:.82em}
+.sl-note{font-size:.75em;color:var(--ink-3);margin-top:.9em}
+.sl-kpis .kpi{cursor:default}
+@media (pointer:coarse){.sl-acts .link-btn{padding:.45em 0}.sl-b{padding:.15em 0}}
+.btn.on,.btn.on:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .deck-nav{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
 .deck-dots{display:flex;gap:4px;overflow-x:auto;min-width:0;max-width:100%;padding:2px}
 .dot{flex:none;min-width:36px;height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font:700 13.5px var(--f-display);cursor:pointer;font-variant-numeric:tabular-nums}
@@ -417,15 +425,10 @@ dialog form{display:flex;flex-direction:column;max-height:calc(100vh - 34px);max
         <p>Ekspeditorlik → Garaj → Presep → Qozog‘iston → 123yuk → Lorry</p>
       </div>
     </div>
-    <nav class="tabs" aria-label="Ko‘rinish">
-      <button class="tab" type="button" data-act="view" data-v="present" data-fk="tab-present">Taqdimot</button>
-      <button class="tab" type="button" data-act="view" data-v="projects" data-fk="tab-projects">Loyihalar</button>
-      <button class="tab" type="button" data-act="view" data-v="people" data-fk="tab-people">Mas’ullar</button>
-      <button class="tab" type="button" data-act="view" data-v="dates" data-fk="tab-dates">Dedlaynlar</button>
-    </nav>
     <div class="top-actions">
       <span class="save-state" id="saveState" aria-live="polite"></span>
-      <button class="btn btn-primary" type="button" data-act="new-project" id="newProjectBtn" hidden>+ Loyiha</button>
+      <button class="btn btn-primary" type="button" data-act="new-project" id="newProjectBtn" data-fk="new-project" hidden>+ Loyiha</button>
+      <button class="btn" type="button" data-act="toggle-edit" id="editToggle" data-fk="edit-toggle" aria-pressed="false" hidden>Tahrirlash</button>
     </div>
   </div>
 </header>
@@ -561,22 +564,19 @@ const S = {
   confirmed: {projects:false, sections:false, tasks:false},
   error: null, phase: 'loading', slow: false,
   readOnly: false, writeKnown: false, pending: 0,
-  view: 'present', project: '', status: 'all', flag: null,
-  slide: 'all', // the slide the presentation is on: 'all' or a project id
-  secSel: {}, // project id -> the section sub-tab this viewer last opened
+  slide: 'all', // the slide the page is on: 'all' or a project id
+  edit: false,  // this viewer switched editing on: the slides then carry the edit controls
   snapshot: false, snapshotAt: '', // true when showing the copy built into the page (no live data for this viewer)
   site: false, // true on the public website, where the plan is stored in a database instead of claude.ai
   moved: ''    // set on the claude.ai page once the plan has moved to the website: its address
 };
 
-const PREF_KEY = 'yol-xarita-prefs-4';
+const PREF_KEY = 'yol-xarita-prefs-5';
 try {
   const p = JSON.parse(localStorage.getItem(PREF_KEY) || '{}');
-  if (['present','projects','people','dates'].includes(p.view)) S.view = p.view;
-  if (typeof p.project === 'string') S.project = p.project;
-  if (p.secSel && typeof p.secSel === 'object') Object.keys(p.secSel).forEach(k => { if (typeof p.secSel[k] === 'string') S.secSel[k] = p.secSel[k]; });
+  S.edit = p.edit === true;
 } catch (e) {}
-function savePrefs(){ try { localStorage.setItem(PREF_KEY, JSON.stringify({view:S.view, project:S.project, secSel:S.secSel})); } catch (e) {} }
+function savePrefs(){ try { localStorage.setItem(PREF_KEY, JSON.stringify({edit: S.edit})); } catch (e) {} }
 
 /* ---------- dates ---------- */
 function todayMid(){ const d = new Date(); d.setHours(0,0,0,0); return d; }
@@ -590,14 +590,6 @@ function daysLeft(s){ const d = parseDate(s); return d ? Math.round((d - todayMi
 function pad(n){ return String(n).padStart(2,'0'); }
 function fmtDate(s){ const d = parseDate(s); return d ? pad(d.getDate()) + '.' + pad(d.getMonth()+1) + '.' + d.getFullYear() : ''; }
 function fmtToday(){ const d = new Date(); return d.getDate() + '-' + MONTHS[d.getMonth()] + ', ' + d.getFullYear(); }
-function relText(n){
-  if (n == null) return '';
-  if (n === 0) return 'bugun';
-  if (n === 1) return 'ertaga';
-  if (n < 0) return (-n) + ' kun kechikdi';
-  if (n > 60) return Math.round(n / 30.4) + ' oy qoldi';
-  return n + ' kun qoldi';
-}
 function fmtStamp(iso){ const d = new Date(iso); if (isNaN(d.getTime())) return ''; return pad(d.getDate())+'.'+pad(d.getMonth()+1)+'.'+d.getFullYear()+' '+pad(d.getHours())+':'+pad(d.getMinutes()); }
 
 /* ---------- documents ---------- */
@@ -628,14 +620,12 @@ function buildIndex(){
     secs.forEach(s => {
       const ts = tasksAll.filter(t => t.sectionId === s.id);
       idx.tasks.set(s.id, ts);
-      const cur = nowStep(ts); // same rule as the overview, so both screens agree on the current step
-      ts.forEach((t, i) => { idx.meta.set(t.id, {n: i+1, p, pn: pi+1, s, current: t === cur}); idx.all.push(t); });
+      ts.forEach((t, i) => { idx.meta.set(t.id, {n: i+1, p, pn: pi+1, s}); idx.all.push(t); });
     });
   });
   return idx;
 }
 function isOverdue(t){ const n = daysLeft(t.deadline); return stOf(t) !== 'done' && n != null && n < 0; }
-function isSoon(t){ const n = daysLeft(t.deadline); return stOf(t) !== 'done' && n != null && n >= 0 && n <= 14; }
 // "Muhammadjon aka, Sherzodbek" -> two people; one step or project can have several
 const nameKey = s => String(s).toLowerCase().replace(/[‘’ʻʼ`]/g, "'");
 function names(v){
@@ -645,18 +635,6 @@ function names(v){
 const ownerText = t => names(t.owner).join(', ');
 function isUnassigned(t){ return !names(t.owner).length; }
 function isDraft(t){ return !!(t.deadlineDraft && t.deadline); }
-const FLAGS = {
-  overdue: {label:'Kechikkan', test:isOverdue, cls:'alert'},
-  soon: {label:'Dedlayni 14 kun ichida', test:isSoon, cls:'warn'},
-  unassigned: {label:'Mas’ul tayinlanmagan', test:isUnassigned, cls:'warn'},
-  draft: {label:'Taxminiy dedlayn', test:isDraft, cls:''}
-};
-// the Mas’ullar and Dedlaynlar lists cover every project; an overview number can narrow them to one status or flag
-function matches(idx, t){
-  if (S.status !== 'all' && stOf(t) !== S.status) return false;
-  if (S.flag && FLAGS[S.flag] && !FLAGS[S.flag].test(t)) return false;
-  return true;
-}
 function counts(list){ const c = {todo:0, doing:0, blocked:0, done:0, total:list.length}; list.forEach(t => { c[stOf(t)]++; }); return c; }
 function barHTML(c){
   const t = c.total || 1;
@@ -679,8 +657,11 @@ function draw(){
   const ae = document.activeElement;
   const fk = ae && ae.dataset ? ae.dataset.fk : null;
   const fkAlt = ae && ae.dataset ? ae.dataset.fkAlt : null; // where focus goes if that control disappears
-  document.querySelectorAll('.tab').forEach(b => { if (b.dataset.v === S.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
-  $('#newProjectBtn').hidden = !(canWrite() && S.phase === 'ready' && S.view !== 'present');
+  const ed = editing_on(), sw = $('#editToggle');
+  sw.hidden = !(canWrite() && S.phase === 'ready');
+  sw.setAttribute('aria-pressed', String(ed)); sw.textContent = ed ? 'Tayyor' : 'Tahrirlash';
+  sw.classList.toggle('on', ed);
+  $('#newProjectBtn').hidden = !ed;
   document.body.classList.remove('presenting');
   const main = $('#main');
   if (S.phase === 'nodb') {
@@ -713,23 +694,16 @@ function draw(){
       (canWrite() ? '<p><button class="btn btn-primary" type="button" data-act="new-project">+ Loyiha qo‘shish</button></p>' : '') + '</section>';
     main.innerHTML = html; restoreFocus(fk, fkAlt); return;
   }
-  if (S.view === 'people') html += filterBarHTML() + peopleHTML(idx);
-  else if (S.view === 'dates') html += filterBarHTML() + datesHTML(idx);
-  else if (S.view === 'projects') html += projectsHTML(idx);
-  else { html += presentHTML(idx); document.body.classList.add('presenting'); }
-  const keepX = [...main.querySelectorAll('.subtabs,.sectabs')].map(r => r.scrollLeft);
-  main.innerHTML = html;
-  // a rebuilt sub-tab row starts scrolled to the left; keep where the viewer was and bring the open tab into view
-  main.querySelectorAll('.subtabs,.sectabs').forEach((row, i) => {
-    if (keepX[i]) row.scrollLeft = keepX[i];
-    const a = row.querySelector('[aria-current="true"]');
-    if (!a || row.scrollWidth <= row.clientWidth) return;
-    const rb = row.getBoundingClientRect(), ab = a.getBoundingClientRect();
-    if (ab.left < rb.left || ab.right > rb.right) row.scrollLeft += (ab.left - rb.left) - (rb.width - ab.width) / 2;
-  });
+  // the whole page is one deck of slides; keep where a long slide was scrolled when the data refreshes
+  const was = $('#slide'), keep = was && was.getAttribute('data-k') === S.slide ? was.scrollTop : 0;
+  main.innerHTML = html + presentHTML(idx);
+  document.body.classList.add('presenting');
   restoreFocus(fk, fkAlt);
-  if (document.body.classList.contains('presenting')) fitSlide();
+  fitSlide();
+  if (keep) $('#slide').scrollTop = keep;
 }
+// edit controls are on the slides only for someone who may edit and has switched editing on
+function editing_on(){ return S.edit && canWrite() && S.phase === 'ready'; }
 function restoreFocus(fk, alt){
   // in the Mas’ullar list a key ends in "@person": if the step moved to someone else, follow the step
   const at = fk ? fk.indexOf('@') : -1, stem = at > 0 ? fk.slice(0, at + 1) : '';
@@ -749,9 +723,6 @@ function fillOwnerList(idx){
   $('#ownerList').innerHTML = [...seen.values()].sort((a,b) => a.localeCompare(b)).map(o => '<option value="' + esc(o) + '"></option>').join('');
 }
 
-/* ---------- overview (one screen) ---------- */
-// the step a project or section is on: something in progress, else something stuck, else the first not done
-function nowStep(ts){ return ts.find(t => stOf(t) === 'doing') || ts.find(t => stOf(t) === 'blocked') || ts.find(t => stOf(t) !== 'done') || null; }
 function shortName(p){
   // "Garaj (to‘liq model)" -> "Garaj"
   const n = String(p.name || ''), e = n.trimEnd();
@@ -769,7 +740,7 @@ function presentHTML(idx){
   const cur = slides[i], last = slides.length - 1;
   const nameOf = (s, j) => (j + 1) + ' / ' + slides.length + ': ' + (s.p ? s.p.name : 'hamma loyihalar');
   return '<section class="deck" id="deck" aria-label="Taqdimot">' +
-    '<div class="slide" id="slide" role="group" aria-roledescription="slayd" aria-label="' + esc(nameOf(cur, i)) + '"><div class="slide-in" id="slideIn">' + (cur.p ? slideProject(idx, cur.p) : slideAll(idx)) + '</div></div>' +
+    '<div class="slide" id="slide" data-k="' + esc(cur.k) + '" role="group" aria-roledescription="slayd" aria-label="' + esc(nameOf(cur, i)) + '"><div class="slide-in" id="slideIn">' + (cur.p ? slideProject(idx, cur.p) : slideAll(idx)) + '</div></div>' +
     '<div class="deck-nav">' +
       '<button type="button" class="btn btn-sq" data-act="slide" data-d="-1" data-fk="sl-prev" data-fk-alt="sl-next" aria-label="Oldingi slayd"' + (i === 0 ? ' disabled' : '') + '>←</button>' +
       '<span class="deck-dots">' + slides.map((s, j) => '<button type="button" class="dot' + (j === i ? ' on' : '') + '" data-act="slide-to" data-k="' + esc(s.k) + '" data-fk="sd-' + esc(s.k) + '" aria-label="' + esc(nameOf(s, j)) + '"' + (j === i ? ' aria-current="true"' : '') + '>' + (j === 0 ? '≡' : j) + '</button>').join('') + '</span>' +
@@ -781,11 +752,8 @@ function slideAll(idx){
   const all = idx.all, c = counts(all);
   const nLate = all.filter(isOverdue).length, nUn = all.filter(isUnassigned).length;
   // only numbers that say something are shown: a row of zeros is noise
-  const kpi = (n, label, cls, attrs) => n ? '<button type="button" class="kpi ' + cls + '" ' + attrs + '><strong>' + n + '</strong><span>' + label + '</span></button>' : '';
-  const kpis = kpi(c.doing, 'jarayonda', '', 'data-act="goto" data-v="dates" data-s="doing" data-fk="k-doing" data-fk-alt="clr"') +
-    kpi(c.blocked, 'to‘xtagan', 'alert', 'data-act="goto" data-v="dates" data-s="blocked" data-fk="k-blocked" data-fk-alt="clr"') +
-    kpi(nLate, 'kechikkan', 'alert', 'data-act="goto" data-v="dates" data-f="overdue" data-fk="k-late" data-fk-alt="clr"') +
-    kpi(nUn, 'mas’ul yo‘q', 'warn', 'data-act="goto" data-v="people" data-f="unassigned" data-fk="k-un" data-fk-alt="clr"');
+  const kpi = (n, label, cls) => n ? '<span class="kpi ' + cls + '"><strong>' + n + '</strong><span>' + label + '</span></span>' : '';
+  const kpis = kpi(c.doing, 'jarayonda', '') + kpi(c.blocked, 'to‘xtagan', 'alert') + kpi(nLate, 'kechikkan', 'alert') + kpi(nUn, 'qadamda mas’ul yo‘q', 'warn');
   return '<header class="sl-head"><span class="label">' + idx.projects.length + ' ta loyiha · ' + c.done + '/' + c.total + ' qadam bajarildi · ' + esc(fmtToday()) + '</span>' +
     '<h2>Loyihalar va kutilayotgan natija</h2>' + (kpis ? '<div class="sl-kpis">' + kpis + '</div>' : '') + '</header>' +
     '<div class="sl-grid">' + idx.projects.map((p, i) => {
@@ -794,11 +762,13 @@ function slideAll(idx){
         '<span class="sl-n" aria-hidden="true">' + (i + 1) + '</span><span class="sl-name">' + esc(p.name) + '</span>' +
         '<span class="sl-goal' + (goal ? '' : ' miss') + '">' + (goal ? esc(goal) : 'Maqsad belgilanmagan') + '</span>' +
         '<span class="sl-lead">' + (lead ? esc(lead) : 'Mas’ul tayinlanmagan') + ' · ' + pc.done + '/' + pc.total + '</span></button>';
-    }).join('') + '</div>';
+    }).join('') + '</div>' +
+    (editing_on() && S.site ? '<p class="sl-note">Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.</p>' : '');
 }
 function slideProject(idx, p){
   const pi = idx.projects.indexOf(p) + 1, secs = idx.secs.get(p.id) || [], pc = counts(projectTasks(idx, p.id));
   const lead = names(p.lead).join(', '), team = String(p.team || '').trim(), goal = String(p.goal || '').trim();
+  const ed = editing_on();
   const cols = secs.map(s => {
     const ts = idx.tasks.get(s.id) || [];
     return '<section class="sl-sec"><h3>' + esc(s.name) + '</h3>' + (ts.length ? '<ol class="sl-steps">' + ts.map(t => {
@@ -806,9 +776,12 @@ function slideProject(idx, p){
       const meta = [owner ? esc(owner) : '',
         parseDate(t.deadline) ? '<span' + (isOverdue(t) ? ' class="late"' : '') + '>' + fmtDate(t.deadline) + (isDraft(t) ? ' (taxminiy)' : '') + '</span>' : '',
         st !== 'todo' ? ST[st].label : ''].filter(Boolean).join(' · ');
-      return '<li class="q-' + st + '"><span class="sl-dot" aria-hidden="true">' + (st === 'done' ? CHECK : '') + '</span><span class="sl-t">' + esc(t.title) + '</span>' +
+      return '<li class="q-' + st + '"><span class="sl-dot" aria-hidden="true">' + (st === 'done' ? CHECK : '') + '</span>' +
+        (ed ? '<button type="button" class="sl-t sl-b" data-act="edit-task" data-id="' + esc(t.id) + '" data-fk="et-' + esc(t.id) + '" data-fk-alt="nt-' + esc(s.id) + '">' + esc(t.title) + '</button>' : '<span class="sl-t">' + esc(t.title) + '</span>') +
         (meta ? '<span class="sl-m">' + meta + '</span>' : '') + '</li>';
-    }).join('') + '</ol>' : '<p class="sl-empty">Hali qadam yo‘q</p>') + '</section>';
+    }).join('') + '</ol>' : '<p class="sl-empty">Hali qadam yo‘q</p>') +
+      (ed ? '<div class="sl-acts"><button type="button" class="link-btn" data-act="new-task" data-sec="' + esc(s.id) + '" data-fk="nt-' + esc(s.id) + '">+ Qadam</button>' +
+        '<button type="button" class="link-btn" data-act="edit-section" data-id="' + esc(s.id) + '" data-fk="es-' + esc(s.id) + '" data-fk-alt="ns-' + esc(p.id) + '">Bo‘limni tahrirlash</button></div>' : '') + '</section>';
   }).join('');
   return '<div class="sl-proj"><div class="sl-hero"><span class="sl-num" aria-hidden="true">' + pi + '</span>' +
     '<h2>' + esc(p.name) + '</h2>' +
@@ -816,7 +789,8 @@ function slideProject(idx, p){
     '<p class="sl-who"><span class="k">Loyiha mas’uli:</span> <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></p>' +
     (team ? '<p class="sl-who"><span class="k">Jamoa:</span> ' + esc(team) + '</p>' : '') +
     '<p class="sl-prog"><span class="mono">' + pc.done + '/' + pc.total + ' qadam bajarildi</span>' + barHTML(pc) + '</p>' +
-    (canWrite() ? '<button type="button" class="link-btn" data-act="open-project" data-p="' + esc(p.id) + '" data-fk="sl-edit" data-fk-alt="tab-projects">Tahrirlash →</button>' : '') +
+    (ed ? '<div class="sl-acts"><button type="button" class="link-btn" data-act="edit-project" data-id="' + esc(p.id) + '" data-fk="ep-' + esc(p.id) + '" data-fk-alt="edit-toggle">Loyihani tahrirlash</button>' +
+      '<button type="button" class="link-btn" data-act="new-section" data-proj="' + esc(p.id) + '" data-fk="ns-' + esc(p.id) + '">+ Bo‘lim</button></div>' : '') +
     '</div><div class="sl-secs n' + Math.min(secs.length, 3) + '">' + (cols || '<p class="sl-empty">Hali bo‘lim yo‘q</p>') + '</div></div>';
 }
 // Give the deck exactly the room left on the screen, then shrink the type until the slide fits it.
@@ -837,190 +811,6 @@ function moveSlide(d){
   const i = Math.max(0, keys.indexOf(S.slide)), j = Math.min(keys.length - 1, Math.max(0, i + d));
   if (j !== i) { S.slide = keys[j]; render(); }
 }
-// shown above the Mas’ullar and Dedlaynlar lists when a summary number on the first slide opened them
-function filterBarHTML(){
-  let what = '';
-  if (S.status !== 'all' && ST[S.status]) what = ST[S.status].label;
-  else if (S.flag && FLAGS[S.flag]) what = FLAGS[S.flag].label;
-  if (!what) return '';
-  return '<div class="filterbar"><span>Faqat: <b>' + esc(what) + '</b></span><button type="button" class="btn" data-act="clear-filters" data-fk="clr" data-fk-alt="tab-' + esc(S.view) + '">Hammasini ko‘rsatish</button></div>';
-}
-
-function dueHTML(t, compact){
-  const st = stOf(t);
-  if (!parseDate(t.deadline)) return '<div class="due none">Dedlayn yo‘q</div>';
-  const n = daysLeft(t.deadline);
-  let cls = 'due';
-  if (isDraft(t)) cls += ' draft';
-  if (st === 'done') cls += ' finished';
-  else if (n < 0) cls += ' overdue';
-  else if (n <= 14) cls += ' soon';
-  const sub = st === 'done' ? 'bajarilgan' : relText(n);
-  return '<div class="' + cls + '"' + (isDraft(t) ? ' title="Taxminiy dedlayn"' : '') + '><span class="d">' + fmtDate(t.deadline) + '</span>' + (isDraft(t) ? ' ~' : '') + '<small>' + esc(sub) + (isDraft(t) && st !== 'done' && !compact ? ' · taxminiy' : '') + '</small></div>';
-}
-function statusSel(t, alt, tag){
-  const st = stOf(t);
-  if (!canWrite()) return '<span class="stag s-' + st + '">' + ST[st].label + '</span>'; // view-only: plain text, not a dead control
-  const ro = !canWrite();
-  let opts = '';
-  STATUSES.forEach(s => { opts += '<option value="' + s.k + '"' + (s.k === st ? ' selected' : '') + '>' + s.label + '</option>'; });
-  return '<span class="sel' + (ro ? ' ro' : '') + '" data-s="' + st + '"><select data-act="status-set" data-id="' + esc(t.id) + '" data-fk="st-' + esc(t.id + (tag || '')) + '"' + (alt ? ' data-fk-alt="' + esc(alt) + '"' : '') + ' aria-label="Holat: ' + esc(t.title) + '"' + (ro ? ' disabled' : '') + '>' + opts + '</select></span>';
-}
-function factsHTML(t){
-  const owner = ownerText(t);
-  return '<div class="facts">' +
-    '<span class="who' + (owner ? '' : ' missing') + '"><span class="k">Kim qiladi:</span> <span class="v">' + (owner ? esc(owner) : 'tayinlanmagan') + '</span></span>' +
-    (t.responsibility ? '<span class="resp"><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '') +
-    '</div>';
-}
-
-// Loyihalar view: one project at a time (project sub-tabs), one section at a time (section sub-tabs)
-function selProject(idx){
-  let p = idx.projects.find(x => x.id === S.project);
-  if (!p) { p = idx.projects[0]; S.project = p.id; }
-  return p;
-}
-function selSection(idx, p){
-  const secs = idx.secs.get(p.id) || [];
-  let s = secs.find(x => x.id === S.secSel[p.id]);
-  if (!s) {
-    // start where the work is: the section of the project's current step, else the first section
-    const now = nowStep(projectTasks(idx, p.id));
-    s = (now && idx.meta.get(now.id).s) || secs[0] || null;
-  }
-  return s;
-}
-function projectsHTML(idx){
-  const p = selProject(idx), pi = idx.projects.indexOf(p) + 1;
-  let html = '<div class="subtabs" role="group" aria-label="Loyihalar">' + idx.projects.map((x, i) => {
-    const c = counts(projectTasks(idx, x.id));
-    return '<button type="button" class="stab" aria-current="' + (x.id === p.id) + '" data-act="pick-project" data-p="' + esc(x.id) + '" data-fk="pp-' + esc(x.id) + '">' +
-      '<span class="n">' + (i + 1) + '</span>' + esc(shortName(x)) + '<span class="c">' + c.done + '/' + c.total + '</span></button>';
-  }).join('') + '</div>';
-  const secs = idx.secs.get(p.id) || [], s = selSection(idx, p), pc = counts(projectTasks(idx, p.id));
-  const lead = names(p.lead).join(', '), team = String(p.team || '').trim(), goal = String(p.goal || '').trim();
-  const pfacts = '<div class="pfacts"><span><span class="k">Loyiha mas’uli:</span> <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></span>' +
-    (team ? '<span><span class="k">Jamoa:</span> ' + esc(team) + '</span>' : '') +
-    (goal ? '<span><span class="k">Maqsad:</span> <b>' + esc(goal) + '</b></span>' : '') + '</div>';
-  html += '<section class="proj" id="proj-' + esc(p.id) + '">' +
-    '<header class="proj-head"><div class="proj-num" aria-hidden="true">' + pi + '</div>' +
-      '<div><h2>' + esc(p.name) + '</h2>' + pfacts + (p.summary ? '<p class="psum">' + esc(p.summary) + '</p>' +
-        (String(p.summary).length > 140 ? '<button type="button" class="link-btn more-btn" data-act="more" data-fk="more-' + esc(p.id) + '">Batafsil</button>' : '') : '') + '</div>' +
-      '<div class="proj-side"><span class="mono">' + pc.done + '/' + pc.total + ' bajarildi</span>' +
-        (canWrite() ? '<button type="button" class="link-btn" data-act="edit-project" data-id="' + esc(p.id) + '" data-fk="ep-' + esc(p.id) + '" data-fk-alt="tab-projects" aria-label="Loyihani tahrirlash">Tahrirlash</button>' : '') +
-      '</div></header>';
-  if (secs.length || canWrite()) {
-    html += '<div class="sectabs" role="group" aria-label="Bo‘limlar">' + secs.map((x, i) => {
-      const c = counts(idx.tasks.get(x.id) || []);
-      // names like "1-bosqich: …" already carry their number
-      return '<button type="button" class="stab small" aria-current="' + (!!s && x.id === s.id) + '" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(x.id) + '" data-fk="ps-' + esc(x.id) + '" title="' + esc(x.name) + '">' +
-        (/^\d/.test(String(x.name || '')) ? '' : '<span class="n">' + (i + 1) + '</span>') + '<span class="t">' + esc(x.name) + '</span><span class="c">' + c.done + '/' + c.total + '</span></button>';
-    }).join('') +
-    (canWrite() ? '<button type="button" class="stab small add" data-act="new-section" data-proj="' + esc(p.id) + '" data-fk="ns-' + esc(p.id) + '">+ Bo‘lim qo‘shish</button>' : '') + '</div>';
-  }
-  if (!s) return html + '<p class="empty-sec">Bu loyihada hali bo‘lim yo‘q.' + (canWrite() ? ' “+ Bo‘lim qo‘shish” tugmasini bosing.' : '') + '</p></section>';
-  const ts = idx.tasks.get(s.id) || [], sc = counts(ts);
-  const terms = Array.isArray(s.terms) ? s.terms.filter(x => String(x).trim()) : [];
-  const g = String(s.group || '').trim();
-  html += '<article class="sec" id="sec-' + esc(s.id) + '">' +
-    '<header class="sec-head"><div>' +
-      (g ? '<span class="eyebrow">' + esc(g) + '</span>' : '') +
-      '<h3>' + esc(s.name) + '</h3>' +
-      (s.summary ? '<p class="sec-sum">' + esc(s.summary) + '</p>' : '') +
-      (terms.length ? '<ul class="terms">' + terms.map(x => '<li>' + esc(x) + '</li>').join('') + '</ul>' : '') +
-    '</div><div class="sec-side"><span class="sec-count">' + sc.done + '/' + sc.total + ' qadam</span>' + barHTML(sc) +
-      (canWrite() ? '<button type="button" class="link-btn" data-act="edit-section" data-id="' + esc(s.id) + '" data-fk="es-' + esc(s.id) + '" data-fk-alt="pp-' + esc(p.id) + '" aria-label="Bo‘limni tahrirlash">Tahrirlash</button>' : '') +
-    '</div></header>' +
-    (ts.length ? '<ol class="steps">' + ts.map(t => stepHTML(idx, t)).join('') + '</ol>' : '<p class="empty-sec">Bu bo‘limda hali qadam yo‘q.</p>') +
-    (canWrite() ? '<button type="button" class="add-step" data-act="new-task" data-sec="' + esc(s.id) + '" data-fk="nt-' + esc(s.id) + '">+ Qadam qo‘shish</button>' : '') +
-    '</article>';
-  const si = secs.indexOf(s);
-  if (secs.length > 1) {
-    html += '<div class="secnav">' +
-      (si > 0 ? '<button type="button" class="btn" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(secs[si - 1].id) + '" data-fk="prev-sec" data-fk-alt="ps-' + esc(secs[si - 1].id) + '">← Oldingi bo‘lim</button>' : '<span></span>') +
-      (si < secs.length - 1 ? '<button type="button" class="btn" data-act="pick-section" data-p="' + esc(p.id) + '" data-id="' + esc(secs[si + 1].id) + '" data-fk="next-sec" data-fk-alt="ps-' + esc(secs[si + 1].id) + '">Keyingi bo‘lim →</button>' : '') +
-      '</div>';
-  }
-  return html + (ts.some(isDraft) ? '<p class="legend">Sana ostidagi kesik chiziq — taxminiy dedlayn (hali kelishilmagan).' +
-    (canWrite() ? ' Kelishilgach, qadamni ochib “Taxminiy muddat” belgisini olib tashlang.' : '') + '</p>' : '') +
-    (S.site && canWrite() ? '<p class="legend">Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.</p>' : '') + '</section>';
-}
-function stepHTML(idx, t){
-  const m = idx.meta.get(t.id); const st = stOf(t);
-  return '<li class="step s-' + st + (m.current ? ' is-current' : '') + '">' +
-    '<div class="marker" aria-hidden="true">' + (st === 'done' ? CHECK : m.n) + '</div>' +
-    '<div class="step-body"><button type="button" class="title" data-act="edit-task" data-id="' + esc(t.id) + '" data-fk="et-' + esc(t.id) + '"><span class="k">' + m.n + '. </span>' + esc(t.title) + '</button>' +
-      (m.current ? '<span class="now-tag">' + (st === 'todo' ? 'NAVBATDA' : 'HOZIR') + '</span>' : '') + factsHTML(t) +
-      (t.note ? '<p class="note">' + esc(t.note) + '</p>' : '') + '</div>' +
-    '<div class="meta">' + dueHTML(t) + statusSel(t) + '</div></li>';
-}
-function crowHTML(idx, t, opts){
-  const m = idx.meta.get(t.id); const st = stOf(t);
-  const owner = ownerText(t), tag = (opts && opts.tag) || '';
-  // under one person's name, say who else shares the step
-  const others = opts && opts.group ? names(t.owner).filter(n => nameKey(n) !== opts.group) : [];
-  const facts = (others.length ? '<span><span class="k">Birga:</span> ' + esc(others.join(', ')) + '</span>' : '') +
-    (t.responsibility ? '<span><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '');
-  return '<li class="crow s-' + st + '"><span class="sdot" aria-hidden="true"></span>' +
-    '<div class="step-body"><button type="button" class="title" data-act="edit-task" data-id="' + esc(t.id) + '" data-fk="et-' + esc(t.id + tag) + '">' + esc(t.title) + '</button>' +
-      '<span class="crumb">' + m.pn + '. ' + esc(m.p.name) + ' › ' + esc(m.s.name) + ' · ' + m.n + '-qadam' + '</span>' +
-      (opts && opts.showOwner ? '<div class="facts"><span class="who' + (owner ? '' : ' missing') + '"><span class="k">Kim qiladi:</span> <span class="v">' + (owner ? esc(owner) : 'tayinlanmagan') + '</span></span>' + (t.responsibility ? '<span><span class="k">Nimaga mas’ul:</span> ' + esc(t.responsibility) + '</span>' : '') + '</div>'
-        : (facts ? '<div class="facts">' + facts + '</div>' : '')) +
-    '</div><div class="meta">' + dueHTML(t) + statusSel(t, 'clr', tag) + '</div></li>';
-}
-function noMatchHTML(){
-  return '<div class="nomatch"><p>Bu ro‘yxatda hozircha qadam yo‘q.</p><button type="button" class="btn" data-act="clear-filters" data-fk="clr2" data-fk-alt="tab-' + esc(S.view) + '">Hammasini ko‘rsatish</button></div>';
-}
-
-function peopleHTML(idx){
-  const list = idx.all.filter(t => matches(idx, t));
-  if (!list.length) return noMatchHTML();
-  const groups = new Map();
-  const put = (key, name, t) => { if (!groups.has(key)) groups.set(key, {key, name, tasks: []}); groups.get(key).tasks.push(t); };
-  // a step shared by two people is listed under each of them
-  list.forEach(t => { const ns = names(t.owner); if (!ns.length) put('', '', t); else ns.forEach(n => put(nameKey(n), n, t)); });
-  const arr = [...groups.values()].sort((a, b) => (a.name ? 1 : 0) - (b.name ? 1 : 0) || a.name.localeCompare(b.name));
-  return '<div class="groups">' + arr.map(g => {
-    const c = counts(g.tasks);
-    const head = g.name ? esc(g.name) : 'Mas’ul tayinlanmagan';
-    return '<section class="group' + (g.name ? '' : ' warn') + '"><header class="group-head"><h3>' + head + '</h3>' +
-      '<span class="gstats"><span>' + c.total + ' qadam · ' + c.done + ' bajarildi · ' + c.doing + ' jarayonda</span>' + barHTML(c) + '</span>' +
-      (g.name ? '' : '<p class="group-hint">' + (canWrite() ? 'Bu qadamlarga kim javob berishini belgilang: qadam nomini bosib, “Kim qiladi” maydonini to‘ldiring.' : 'Bu qadamlarga hali mas’ul tayinlanmagan.') + '</p>') +
-      '</header><ul class="crows">' + g.tasks.map(t => crowHTML(idx, t, {showOwner:false, group:g.key, tag:'@' + g.key})).join('') + '</ul></section>';
-  }).join('') + '</div>';
-}
-
-function datesHTML(idx){
-  const list = idx.all.filter(t => matches(idx, t));
-  if (!list.length) return noMatchHTML();
-  const byDate = (a, b) => a.deadline.localeCompare(b.deadline) || idx.all.indexOf(a) - idx.all.indexOf(b);
-  const overdue = list.filter(isOverdue).sort(byDate);
-  const months = new Map(); const none = [];
-  list.forEach(t => {
-    if (isOverdue(t)) return;
-    if (!parseDate(t.deadline)) { none.push(t); return; }
-    const k = t.deadline.slice(0, 7);
-    if (!months.has(k)) months.set(k, []);
-    months.get(k).push(t);
-  });
-  let out = '';
-  const group = (title, ts, cls, hint) => {
-    const c = counts(ts);
-    return '<section class="group' + (cls ? ' ' + cls : '') + '"><header class="group-head"><h3>' + title + '</h3>' +
-      '<span class="gstats"><span>' + c.total + ' qadam · ' + c.done + ' bajarildi</span>' + barHTML(c) + '</span>' +
-      (hint ? '<p class="group-hint">' + hint + '</p>' : '') +
-      '</header><ul class="crows">' + ts.map(t => crowHTML(idx, t, {showOwner:true})).join('') + '</ul></section>';
-  };
-  if (overdue.length) out += group('Kechikkan', overdue, 'danger', 'Bu qadamlarning dedlayni o‘tib ketdi.' + (canWrite() ? ' Holatini yangilang yoki yangi dedlayn kelishing.' : ''));
-  [...months.keys()].sort().forEach(k => {
-    const [y, mo] = k.split('-').map(Number);
-    const label = MONTHS[mo-1].charAt(0).toUpperCase() + MONTHS[mo-1].slice(1) + ' ' + y;
-    out += group(esc(label), months.get(k).sort(byDate), '', '');
-  });
-  if (none.length) out += group('Dedlayn belgilanmagan', none, 'warn', canWrite() ? 'Har bir qadamga dedlayn qo‘ying, shunda kechikish ko‘rinib turadi.' : '');
-  return '<div class="groups">' + out + '</div>';
-}
-
 /* ---------- writes ---------- */
 const queues = new Map();
 const sleep = ms => new Promise(r => setTimeout(r, ms));
@@ -1062,11 +852,6 @@ function writeFailed(e){
 function base(obj){ const b = Object.assign({}, obj || {}); delete b.id; return b; }
 const nowIso = () => new Date().toISOString();
 function nextOrder(list){ return list.reduce((m, x) => Math.max(m, num(x.order) < 1e9 ? num(x.order) : 0), 0) + 1; }
-
-function setStatus(id, st){
-  const t = S.tasks.get(id); if (!t || stOf(t) === st || !ST[st]) return;
-  write('tasks/' + id, r => r.update({status: st, updatedAt: nowIso()})).then(() => toast('Holat: ' + ST[st].label)).catch(() => { scheduleRender(); });
-}
 
 /* ---------- toast ---------- */
 let toastT = 0;
@@ -1227,7 +1012,7 @@ function saveMeta(){
       lead: names(M.lead.value).join(', '), team: M.team.value.trim(), goal: M.goal.value.trim(), order: existing ? num(existing.order) : nextOrder([...S.projects.values()]), updatedAt: nowIso()});
     const id = metaEdit.id || S.db.collection('projects').doc().id;
     MD.close();
-    write('projects/' + id, r => r.set(data)).then(() => { toast(existing ? 'Loyiha saqlandi' : 'Loyiha qo‘shildi'); if (!existing) { S.project = id; S.view = 'projects'; savePrefs(); render(); } }).catch(() => {});
+    write('projects/' + id, r => r.set(data)).then(() => { toast(existing ? 'Loyiha saqlandi' : 'Loyiha qo‘shildi'); if (!existing) { S.slide = id; render(); } }).catch(() => {});
   } else {
     const existing = metaEdit.id ? S.sections.get(metaEdit.id) : null;
     if (metaEdit.id && !existing) { MD.close(); toast('Bu bo‘lim o‘chirib yuborilgan — o‘zgarish saqlanmadi.'); return; }
@@ -1248,7 +1033,6 @@ function saveMeta(){
         if (existing && moved) {
           for (const t of [...S.tasks.values()].filter(t => t.sectionId === id)) await write('tasks/' + t.id, r => r.update({projectId}));
         }
-        if (!existing || moved) { S.secSel[projectId] = id; S.project = projectId; savePrefs(); scheduleRender(); }
         toast(existing ? 'Bo‘lim saqlandi' : 'Bo‘lim qo‘shildi');
       } catch (e) {}
     })();
@@ -1268,7 +1052,6 @@ $('#m-del').addEventListener('click', e => arm(e.currentTarget, () => {
         for (const t of [...S.tasks.values()].filter(t => t.projectId === id || secIds.includes(t.sectionId))) await write('tasks/' + t.id, r => r.delete());
         for (const sid of secIds) await write('sections/' + sid, r => r.delete());
         await write('projects/' + id, r => r.delete());
-        if (S.project === id) { S.project = ''; delete S.secSel[id]; savePrefs(); }
         toast('Loyiha o‘chirildi');
       }
     } catch (err) {}
@@ -1288,19 +1071,7 @@ document.addEventListener('click', e => {
   const el = e.target.closest('[data-act]');
   if (!el || el.tagName === 'SELECT') return;
   const act = el.dataset.act;
-  if (act === 'view') { S.view = el.dataset.v; savePrefs(); render(); window.scrollTo({top:0}); }
-  else if (act === 'goto') { S.view = el.dataset.v; S.status = el.dataset.s || 'all'; S.flag = el.dataset.f || null; savePrefs(); render(); window.scrollTo({top:0}); }
-  else if (act === 'open-project') { S.view = 'projects'; S.project = el.dataset.p; savePrefs(); render(); window.scrollTo({top:0}); }
-  else if (act === 'pick-project') { S.project = el.dataset.p; savePrefs(); render(); }
-  else if (act === 'pick-section') {
-    const fromNav = !!el.closest('.secnav'); // read before render(): el is gone afterwards
-    S.project = el.dataset.p; S.secSel[el.dataset.p] = el.dataset.id; savePrefs(); render();
-    // previous/next sit below the steps: bring the new section's tabs back into view
-    const row = fromNav && $('.sectabs');
-    if (row) { const y = row.getBoundingClientRect().top - $('.top').getBoundingClientRect().bottom - 8; if (y < 0) window.scrollBy({top: y}); }
-  }
-  else if (act === 'more') { const head = el.closest('.proj-head'); if (head) { const open = head.classList.toggle('full'); el.textContent = open ? 'Yig‘ish' : 'Batafsil'; } }
-  else if (act === 'clear-filters') { S.status = 'all'; S.flag = null; render(); }
+  if (act === 'toggle-edit') { S.edit = !S.edit; savePrefs(); render(); }
   else if (act === 'reload') location.reload();
   else if (act === 'slide') moveSlide(Number(el.dataset.d) || 0);
   else if (act === 'slide-to') { S.slide = el.dataset.k; render(); }
@@ -1318,7 +1089,7 @@ document.addEventListener('click', e => {
 });
 // presentation: arrow keys and swipes turn the slides; the deck is re-fitted when the window changes
 document.addEventListener('keydown', e => {
-  if (S.view !== 'present' || !$('#deck') || TD.open || MD.open || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (!$('#deck') || TD.open || MD.open || e.altKey || e.ctrlKey || e.metaKey) return;
   if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
   const d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
   if (d) { e.preventDefault(); moveSlide(d); }
@@ -1335,15 +1106,7 @@ document.addEventListener('touchend', e => {
 }, {passive: true});
 let fitT = 0;
 window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { if (document.body.classList.contains('presenting')) fitSlide(); }, 80); });
-document.addEventListener('fullscreenchange', () => { if (S.view === 'present') render(); });
-document.addEventListener('change', e => {
-  const el = e.target;
-  if (el.dataset && el.dataset.act === 'status-set') {
-    const wrap = el.closest('.sel'); if (wrap) wrap.dataset.s = el.value;
-    setStatus(el.dataset.id, el.value);
-  }
-});
-
+document.addEventListener('fullscreenchange', () => { if ($('#deck')) render(); });
 /* ---------- boot ---------- */
 // People who open a public link without signing in to claude.ai get no live data,
 // so the page carries a read-only copy of the plan (refreshed whenever the page is republished).
