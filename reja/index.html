@@ -91,6 +91,80 @@ button,input,select,textarea{font:inherit;color:inherit}
 
 /* main */
 main.wrap{padding-block:20px 72px;display:flex;flex-direction:column;gap:22px}
+
+/* presentation: one screen per slide. Sizes inside a slide are in em, so the whole slide can be scaled to fit. */
+body.presenting{overflow:hidden}
+body.presenting main.wrap{max-width:none;padding:0;display:block}
+body.presenting main.wrap > .banner{margin:10px 16px}
+.deck{display:grid;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;height:calc(100vh - 66px);background:var(--bg);min-width:0}
+.deck:fullscreen{height:100vh;padding-top:env(safe-area-inset-top,0px)}
+.slide{min-width:0;min-height:0;overflow:auto;padding:clamp(14px,2.2vw,36px) max(clamp(16px,4vw,64px),env(safe-area-inset-right,0px)) 10px max(clamp(16px,4vw,64px),env(safe-area-inset-left,0px))}
+.slide-in{font-size:clamp(13px,.55vw + .9vh + 5px,23px);max-width:1500px;margin:0 auto}
+.sl-head h2{font-size:1.8em;font-weight:800;margin-top:.2em}
+.sl-head .label{font-size:.72em}
+.sl-kpis{display:flex;flex-wrap:wrap;gap:.5em;margin-top:.7em}
+.sl-kpis .kpi{font-size:inherit;padding:.4em .8em;display:inline-flex;align-items:baseline;gap:.45em}
+.sl-kpis .kpi strong{font-size:1.15em}.sl-kpis .kpi span{font-size:.8em}
+.sl-grid{display:grid;gap:.75em;grid-template-columns:repeat(auto-fit,minmax(min(100%,17em),1fr));margin-top:1em;align-content:start}
+.sl-tile{display:grid;grid-template-columns:auto minmax(0,1fr);gap:.1em .8em;align-content:start;text-align:left;background:var(--surface);border:1px solid var(--line);border-radius:.75em;padding:.85em 1em;cursor:pointer;color:var(--ink);font-size:1em;min-width:0}
+.sl-tile:hover{border-color:var(--ink-3)}
+.sl-tile > span{display:block;grid-column:2;min-width:0}
+.sl-tile > .sl-n{grid-column:1;grid-row:1 / span 3;font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:2.1em;line-height:1;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.sl-name{font-family:var(--f-display);font-stretch:112%;font-weight:800;font-size:1.15em;line-height:1.2;overflow-wrap:anywhere}
+.sl-goal{font-weight:600;line-height:1.35;margin-top:.3em;overflow-wrap:anywhere}
+.sl-goal.miss,.sl-goalbig.miss{color:var(--accent-ink);font-weight:500}
+.sl-lead{font-size:.82em;color:var(--ink-2);margin-top:.35em;overflow-wrap:anywhere}
+.sl-proj{display:grid;gap:1.4em 2.4em;grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:start}
+@media (max-width:820px){.sl-proj{grid-template-columns:minmax(0,1fr)}}
+.sl-hero{display:grid;gap:.35em;align-content:start;justify-items:start;border-top:.22em solid var(--ink);padding-top:.8em;min-width:0}
+.sl-num{font-family:var(--f-display);font-weight:800;font-stretch:125%;font-size:4em;line-height:.85;color:var(--accent-ink);font-variant-numeric:tabular-nums}
+.sl-hero h2{font-size:2.1em;font-weight:800;overflow-wrap:anywhere}
+.sl-k{font:500 .72em var(--f-mono);letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3);margin-top:.8em}
+.sl-goalbig{font-family:var(--f-display);font-stretch:108%;font-weight:700;font-size:1.6em;line-height:1.2;text-wrap:balance;overflow-wrap:anywhere}
+.sl-who{font-size:.95em;overflow-wrap:anywhere}
+.sl-who b{font-weight:600}
+.sl-prog{display:flex;align-items:center;gap:.8em;font-size:.8em;color:var(--ink-2);margin-top:.5em;width:100%}
+.sl-prog .bar{flex:1;max-width:14em;height:.45em}
+.sl-hero .link-btn{font-size:.85em;margin-top:.4em}
+.sl-secs{display:grid;gap:.9em;align-content:start;align-items:start;min-width:0}
+.sl-secs.n2,.sl-secs.n3{grid-template-columns:repeat(auto-fit,minmax(min(100%,14em),1fr))}
+.sl-sec{background:var(--surface);border:1px solid var(--line);border-radius:.75em;padding:.8em 1em;min-width:0}
+.sl-sec h3{font-size:1.02em;font-weight:800;margin-bottom:.5em;overflow-wrap:anywhere}
+.sl-steps{list-style:none;margin:0;padding:0;display:grid;gap:.45em}
+.sl-steps li{display:grid;grid-template-columns:1em minmax(0,1fr);gap:0 .55em;align-items:start;line-height:1.3}
+.sl-dot{width:.95em;height:.95em;border-radius:50%;border:.14em solid var(--todo);margin-top:.17em;display:grid;place-items:center;color:var(--on-sem)}
+.sl-dot svg{width:.7em;height:.7em}
+.q-doing > .sl-dot{background:var(--doing);border-color:var(--doing)}
+.q-done > .sl-dot{background:var(--done);border-color:var(--done)}
+.q-blocked > .sl-dot{background:var(--blocked-soft);border-color:var(--blocked)}
+.sl-t{font-weight:600;font-size:.95em;overflow-wrap:anywhere}
+.q-done > .sl-t{color:var(--ink-2)}
+.sl-m{grid-column:2;font-size:.78em;color:var(--ink-2);overflow-wrap:anywhere}
+.sl-m .late{color:var(--blocked);font-weight:600}
+.sl-empty{color:var(--ink-3);font-size:.9em}
+.deck-nav{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));border-top:1px solid var(--line);background:var(--bg)}
+.deck-dots{display:flex;gap:4px;overflow-x:auto;min-width:0;max-width:100%;padding:2px}
+.dot{flex:none;min-width:36px;height:36px;padding:0 6px;border-radius:8px;border:1px solid var(--line);background:var(--surface);color:var(--ink-2);font:700 13.5px var(--f-display);cursor:pointer;font-variant-numeric:tabular-nums}
+.dot:hover{border-color:var(--ink-3)}
+.dot.on{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.deck-full{margin-left:6px}
+@media (max-width:560px){.deck-nav .btn-sq,.deck-nav .deck-full{display:none}.deck-dots{flex:1;justify-content:center}.dot{flex:1 1 0;min-width:30px;max-width:46px;height:40px;padding:0}}
+/* phones: the same slide, packed tighter so it still fits one screen */
+@media (max-width:560px){
+  .slide{padding-top:12px}
+  .sl-head h2{font-size:1.35em}
+  .sl-grid{gap:.5em;margin-top:.7em}
+  .sl-tile{padding:.6em .8em}
+  .sl-tile > .sl-n{font-size:1.7em}
+  .sl-hero{grid-template-columns:auto minmax(0,1fr);column-gap:.7em;align-items:center}
+  .sl-hero > *{grid-column:1 / -1}
+  .sl-hero > .sl-num{grid-column:1;font-size:2.4em}
+  .sl-hero > h2{grid-column:2;font-size:1.55em}
+  .sl-k{margin-top:.4em}
+  .sl-goalbig{font-size:1.3em}
+  .sl-proj{gap:1em}
+  .sl-sec{padding:.65em .8em}
+}
 .notice{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px 24px;display:grid;gap:10px;max-width:640px}
 .notice h2{font-size:20px}
 .notice p{color:var(--ink-2)}
@@ -344,7 +418,7 @@ dialog form{display:flex;flex-direction:column;max-height:calc(100vh - 34px);max
       </div>
     </div>
     <nav class="tabs" aria-label="Ko‘rinish">
-      <button class="tab" type="button" data-act="view" data-v="overview" data-fk="tab-overview">Umumiy</button>
+      <button class="tab" type="button" data-act="view" data-v="present" data-fk="tab-present">Taqdimot</button>
       <button class="tab" type="button" data-act="view" data-v="projects" data-fk="tab-projects">Loyihalar</button>
       <button class="tab" type="button" data-act="view" data-v="people" data-fk="tab-people">Mas’ullar</button>
       <button class="tab" type="button" data-act="view" data-v="dates" data-fk="tab-dates">Dedlaynlar</button>
@@ -460,7 +534,7 @@ dialog form{display:flex;flex-direction:column;max-height:calc(100vh - 34px);max
 
 <datalist id="ownerList"></datalist>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
-<script type="application/json" id="snapshot">{"at":"2026-11-20","projects":[{"goal":"01.03.2027 gacha kunlik reyslar 300 tadan 500 taga","lead":"Sherzod Muhammadjon","name":"Ekspeditorlik","team":"Axror va Azizbek sotuv","order":1,"summary":"","updatedAt":"2026-11-20T10:47:28.000Z","id":"GyXCsUNgXBAj4FAPQ1b0"},{"goal":"","lead":"Oyatillo, Hikmatillo","name":"DISTRIBUTION","team":"","order":7,"summary":"","updatedAt":"2026-11-20T10:47:28.000Z","id":"gHUwk1NjK2nosyTjLOhc"},{"goal":"01.03.2027 gacha kapital 3 mln dan 10 mln ga, mashinalar 40 tadan 100 taga","lead":"Bunyod, Donyor","name":"Garaj (to‘liq model)","team":"","order":2,"summary":"To‘liq model: investor garajga kamida 10 ta mashina bilan kiradi va umumiy foydadan ulush oladi; foyda ham, zarar ham bo‘linadi.","updatedAt":"2026-11-20T10:47:28.000Z","id":"garaj"},{"goal":"01.03.2027 holatiga 20 ming haydovchi dasturdan foydalanadi","lead":"Ayubjon, Sherzod","name":"Lorry","team":"Ilxom aka (dasturlash), Sherzod (marketing)","order":6,"summary":"Haydovchilar ishlatadigan dastur.","updatedAt":"2026-11-20T10:47:28.000Z","id":"lorry"},{"goal":"100 ta tirkamani ijaraga berish: tanishlar, 20% ulush, zavodlar","lead":"Jasurbek","name":"Presep (tirkama)","team":"","order":3,"summary":"Faqat tirkama yo‘nalishi, 3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan topilgan pulning 20% ulushi, zavodlarga ijara.","updatedAt":"2026-11-20T10:47:28.000Z","id":"presep"},{"goal":"20 ta mashina bilan Qozog‘iston bozoriga kirish; birinchi buyurtmachi Coca-Cola","lead":"Aris, Mavlonbek","name":"Qozog‘iston","team":"","order":4,"summary":"1 hodim Arisga borib 1 oy bozorni o‘rganadi va fuqarolikni oladi. Keyin Investor A, so‘ng yaponiyalik hamkorlar qo‘shiladi. 20 ta mashina bilan boshlab Coca-Coladan buyurtma olamiz, keyin O‘zbekistondagi kabi ko‘cha bilan ishlaymiz va bu yerdagi modelni ko‘chiramiz. Data yig‘ilgach, O‘zbekistonda sinalgan Lorry va 123yuk bozorga olib kiriladi.","updatedAt":"2026-11-20T10:47:28.000Z","id":"qozogiston"},{"goal":"31.12.2026 gacha 7 ta zavodda ishlaydi","lead":"Ayubjon","name":"123yuk","team":"","order":5,"summary":"Kompaniyaning dasturiy platformasi: zavodlarda yuk nazorati, haydovchilar va faktoring. Pul oqimlari islomiy moliya bo‘yicha: foiz yo‘q, belgilangan ustama, kechikish uchun foyda yo‘q.","updatedAt":"2026-11-20T10:47:28.000Z","id":"yuk123"}],"sections":[{"name":"Sotuv","group":"","order":1,"terms":[],"summary":"","projectId":"GyXCsUNgXBAj4FAPQ1b0","updatedAt":"2026-11-20T09:40:05.257Z","id":"NSSeXbht6KAIpFnweX8x"},{"name":"Investorlarni jalb qilish","group":"","order":1,"terms":["Investor kamida 10 ta mashina bilan kiradi","Umumiy foydadan ulush hisobida","Foyda ham, zarar ham ulushga qarab"],"summary":"Investor bilan shartlarni yozib, islomiy moliya bo‘yicha tekshirib, hujjatga aylantirish; keyin real raqamlar bilan hisob ko‘rsatib, investor topish va kapitalni oshirish.","projectId":"garaj","updatedAt":"2026-11-20T10:17:20.000Z","id":"garaj-s1"},{"name":"Garaj optimizatsiyasi","group":"","order":2,"terms":[],"summary":"Haydovchilarni ishga olish, mashinalar to‘xtamasdan yurishi va garajni avtomatlashtirish.","projectId":"garaj","updatedAt":"2026-11-20T10:19:23.000Z","id":"garaj-s3"},{"name":"Bozorga kirish","group":"","order":1,"terms":["20 ta mashina","Birinchi buyurtmachi: Coca-Cola"],"summary":"1 oy ichida bozorni o‘rganib, firma sotib olish yoki ochish; keyin 20 ta mashina bilan ekspeditorlikni yo‘lga qo‘yish: birinchi buyurtmachi Coca-Cola, so‘ng boshqa zavodlar.","projectId":"qozogiston","updatedAt":"2026-11-20T10:31:58.000Z","id":"kz-s1"},{"name":"Asosiy ishlar","group":"","order":1,"terms":[],"summary":"Dasturni tayyorlash va haydovchilarni jalb qilish.","projectId":"lorry","updatedAt":"2026-11-20T10:41:21.000Z","id":"lorry-s1"},{"name":"Bosqichlar","group":"","order":1,"terms":[],"summary":"3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan 20% ulush, zavodlarga ijara. Har bir bosqich oldingisi baholangandan keyin boshlanadi.","projectId":"presep","updatedAt":"2026-11-20T10:47:28.000Z","id":"presep-s1"},{"name":"Sotuv bo‘limini tashkil qilish","group":"","order":1,"terms":["Yil oxirigacha 7 ta zavodda ishlashi kerak","Muddat: 31.12.2026"],"summary":"31.12.2026 gacha 123yukni 7 ta zavodda bosqichma-bosqich ishga tushirish. Ketma-ketlik: Familiy, Montella, Motabar, Chortoq, Nestle, Akfa, sement zavodi; keyin KIA va BYD zavodlari, Sochniya dalina.","projectId":"yuk123","updatedAt":"2026-11-20T10:39:50.000Z","id":"yuk-s1"},{"name":"Dastur xavfsizligi va texnik yordam","group":"","order":2,"terms":[],"summary":"Dastur xavfsizligi va zavodlarga texnik yordam.","projectId":"yuk123","updatedAt":"2026-11-20T10:33:45.000Z","id":"yuk-s2"},{"name":"Faktoringni yo‘lga qo‘yish","group":"","order":3,"terms":["Foiz yo‘q","Belgilangan ustama","Kechikish uchun jarima-foyda yo‘q"],"summary":"Transport kompaniyasi va haydovchiga pulni tezroq berish, islomiy moliya bo‘yicha: ustama imzolashda bir marta belgilanadi, muddat cho‘zilsa oshmaydi.","projectId":"yuk123","updatedAt":"2026-11-20T10:47:28.000Z","id":"yuk-s4"}],"tasks":[{"note":"","order":1,"owner":"Axror, Aziz","title":"Hozirgi 300 tadan kunlik 500 taga chiqarish","status":"todo","deadline":"2027-03-01","projectId":"GyXCsUNgXBAj4FAPQ1b0","sectionId":"NSSeXbht6KAIpFnweX8x","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Kunlik reyslar soni 500+ bo‘lishi kerak","id":"9at6YC5yFCMsXltjerZo"},{"note":"Buni oilaviy holatda ko‘paytirish","order":1,"owner":"Ibrohimjon aka","title":"Kapitalni 3 mln dan 10 mln gacha ko‘tarish","status":"todo","deadline":"2027-03-01","projectId":"garaj","sectionId":"garaj-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"40 ta mashinadan 100 taga chiqarish","id":"AxY5QoJjXQFtjLW8dAIO"},{"note":"","order":1,"owner":"Bunyod, Donyor","title":"Haydovchilarni ishga olish","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Har bir mashinaga haydovchi biriktirilgan","id":"garaj-opt-1"},{"note":"","order":2,"owner":"Bunyod, Donyor","title":"Mashinalar to‘xtamasdan yurishini ta’minlash","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Bo‘sh turgan mashina yo‘q: har bir mashina doim reysda","id":"garaj-opt-2"},{"note":"","order":3,"owner":"Bunyod, Donyor","title":"Garajni avtomatlashtirish","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Garaj hisobi va nazorati dasturda yuritiladi","id":"garaj-opt-3"},{"note":"","order":4,"owner":"Jasurbek","title":"3 oy natijasini yakunlash va saboqlarni yozish","status":"todo","deadline":"2027-06-15","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T02:00:00.000Z","deadlineDraft":true,"responsibility":"Garaj natijalari hisoboti; Qozog‘istondagi 20 ta mashina rejasida foydalanish uchun beriladi","id":"garaj-s3-4"},{"note":"","order":1,"owner":"Aris, Mavlonbek","title":"1 oy ichida bozorni o‘rganish","status":"todo","deadline":"2026-12-20","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":true,"responsibility":"Bozor bo‘yicha hisobot: yuk oqimi, narxlar, raqobatchilar","id":"kz-b-1"},{"note":"","order":2,"owner":"Aris, Mavlonbek","title":"Bor firmani sotib olish yoki yangi firma ochish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Qozog‘istonda ishlashga tayyor firma","id":"kz-b-2"},{"note":"","order":3,"owner":"Aris, Mavlonbek","title":"Bozor tahlili","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Tahlil: qaysi yo‘nalish va zavodlardan boshlash","id":"kz-b-3"},{"note":"","order":4,"owner":"Aris, Mavlonbek","title":"20 ta mashina sotib olish va ularni yukka qo‘yish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"20 ta mashina reysda","id":"kz-b-4"},{"note":"","order":5,"owner":"Aris, Mavlonbek","title":"Ekspeditorlik biznesini yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Ekspeditorlik ishlayapti: buyurtma olinadi, yukka mashina topiladi","id":"kz-b-5"},{"note":"","order":6,"owner":"Aris, Mavlonbek","title":"Birinchi buyurtmachi: Coca-Cola","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Coca-Cola bilan shartnoma va birinchi reyslar","id":"kz-b-6"},{"note":"","order":7,"owner":"Aris, Mavlonbek","title":"Boshqa zavodlardan ham yuk olish va bozorga kirish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Coca-Coladan tashqari zavodlar bilan shartnomalar","id":"kz-b-7"},{"note":"","order":1,"owner":"Ilxom aka","title":"Dasturni tayyorlash","status":"todo","deadline":"","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:41:21.000Z","deadlineDraft":false,"responsibility":"Haydovchilar ishlata oladigan dastur","id":"lorry-a-1"},{"note":"","order":2,"owner":"Sherzod","title":"Haydovchilarni jalb qilish","status":"todo","deadline":"","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Haydovchilar dasturga ulanmoqda","id":"lorry-a-2"},{"note":"","order":3,"owner":"Ayubjon, Sherzod","title":"20 ming haydovchi dasturdan foydalanadi","status":"todo","deadline":"2027-03-01","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:41:21.000Z","deadlineDraft":false,"responsibility":"Dasturdan foydalanayotgan haydovchilar soni 20 mingga yetgan","id":"lorry-a-3"},{"note":"","order":2,"owner":"Jasurbek","title":"2-bosqich: tyagachi bor hamkorlar bilan 20% ulush","status":"todo","deadline":"","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Hamkorlar topgan pulning 20% ulushi olinadi","id":"presep-b-2"},{"note":"","order":3,"owner":"Jasurbek","title":"3-bosqich: zavodlarga ijara","status":"todo","deadline":"","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Tirkamalar zavodlarda ijarada; zavod uchun yo‘l narxi arzonlashadi","id":"presep-b-3"},{"note":"","order":1,"owner":"Jasurbek","title":"1-bosqich: tanishlarga 100 ta tirkamani 1 oyga ijaraga berish va qaytarib olish, holatini tekshirish va natijani baholash","status":"todo","deadline":"2027-03-01","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Berish va Qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori","id":"presep-s1-4"},{"note":"","order":1,"owner":"Ayubjon","title":"Faktoringni yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s4","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Birinchi faktoring bitimlari o‘tkazilgan, islomiy moliya shartlari bo‘yicha","id":"yuk-f-1"},{"note":"","order":1,"owner":"Ayubjon","title":"Dastur xavfsizligini ta’minlash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s2","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Zavodlar ma’lumoti himoyalangan, kirish huquqlari tartibga solingan","id":"yuk-x-1"},{"note":"","order":2,"owner":"Ayubjon","title":"Zavodlarga texnik yordamni yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s2","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Zavod murojaat qiladigan aloqa bor, murojaatlarga javob beriladi","id":"yuk-x-2"},{"note":"","order":1,"owner":"Ayubjon","title":"Familiy zavodini ulash","status":"todo","deadline":"2026-11-27","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-1"},{"note":"","order":2,"owner":"Ayubjon","title":"Montella zavodini ulash","status":"todo","deadline":"2026-12-04","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-2"},{"note":"","order":3,"owner":"Ayubjon","title":"Motabar zavodini ulash","status":"todo","deadline":"2026-12-11","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-3"},{"note":"","order":4,"owner":"Ayubjon","title":"Chortoq zavodini ulash","status":"todo","deadline":"2026-12-17","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-4"},{"note":"","order":5,"owner":"Ayubjon","title":"Nestle zavodini ulash","status":"todo","deadline":"2026-12-22","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-5"},{"note":"","order":6,"owner":"Ayubjon","title":"Akfa zavodini ulash","status":"todo","deadline":"2026-12-27","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-6"},{"note":"","order":7,"owner":"Ayubjon","title":"Sement zavodini ulash","status":"todo","deadline":"2026-12-31","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"7 ta zavodning hammasi 123yuk orqali ishlayapti","id":"yuk-z-7"},{"note":"","order":8,"owner":"Ayubjon","title":"KIA va BYD zavodlarini ulash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-8"},{"note":"","order":9,"owner":"Ayubjon","title":"Sochniya dalina zavodini ulash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-9"}]}</script>
+<script type="application/json" id="snapshot">{"at":"2026-11-20","projects":[{"goal":"01.03.2027 gacha kunlik reyslar 300 tadan 500 taga","lead":"Sherzod Muhammadjon","name":"Ekspeditorlik","team":"Axror va Azizbek sotuv","order":1,"summary":"","updatedAt":"2026-11-20T10:47:28.000Z","id":"GyXCsUNgXBAj4FAPQ1b0"},{"goal":"Zavod mahsulotlarini savdo nuqtalariga muntazam yetkazib berishni yo‘lga qo‘yish","lead":"Oyatillo, Hikmatillo","name":"DISTRIBUTION","team":"","order":7,"summary":"Distribyutsiya: zavod mahsulotlarini do‘konlar va savdo nuqtalariga yetkazib berish.","updatedAt":"2026-11-20T10:58:37.000Z","id":"gHUwk1NjK2nosyTjLOhc"},{"goal":"01.03.2027 gacha kapital 3 mln dan 10 mln ga, mashinalar 40 tadan 100 taga","lead":"Bunyod, Donyor","name":"Garaj (to‘liq model)","team":"","order":2,"summary":"To‘liq model: investor garajga kamida 10 ta mashina bilan kiradi va umumiy foydadan ulush oladi; foyda ham, zarar ham bo‘linadi.","updatedAt":"2026-11-20T10:47:28.000Z","id":"garaj"},{"goal":"01.03.2027 holatiga 20 ming haydovchi dasturdan foydalanadi","lead":"Ayubjon, Sherzod","name":"Lorry","team":"Ilxom aka (dasturlash), Sherzod (marketing)","order":6,"summary":"Haydovchilar ishlatadigan dastur.","updatedAt":"2026-11-20T10:56:29.962Z","id":"lorry"},{"goal":"100 ta tirkamani ijaraga berish: tanishlar, 20% ulush, zavodlar","lead":"Jasurbek","name":"Presep (tirkama)","team":"","order":3,"summary":"Faqat tirkama yo‘nalishi, 3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan topilgan pulning 20% ulushi, zavodlarga ijara.","updatedAt":"2026-11-20T10:47:28.000Z","id":"presep"},{"goal":"20 ta mashina bilan Qozog‘iston bozoriga kirish; birinchi buyurtmachi Coca-Cola","lead":"Aris, Mavlonbek","name":"Qozog‘iston","team":"","order":4,"summary":"1 oy ichida bozorni o‘rganamiz va bor firmani sotib olamiz yoki yangi firma ochamiz. 20 ta mashina bilan ekspeditorlikni yo‘lga qo‘yamiz: birinchi buyurtmachi Coca-Cola, keyin boshqa zavodlardan ham yuk olib, bozorga kiramiz.","updatedAt":"2026-11-20T10:50:57.000Z","id":"qozogiston"},{"goal":"31.12.2026 gacha 7 ta zavodda ishlaydi","lead":"Ayubjon","name":"123yuk","team":"","order":5,"summary":"Kompaniyaning dasturiy platformasi: zavodlarda yuk nazorati, haydovchilar va faktoring. Pul oqimlari islomiy moliya bo‘yicha: foiz yo‘q, belgilangan ustama, kechikish uchun foyda yo‘q.","updatedAt":"2026-11-20T10:47:28.000Z","id":"yuk123"}],"sections":[{"name":"Sotuv","group":"","order":1,"terms":[],"summary":"","projectId":"GyXCsUNgXBAj4FAPQ1b0","updatedAt":"2026-11-20T09:40:05.257Z","id":"NSSeXbht6KAIpFnweX8x"},{"name":"Asosiy ishlar","group":"","order":1,"terms":[],"summary":"Zavod bilan kelishish, yetkazib berishni tashkil qilish va muntazam ishga tushirish.","projectId":"gHUwk1NjK2nosyTjLOhc","updatedAt":"2026-11-20T10:58:37.000Z","id":"dist-s1"},{"name":"Investorlarni jalb qilish","group":"","order":1,"terms":["Investor kamida 10 ta mashina bilan kiradi","Umumiy foydadan ulush hisobida","Foyda ham, zarar ham ulushga qarab"],"summary":"Investor bilan shartlarni yozib, islomiy moliya bo‘yicha tekshirib, hujjatga aylantirish; keyin real raqamlar bilan hisob ko‘rsatib, investor topish va kapitalni oshirish.","projectId":"garaj","updatedAt":"2026-11-20T10:17:20.000Z","id":"garaj-s1"},{"name":"Garaj optimizatsiyasi","group":"","order":2,"terms":[],"summary":"Haydovchilarni ishga olish, mashinalar to‘xtamasdan yurishi va garajni avtomatlashtirish.","projectId":"garaj","updatedAt":"2026-11-20T10:19:23.000Z","id":"garaj-s3"},{"name":"Bozorga kirish","group":"","order":1,"terms":["20 ta mashina","Birinchi buyurtmachi: Coca-Cola"],"summary":"1 oy ichida bozorni o‘rganib, firma sotib olish yoki ochish; keyin 20 ta mashina bilan ekspeditorlikni yo‘lga qo‘yish: birinchi buyurtmachi Coca-Cola, so‘ng boshqa zavodlar.","projectId":"qozogiston","updatedAt":"2026-11-20T10:31:58.000Z","id":"kz-s1"},{"name":"Asosiy ishlar","group":"","order":1,"terms":[],"summary":"Dasturni tayyorlash va haydovchilarni jalb qilish.","projectId":"lorry","updatedAt":"2026-11-20T10:41:21.000Z","id":"lorry-s1"},{"name":"Bosqichlar","group":"","order":1,"terms":[],"summary":"3 bosqich ketma-ket: tanishlarga 1 oylik ijara, tyagachi bor hamkorlar bilan 20% ulush, zavodlarga ijara. Har bir bosqich oldingisi baholangandan keyin boshlanadi.","projectId":"presep","updatedAt":"2026-11-20T10:47:28.000Z","id":"presep-s1"},{"name":"Sotuv bo‘limini tashkil qilish","group":"","order":1,"terms":["Yil oxirigacha 7 ta zavodda ishlashi kerak","Muddat: 31.12.2026"],"summary":"Sotuv bo‘limi 123yukni 31.12.2026 gacha 7 ta zavodga bosqichma-bosqich ulaydi. Ketma-ketlik: Familiy, Montella, Motabar, Chortoq, Nestle, Akfa, sement zavodi; keyin KIA va BYD zavodlari, Sochniya dalina.","projectId":"yuk123","updatedAt":"2026-11-20T10:50:57.000Z","id":"yuk-s1"},{"name":"Dastur xavfsizligi va texnik yordam","group":"","order":2,"terms":[],"summary":"Dastur xavfsizligi va zavodlarga texnik yordam.","projectId":"yuk123","updatedAt":"2026-11-20T10:33:45.000Z","id":"yuk-s2"},{"name":"Faktoringni yo‘lga qo‘yish","group":"","order":3,"terms":["Foiz yo‘q","Belgilangan ustama","Kechikish uchun jarima-foyda yo‘q"],"summary":"Transport kompaniyasi va haydovchiga pulni tezroq berish, islomiy moliya bo‘yicha: ustama imzolashda bir marta belgilanadi, muddat cho‘zilsa oshmaydi.","projectId":"yuk123","updatedAt":"2026-11-20T10:47:28.000Z","id":"yuk-s4"}],"tasks":[{"note":"","order":1,"owner":"Axror, Aziz","title":"Hozirgi 300 tadan kunlik 500 taga chiqarish","status":"todo","deadline":"2027-03-01","projectId":"GyXCsUNgXBAj4FAPQ1b0","sectionId":"NSSeXbht6KAIpFnweX8x","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Kunlik reyslar soni 500+ bo‘lishi kerak","id":"9at6YC5yFCMsXltjerZo"},{"note":"Buni oilaviy holatda ko‘paytirish","order":1,"owner":"Ibrohimjon aka","title":"Kapitalni 3 mln dan 10 mln gacha ko‘tarish","status":"todo","deadline":"2027-03-01","projectId":"garaj","sectionId":"garaj-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"40 ta mashinadan 100 taga chiqarish","id":"AxY5QoJjXQFtjLW8dAIO"},{"note":"","order":1,"owner":"Oyatillo, Hikmatillo","title":"Birinchi zavod bilan distribyutsiya bo‘yicha kelishish","status":"todo","deadline":"","projectId":"gHUwk1NjK2nosyTjLOhc","sectionId":"dist-s1","updatedAt":"2026-11-20T10:58:37.000Z","deadlineDraft":false,"responsibility":"Shartnoma: qaysi mahsulot va qaysi hudud","id":"dist-1"},{"note":"","order":2,"owner":"Oyatillo, Hikmatillo","title":"Yetkazib berishni tashkil qilish: ombor, mashinalar, yo‘nalishlar","status":"todo","deadline":"","projectId":"gHUwk1NjK2nosyTjLOhc","sectionId":"dist-s1","updatedAt":"2026-11-20T10:58:37.000Z","deadlineDraft":false,"responsibility":"Mahsulotni qabul qilib, savdo nuqtalariga yetkazishga tayyor","id":"dist-2"},{"note":"","order":3,"owner":"Oyatillo, Hikmatillo","title":"Savdo nuqtalariga muntazam yetkazib berishni boshlash","status":"todo","deadline":"","projectId":"gHUwk1NjK2nosyTjLOhc","sectionId":"dist-s1","updatedAt":"2026-11-20T10:58:37.000Z","deadlineDraft":false,"responsibility":"Buyurtmalar muntazam yetkazilmoqda","id":"dist-3"},{"note":"","order":1,"owner":"Bunyod, Donyor","title":"Haydovchilarni ishga olish","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Har bir mashinaga haydovchi biriktirilgan","id":"garaj-opt-1"},{"note":"","order":2,"owner":"Bunyod, Donyor","title":"Mashinalar to‘xtamasdan yurishini ta’minlash","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Bo‘sh turgan mashina yo‘q: har bir mashina doim reysda","id":"garaj-opt-2"},{"note":"","order":3,"owner":"Bunyod, Donyor","title":"Garajni avtomatlashtirish","status":"todo","deadline":"","projectId":"garaj","sectionId":"garaj-s3","updatedAt":"2026-11-20T10:19:23.000Z","deadlineDraft":false,"responsibility":"Garaj hisobi va nazorati dasturda yuritiladi","id":"garaj-opt-3"},{"note":"","order":1,"owner":"Aris, Mavlonbek","title":"1 oy ichida bozorni o‘rganish","status":"todo","deadline":"2026-12-20","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":true,"responsibility":"Bozor bo‘yicha hisobot: yuk oqimi, narxlar, raqobatchilar","id":"kz-b-1"},{"note":"","order":2,"owner":"Aris, Mavlonbek","title":"Bor firmani sotib olish yoki yangi firma ochish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Qozog‘istonda ishlashga tayyor firma","id":"kz-b-2"},{"note":"","order":3,"owner":"Aris, Mavlonbek","title":"Bozor tahlili","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Tahlil: qaysi yo‘nalish va zavodlardan boshlash","id":"kz-b-3"},{"note":"","order":4,"owner":"Aris, Mavlonbek","title":"20 ta mashina sotib olish va ularni yukka qo‘yish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"20 ta mashina reysda","id":"kz-b-4"},{"note":"","order":5,"owner":"Aris, Mavlonbek","title":"Ekspeditorlik biznesini yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Ekspeditorlik ishlayapti: buyurtma olinadi, yukka mashina topiladi","id":"kz-b-5"},{"note":"","order":6,"owner":"Aris, Mavlonbek","title":"Birinchi buyurtmachi: Coca-Cola","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Coca-Cola bilan shartnoma va birinchi reyslar","id":"kz-b-6"},{"note":"","order":7,"owner":"Aris, Mavlonbek","title":"Boshqa zavodlardan ham yuk olish va bozorga kirish","status":"todo","deadline":"","projectId":"qozogiston","sectionId":"kz-s1","updatedAt":"2026-11-20T10:31:58.000Z","deadlineDraft":false,"responsibility":"Coca-Coladan tashqari zavodlar bilan shartnomalar","id":"kz-b-7"},{"note":"","order":1,"owner":"Ilxom aka","title":"Dasturni tayyorlash","status":"todo","deadline":"","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:41:21.000Z","deadlineDraft":false,"responsibility":"Haydovchilar ishlata oladigan dastur","id":"lorry-a-1"},{"note":"","order":2,"owner":"Sherzod","title":"Haydovchilarni jalb qilish","status":"todo","deadline":"","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Haydovchilar dasturga ulanmoqda","id":"lorry-a-2"},{"note":"","order":3,"owner":"Ayubjon, Sherzod","title":"20 ming haydovchi dasturdan foydalanadi","status":"todo","deadline":"2027-03-01","projectId":"lorry","sectionId":"lorry-s1","updatedAt":"2026-11-20T10:41:21.000Z","deadlineDraft":false,"responsibility":"Dasturdan foydalanayotgan haydovchilar soni 20 mingga yetgan","id":"lorry-a-3"},{"note":"","order":2,"owner":"Jasurbek","title":"2-bosqich: tyagachi bor hamkorlar bilan 20% ulush","status":"todo","deadline":"","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Hamkorlar topgan pulning 20% ulushi olinadi","id":"presep-b-2"},{"note":"","order":3,"owner":"Jasurbek","title":"3-bosqich: zavodlarga ijara","status":"todo","deadline":"","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Tirkamalar zavodlarda ijarada; zavod uchun yo‘l narxi arzonlashadi","id":"presep-b-3"},{"note":"","order":1,"owner":"Jasurbek","title":"1-bosqich: tanishlarga 100 ta tirkamani 1 oyga ijaraga berish va qaytarib olish, holatini tekshirish va natijani baholash","status":"todo","deadline":"2027-03-01","projectId":"presep","sectionId":"presep-s1","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Berish va Qaytarish akti, to‘lovlar bo‘yicha xulosa va 2-bosqichga o‘tish qarori","id":"presep-s1-4"},{"note":"","order":1,"owner":"Ayubjon","title":"Faktoringni yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s4","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Birinchi faktoring bitimlari o‘tkazilgan, islomiy moliya shartlari bo‘yicha","id":"yuk-f-1"},{"note":"","order":1,"owner":"Ayubjon","title":"Dastur xavfsizligini ta’minlash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s2","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Zavodlar ma’lumoti himoyalangan, kirish huquqlari tartibga solingan","id":"yuk-x-1"},{"note":"","order":2,"owner":"Ayubjon","title":"Zavodlarga texnik yordamni yo‘lga qo‘yish","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s2","updatedAt":"2026-11-20T10:47:28.000Z","deadlineDraft":false,"responsibility":"Zavod murojaat qiladigan aloqa bor, murojaatlarga javob beriladi","id":"yuk-x-2"},{"note":"","order":1,"owner":"Ayubjon","title":"Familiy zavodini ulash","status":"todo","deadline":"2026-11-27","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-1"},{"note":"","order":2,"owner":"Ayubjon","title":"Montella zavodini ulash","status":"todo","deadline":"2026-12-04","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-2"},{"note":"","order":3,"owner":"Ayubjon","title":"Motabar zavodini ulash","status":"todo","deadline":"2026-12-11","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-3"},{"note":"","order":4,"owner":"Ayubjon","title":"Chortoq zavodini ulash","status":"todo","deadline":"2026-12-17","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:38:11.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-4"},{"note":"","order":5,"owner":"Ayubjon","title":"Nestle zavodini ulash","status":"todo","deadline":"2026-12-22","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-5"},{"note":"","order":6,"owner":"Ayubjon","title":"Akfa zavodini ulash","status":"todo","deadline":"2026-12-27","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":true,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-6"},{"note":"","order":7,"owner":"Ayubjon","title":"Sement zavodini ulash","status":"todo","deadline":"2026-12-31","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"7 ta zavodning hammasi 123yuk orqali ishlayapti","id":"yuk-z-7"},{"note":"","order":8,"owner":"Ayubjon","title":"KIA va BYD zavodlarini ulash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-8"},{"note":"","order":9,"owner":"Ayubjon","title":"Sochniya dalina zavodini ulash","status":"todo","deadline":"","projectId":"yuk123","sectionId":"yuk-s1","updatedAt":"2026-11-20T10:39:50.000Z","deadlineDraft":false,"responsibility":"Zavod 123yuk orqali ishlayapti: haqiqiy buyurtmalar dasturdan o‘tadi","id":"yuk-z-9"}]}</script>
 <script type="application/json" id="cfg">{"url":"https://ynqkglusayqgmgiujndq.supabase.co","key":"sb_publishable_x0HQRiDUzwHi3tcCYD0c1Q_m57RnUNG"}</script>
 
 <script>
@@ -487,17 +561,18 @@ const S = {
   confirmed: {projects:false, sections:false, tasks:false},
   error: null, phase: 'loading', slow: false,
   readOnly: false, writeKnown: false, pending: 0,
-  view: 'overview', project: '', status: 'all', flag: null,
+  view: 'present', project: '', status: 'all', flag: null,
+  slide: 'all', // the slide the presentation is on: 'all' or a project id
   secSel: {}, // project id -> the section sub-tab this viewer last opened
   snapshot: false, snapshotAt: '', // true when showing the copy built into the page (no live data for this viewer)
   site: false, // true on the public website, where the plan is stored in a database instead of claude.ai
   moved: ''    // set on the claude.ai page once the plan has moved to the website: its address
 };
 
-const PREF_KEY = 'yol-xarita-prefs-3';
+const PREF_KEY = 'yol-xarita-prefs-4';
 try {
   const p = JSON.parse(localStorage.getItem(PREF_KEY) || '{}');
-  if (['overview','projects','people','dates'].includes(p.view)) S.view = p.view;
+  if (['present','projects','people','dates'].includes(p.view)) S.view = p.view;
   if (typeof p.project === 'string') S.project = p.project;
   if (p.secSel && typeof p.secSel === 'object') Object.keys(p.secSel).forEach(k => { if (typeof p.secSel[k] === 'string') S.secSel[k] = p.secSel[k]; });
 } catch (e) {}
@@ -605,7 +680,8 @@ function draw(){
   const fk = ae && ae.dataset ? ae.dataset.fk : null;
   const fkAlt = ae && ae.dataset ? ae.dataset.fkAlt : null; // where focus goes if that control disappears
   document.querySelectorAll('.tab').forEach(b => { if (b.dataset.v === S.view) b.setAttribute('aria-current','page'); else b.removeAttribute('aria-current'); });
-  $('#newProjectBtn').hidden = !(canWrite() && S.phase === 'ready');
+  $('#newProjectBtn').hidden = !(canWrite() && S.phase === 'ready' && S.view !== 'present');
+  document.body.classList.remove('presenting');
   const main = $('#main');
   if (S.phase === 'nodb') {
     main.innerHTML = '<section class="notice"><span class="label">Ma’lumotlar ombori</span><h2>Reja bu yerda ochilmaydi</h2><p>Loyihalar, mas’ullar va dedlaynlar claude.ai’da saqlanadi. Sahifani claude.ai ichida, hisobingizga kirgan holda oching.</p></section>';
@@ -640,7 +716,7 @@ function draw(){
   if (S.view === 'people') html += filterBarHTML() + peopleHTML(idx);
   else if (S.view === 'dates') html += filterBarHTML() + datesHTML(idx);
   else if (S.view === 'projects') html += projectsHTML(idx);
-  else html += overviewHTML(idx);
+  else { html += presentHTML(idx); document.body.classList.add('presenting'); }
   const keepX = [...main.querySelectorAll('.subtabs,.sectabs')].map(r => r.scrollLeft);
   main.innerHTML = html;
   // a rebuilt sub-tab row starts scrolled to the left; keep where the viewer was and bring the open tab into view
@@ -652,6 +728,7 @@ function draw(){
     if (ab.left < rb.left || ab.right > rb.right) row.scrollLeft += (ab.left - rb.left) - (rb.width - ab.width) / 2;
   });
   restoreFocus(fk, fkAlt);
+  if (document.body.classList.contains('presenting')) fitSlide();
 }
 function restoreFocus(fk, alt){
   // in the Mas’ullar list a key ends in "@person": if the step moved to someone else, follow the step
@@ -682,7 +759,25 @@ function shortName(p){
   return n;
 }
 function projectTasks(idx, pid){ return idx.all.filter(t => idx.meta.get(t.id).p.id === pid); }
-function overviewHTML(idx){
+/* ---------- presentation ---------- */
+// One screen per slide: first every project with what is expected of it, then one project per slide.
+function presentHTML(idx){
+  const slides = [{k: 'all'}].concat(idx.projects.map(p => ({k: p.id, p})));
+  let i = slides.findIndex(s => s.k === S.slide);
+  if (i < 0) i = 0;
+  S.slide = slides[i].k;
+  const cur = slides[i], last = slides.length - 1;
+  const nameOf = (s, j) => (j + 1) + ' / ' + slides.length + ': ' + (s.p ? s.p.name : 'hamma loyihalar');
+  return '<section class="deck" id="deck" aria-label="Taqdimot">' +
+    '<div class="slide" id="slide" role="group" aria-roledescription="slayd" aria-label="' + esc(nameOf(cur, i)) + '"><div class="slide-in" id="slideIn">' + (cur.p ? slideProject(idx, cur.p) : slideAll(idx)) + '</div></div>' +
+    '<div class="deck-nav">' +
+      '<button type="button" class="btn btn-sq" data-act="slide" data-d="-1" data-fk="sl-prev" data-fk-alt="sl-next" aria-label="Oldingi slayd"' + (i === 0 ? ' disabled' : '') + '>←</button>' +
+      '<span class="deck-dots">' + slides.map((s, j) => '<button type="button" class="dot' + (j === i ? ' on' : '') + '" data-act="slide-to" data-k="' + esc(s.k) + '" data-fk="sd-' + esc(s.k) + '" aria-label="' + esc(nameOf(s, j)) + '"' + (j === i ? ' aria-current="true"' : '') + '>' + (j === 0 ? '≡' : j) + '</button>').join('') + '</span>' +
+      '<button type="button" class="btn btn-sq" data-act="slide" data-d="1" data-fk="sl-next" data-fk-alt="sl-prev" aria-label="Keyingi slayd"' + (i === last ? ' disabled' : '') + '>→</button>' +
+      (document.fullscreenEnabled ? '<button type="button" class="btn deck-full" data-act="fullscreen" data-fk="sl-full">' + (document.fullscreenElement ? 'Ekrandan chiqish' : 'To‘liq ekran') + '</button>' : '') +
+    '</div></section>';
+}
+function slideAll(idx){
   const all = idx.all, c = counts(all);
   const nLate = all.filter(isOverdue).length, nUn = all.filter(isUnassigned).length;
   // only numbers that say something are shown: a row of zeros is noise
@@ -691,30 +786,58 @@ function overviewHTML(idx){
     kpi(c.blocked, 'to‘xtagan', 'alert', 'data-act="goto" data-v="dates" data-s="blocked" data-fk="k-blocked" data-fk-alt="clr"') +
     kpi(nLate, 'kechikkan', 'alert', 'data-act="goto" data-v="dates" data-f="overdue" data-fk="k-late" data-fk-alt="clr"') +
     kpi(nUn, 'mas’ul yo‘q', 'warn', 'data-act="goto" data-v="people" data-f="unassigned" data-fk="k-un" data-fk-alt="clr"');
-  const cards = idx.projects.map((p, i) => {
-    const ts = projectTasks(idx, p.id), pc = counts(ts);
-    const late = ts.filter(isOverdue).length;
-    const alerts = [pc.blocked ? pc.blocked + ' ta to‘xtagan' : '', late ? late + ' ta kechikkan' : ''].filter(Boolean).join(' · ');
-    const lead = names(p.lead).join(', '), goal = String(p.goal || '').trim();
-    // the card says what the project is expected to deliver and who answers for it; the steps are one tap away
-    const own = '<span class="pc-k">Maqsad:</span><span class="pc-v goal' + (goal ? '' : ' miss') + '">' + (goal ? esc(goal) : 'belgilanmagan') + '</span>' +
-      '<span class="pc-own">Loyiha mas’uli: <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></span>';
-    return '<button type="button" class="pcard" data-act="open-project" data-p="' + esc(p.id) + '" data-fk="pc-' + esc(p.id) + '" data-fk-alt="pp-' + esc(p.id) + '">' +
-      '<span class="pc-num" aria-hidden="true">' + (i + 1) + '</span>' +
-      '<span class="pc-top"><span class="pc-name">' + esc(p.name) + '</span><span class="pc-count">' + pc.done + '/' + pc.total + '</span></span>' +
-      barHTML(pc) + own + (alerts ? '<span class="pc-alert">' + alerts + '</span>' : '') +
-      '</button>';
-  }).join('');
-  return '<section class="ov" aria-label="Umumiy ko‘rinish">' +
-    '<div class="ov-head"><div><span class="label">' + idx.projects.length + ' ta loyiha · ketma-ketlik bo‘yicha</span><p class="today">Bugun: ' + esc(fmtToday()) + '</p></div>' +
-      '<div class="overall"><strong>' + c.done + '/' + c.total + '</strong><span>qadam bajarildi</span>' + barHTML(c) + '</div></div>' +
-    (kpis ? '<div class="kpis">' + kpis + '</div>' : '') +
-    '<div class="pcards">' + cards + '</div>' +
-    '<p class="legend">Kartani bosing: loyihaning bo‘limlari va qadamlari ochiladi.' +
-      (S.site && canWrite() ? ' Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.' : '') + '</p>' +
-    '</section>';
+  return '<header class="sl-head"><span class="label">' + idx.projects.length + ' ta loyiha · ' + c.done + '/' + c.total + ' qadam bajarildi · ' + esc(fmtToday()) + '</span>' +
+    '<h2>Loyihalar va kutilayotgan natija</h2>' + (kpis ? '<div class="sl-kpis">' + kpis + '</div>' : '') + '</header>' +
+    '<div class="sl-grid">' + idx.projects.map((p, i) => {
+      const pc = counts(projectTasks(idx, p.id)), lead = names(p.lead).join(', '), goal = String(p.goal || '').trim();
+      return '<button type="button" class="sl-tile" data-act="slide-to" data-k="' + esc(p.id) + '" data-fk="tile-' + esc(p.id) + '" data-fk-alt="sd-' + esc(p.id) + '">' +
+        '<span class="sl-n" aria-hidden="true">' + (i + 1) + '</span><span class="sl-name">' + esc(p.name) + '</span>' +
+        '<span class="sl-goal' + (goal ? '' : ' miss') + '">' + (goal ? esc(goal) : 'Maqsad belgilanmagan') + '</span>' +
+        '<span class="sl-lead">' + (lead ? esc(lead) : 'Mas’ul tayinlanmagan') + ' · ' + pc.done + '/' + pc.total + '</span></button>';
+    }).join('') + '</div>';
 }
-// shown above the Mas’ullar and Dedlaynlar lists when a summary number on the overview opened them
+function slideProject(idx, p){
+  const pi = idx.projects.indexOf(p) + 1, secs = idx.secs.get(p.id) || [], pc = counts(projectTasks(idx, p.id));
+  const lead = names(p.lead).join(', '), team = String(p.team || '').trim(), goal = String(p.goal || '').trim();
+  const cols = secs.map(s => {
+    const ts = idx.tasks.get(s.id) || [];
+    return '<section class="sl-sec"><h3>' + esc(s.name) + '</h3>' + (ts.length ? '<ol class="sl-steps">' + ts.map(t => {
+      const st = stOf(t), owner = ownerText(t);
+      const meta = [owner ? esc(owner) : '',
+        parseDate(t.deadline) ? '<span' + (isOverdue(t) ? ' class="late"' : '') + '>' + fmtDate(t.deadline) + (isDraft(t) ? ' (taxminiy)' : '') + '</span>' : '',
+        st !== 'todo' ? ST[st].label : ''].filter(Boolean).join(' · ');
+      return '<li class="q-' + st + '"><span class="sl-dot" aria-hidden="true">' + (st === 'done' ? CHECK : '') + '</span><span class="sl-t">' + esc(t.title) + '</span>' +
+        (meta ? '<span class="sl-m">' + meta + '</span>' : '') + '</li>';
+    }).join('') + '</ol>' : '<p class="sl-empty">Hali qadam yo‘q</p>') + '</section>';
+  }).join('');
+  return '<div class="sl-proj"><div class="sl-hero"><span class="sl-num" aria-hidden="true">' + pi + '</span>' +
+    '<h2>' + esc(p.name) + '</h2>' +
+    '<p class="sl-k">Maqsad</p><p class="sl-goalbig' + (goal ? '' : ' miss') + '">' + (goal ? esc(goal) : 'belgilanmagan') + '</p>' +
+    '<p class="sl-who"><span class="k">Loyiha mas’uli:</span> <b' + (lead ? '' : ' class="miss"') + '>' + (lead ? esc(lead) : 'tayinlanmagan') + '</b></p>' +
+    (team ? '<p class="sl-who"><span class="k">Jamoa:</span> ' + esc(team) + '</p>' : '') +
+    '<p class="sl-prog"><span class="mono">' + pc.done + '/' + pc.total + ' qadam bajarildi</span>' + barHTML(pc) + '</p>' +
+    (canWrite() ? '<button type="button" class="link-btn" data-act="open-project" data-p="' + esc(p.id) + '" data-fk="sl-edit" data-fk-alt="tab-projects">Tahrirlash →</button>' : '') +
+    '</div><div class="sl-secs n' + Math.min(secs.length, 3) + '">' + (cols || '<p class="sl-empty">Hali bo‘lim yo‘q</p>') + '</div></div>';
+}
+// Give the deck exactly the room left on the screen, then shrink the type until the slide fits it.
+// Below a readable size the slide scrolls instead (a long project on a phone).
+function fitSlide(){
+  const deck = $('#deck'), box = $('#slide'), inn = $('#slideIn');
+  if (!deck || !box || !inn) return;
+  deck.style.height = document.fullscreenElement === deck ? '' : Math.max(240, window.innerHeight - deck.getBoundingClientRect().top) + 'px';
+  inn.style.fontSize = '';
+  let px = parseFloat(getComputedStyle(inn).fontSize) || 16;
+  for (let n = 0; n < 24 && px > 11.5 && (box.scrollHeight > box.clientHeight + 1 || box.scrollWidth > box.clientWidth + 1); n++) {
+    px = Math.max(11.5, px * 0.95);
+    inn.style.fontSize = px.toFixed(2) + 'px';
+  }
+}
+function moveSlide(d){
+  const keys = ['all'].concat([...S.projects.values()].sort(byOrder).map(p => p.id));
+  const i = Math.max(0, keys.indexOf(S.slide)), j = Math.min(keys.length - 1, Math.max(0, i + d));
+  if (j !== i) { S.slide = keys[j]; render(); }
+}
+// shown above the Mas’ullar and Dedlaynlar lists when a summary number on the first slide opened them
 function filterBarHTML(){
   let what = '';
   if (S.status !== 'all' && ST[S.status]) what = ST[S.status].label;
@@ -819,7 +942,8 @@ function projectsHTML(idx){
       '</div>';
   }
   return html + (ts.some(isDraft) ? '<p class="legend">Sana ostidagi kesik chiziq — taxminiy dedlayn (hali kelishilmagan).' +
-    (canWrite() ? ' Kelishilgach, qadamni ochib “Taxminiy muddat” belgisini olib tashlang.' : '') + '</p>' : '') + '</section>';
+    (canWrite() ? ' Kelishilgach, qadamni ochib “Taxminiy muddat” belgisini olib tashlang.' : '') + '</p>' : '') +
+    (S.site && canWrite() ? '<p class="legend">Reja ochiq: havolasi bor har kim uni ko‘ra oladi va o‘zgartira oladi. O‘zgarishlar darhol saqlanadi.</p>' : '') + '</section>';
 }
 function stepHTML(idx, t){
   const m = idx.meta.get(t.id); const st = stOf(t);
@@ -1178,6 +1302,13 @@ document.addEventListener('click', e => {
   else if (act === 'more') { const head = el.closest('.proj-head'); if (head) { const open = head.classList.toggle('full'); el.textContent = open ? 'Yig‘ish' : 'Batafsil'; } }
   else if (act === 'clear-filters') { S.status = 'all'; S.flag = null; render(); }
   else if (act === 'reload') location.reload();
+  else if (act === 'slide') moveSlide(Number(el.dataset.d) || 0);
+  else if (act === 'slide-to') { S.slide = el.dataset.k; render(); }
+  else if (act === 'fullscreen') {
+    const deck = $('#deck');
+    if (document.fullscreenElement) document.exitFullscreen();
+    else if (deck && deck.requestFullscreen) deck.requestFullscreen().catch(() => {});
+  }
   else if (act === 'edit-task') openTask(el.dataset.id);
   else if (act === 'new-task') { if (canWrite()) openTask(null, el.dataset.sec); }
   else if (act === 'edit-section') openMeta('section', el.dataset.id);
@@ -1185,6 +1316,26 @@ document.addEventListener('click', e => {
   else if (act === 'edit-project') openMeta('project', el.dataset.id);
   else if (act === 'new-project') openMeta('project', null);
 });
+// presentation: arrow keys and swipes turn the slides; the deck is re-fitted when the window changes
+document.addEventListener('keydown', e => {
+  if (S.view !== 'present' || !$('#deck') || TD.open || MD.open || e.altKey || e.ctrlKey || e.metaKey) return;
+  if (/^(INPUT|TEXTAREA|SELECT)$/.test((e.target && e.target.tagName) || '')) return;
+  const d = {ArrowRight: 1, PageDown: 1, ArrowLeft: -1, PageUp: -1}[e.key];
+  if (d) { e.preventDefault(); moveSlide(d); }
+  else if (e.key === 'Home') { e.preventDefault(); moveSlide(-999); }
+  else if (e.key === 'End') { e.preventDefault(); moveSlide(999); }
+});
+let swipe = null;
+document.addEventListener('touchstart', e => { swipe = e.touches.length === 1 && e.target.closest && e.target.closest('#slide') ? {x: e.touches[0].clientX, y: e.touches[0].clientY} : null; }, {passive: true});
+document.addEventListener('touchend', e => {
+  if (!swipe || !e.changedTouches.length) return;
+  const dx = e.changedTouches[0].clientX - swipe.x, dy = e.changedTouches[0].clientY - swipe.y;
+  swipe = null;
+  if (Math.abs(dx) > 60 && Math.abs(dx) > 2 * Math.abs(dy)) moveSlide(dx < 0 ? 1 : -1);
+}, {passive: true});
+let fitT = 0;
+window.addEventListener('resize', () => { clearTimeout(fitT); fitT = setTimeout(() => { if (document.body.classList.contains('presenting')) fitSlide(); }, 80); });
+document.addEventListener('fullscreenchange', () => { if (S.view === 'present') render(); });
 document.addEventListener('change', e => {
   const el = e.target;
   if (el.dataset && el.dataset.act === 'status-set') {
