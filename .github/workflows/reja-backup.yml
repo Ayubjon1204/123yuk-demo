@@ -1,0 +1,38 @@
+# Saves a copy of the roadmap (https://ayubjon1204.github.io/123yuk-demo/reja/) from its database into the
+# branch "reja-backup" (file reja-data.json) whenever it has changed, so every earlier state stays in git history.
+# The read it makes every hour also keeps the free database from being paused for inactivity.
+name: Reja backup
+on:
+  schedule:
+    - cron: '41 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+concurrency:
+  group: reja-backup
+  cancel-in-progress: false
+jobs:
+  backup:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Save the plan
+        env:
+          API: https://ynqkglusayqgmgiujndq.supabase.co/rest/v1
+          KEY: sb_publishable_x0HQRiDUzwHi3tcCYD0c1Q_m57RnUNG  # publishable key: safe to expose
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          curl -fsS --retry 3 "$API/docs?select=collection,id,data&order=collection,id&limit=1000" -H "apikey: $KEY" -o data.json
+          rows=$(jq 'length' data.json)
+          echo "rows: $rows"
+          if [ "$rows" -lt 1 ]; then echo "The plan is empty: keeping the last backup."; exit 0; fi
+          git init -q out && cd out
+          git remote add origin "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          if git fetch -q --depth 1 origin reja-backup 2>/dev/null; then git checkout -q -b reja-backup FETCH_HEAD; else git checkout -q --orphan reja-backup; fi
+          jq '.' ../data.json > reja-data.json
+          git add reja-data.json
+          if git diff --cached --quiet; then echo "No change since the last backup."; exit 0; fi
+          git -c user.name="reja-backup" -c user.email="reja-backup@users.noreply.github.com" commit -q -m "Reja backup $(date -u '+%Y-%m-%d %H:%M') UTC ($rows rows)"
+          git push -q origin reja-backup
+          echo "Saved."
